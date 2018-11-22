@@ -1,0 +1,8 @@
+<AssetMetadata version="0" type="Xml" guid="982b6d7e-e4b9-801d-403b-8d5153e7ee48">
+ <Files>
+  <File path="g_music.xml"/>
+ </Files>
+ <Details>
+  <Detail name="rootTag">ATLConfig</Detail>
+ </Details>
+</AssetMetadata>

@@ -1,0 +1,8 @@
+<AssetMetadata version="0" type="Xml" guid="b0297513-9f6a-dddf-11b8-358ff6927576">
+ <Files>
+  <File path="dialogueeditor.xml"/>
+ </Files>
+ <Details>
+  <Detail name="rootTag">Graph</Detail>
+ </Details>
+</AssetMetadata>

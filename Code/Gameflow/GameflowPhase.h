@@ -1,0 +1,77 @@
+#pragma once
+
+#include <DefaultComponents\Input\InputComponent.h>
+
+#include "Types\Flags.h"
+
+
+#define TAGGAMEFLOWPHASE(GameflowName, PHASENAME, Id)			\
+namespace Gameflow												\
+{																\
+	namespace GameflowName##Gameflow							\
+	{															\
+		namespace Phases										\
+		{														\
+			enum												\
+			{													\
+				PHASENAME = Id,									\
+			};													\
+		}														\
+	}															\
+}
+
+#define GAMEFLOWPHASE_STANDARD_INIT()							\
+m_PhaseId = PHASEID;											\
+m_PhaseName = PHASENAME;										\
+m_Flags = GetDefaultFlagMask();									\
+InitializeKeyBinds();
+
+#define ACTIVEPHASECHECK() if(!IsActivePhase()) return;
+#define GAMEFLOWPHASE_ACTION_STARTCHECK() if(!(IsActivePhase() || GetFlags().HasFlag(EGameflowPhaseFlags::UPDATE_IN_BACKGROUND))) return;
+
+class CGameflow;
+class CGameflowManager;
+
+class CGameflowPhase
+{
+public:
+
+#define GAMEFLOWPHASE_BIT(x) BIT64(x)
+	using _FlagNumeric_ = int;
+	using FlagType = Flags<_FlagNumeric_>;
+	enum EGameflowPhaseFlags
+	{
+		NONE = 0,
+		UPDATE_IN_BACKGROUND = GAMEFLOWPHASE_BIT(1),
+	};
+	
+	// Must include GAMEFLOWPHASE_STANDARD_INIT();
+	virtual void Initialize() = 0;
+	// pInputComponent is optional; if not set, the active player input component will be used
+	virtual void InitializeKeyBinds(Cry::DefaultComponents::CInputComponent *pInputComponent = nullptr) = 0;
+	virtual void Update(float fDeltaTime) = 0;
+
+	const int GetPhaseId() { return m_PhaseId; }
+	const string GetPhaseName() { return m_PhaseName; }
+
+	virtual FlagType GetDefaultFlagMask() const = 0;
+	FlagType& GetFlags() { return m_Flags; }
+
+	CGameflowManager* GetGameflowManager();
+	bool IsActivePhase();
+
+
+protected:
+	int m_PhaseId;
+	string m_PhaseName;
+
+	FlagType m_Flags;
+	
+	Cry::DefaultComponents::CInputComponent *m_pInputComponent;
+	Cry::DefaultComponents::CInputComponent* GetInputComponent() { return m_pInputComponent; }
+
+	static Cry::DefaultComponents::CInputComponent* GetPlayerInputComponent();
+
+};
+
+

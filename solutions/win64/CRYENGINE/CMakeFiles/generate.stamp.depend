@@ -1,0 +1,17 @@
+# CMake generation dependency list for this directory.
+D:/Desktop/Cryengine Stuff/Engine Files/Crytek/CRYENGINE_5.4/CMakeLists.txt
+D:/Desktop/Cryengine Stuff/Engine Files/Crytek/CRYENGINE_5.4/Tools/CMake/Build.cmake
+D:/Desktop/Cryengine Stuff/Engine Files/Crytek/CRYENGINE_5.4/Tools/CMake/Configure.cmake
+D:/Desktop/Cryengine Stuff/Engine Files/Crytek/CRYENGINE_5.4/Tools/CMake/toolchain/windows/WindowsPC-MSVC.cmake
+D:/Desktop/Cryengine Stuff/Engine Files/Crytek/CRYENGINE_5.4/Tools/CMake/CRYENGINE-MSVC.cmake
+D:/Desktop/Cryengine Stuff/Engine Files/Crytek/CRYENGINE_5.4/Tools/CMake/CommonOptions.cmake
+D:/Desktop/Cryengine Stuff/Engine Files/Crytek/CRYENGINE_5.4/Tools/CMake/CopyFilesToBin.cmake
+D:/Desktop/Cryengine Stuff/Engine Files/Crytek/CRYENGINE_5.4/Tools/CMake/Bootstrap.cmake
+D:/Desktop/Cryengine Stuff/Engine Files/Crytek/CRYENGINE_5.4/Tools/CMake/Win32/share/cmake-3.7/Modules/CMakeDependentOption.cmake
+D:/Desktop/Cryengine Stuff/Engine Files/Crytek/CRYENGINE_5.4/Tools/CMake/ConfigureChecks.cmake
+D:/Desktop/Cryengine Stuff/Engine Files/Crytek/CRYENGINE_5.4/Tools/CMake/Win32/share/cmake-3.7/Modules/CheckFunctionExists.cmake
+D:/Desktop/Cryengine Stuff/Engine Files/Crytek/CRYENGINE_5.4/Tools/CMake/CommonMacros.cmake
+D:/Desktop/Cryengine Stuff/Engine Files/Crytek/CRYENGINE_5.4/Tools/CMake/modules/Boost.cmake
+D:/Desktop/Cryengine Stuff/Engine Files/Crytek/CRYENGINE_5.4/Tools/CMake/modules/ncurses.cmake
+D:/Desktop/Cryengine Stuff/Engine Files/Crytek/CRYENGINE_5.4/Tools/CMake/BuildPlugins.cmake
+D:/Desktop/Cryengine Stuff/Engine Files/Crytek/CRYENGINE_5.4/Tools/CMake/BuildLaunchers.cmake

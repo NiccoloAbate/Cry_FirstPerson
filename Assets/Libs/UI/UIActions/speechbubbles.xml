@@ -1,0 +1,26 @@
+<Graph Description="" Group="" enabled="1" MultiPlayer="ClientServer">
+ <Nodes>
+  <Node Id="1" Class="UI:Action:Start" pos="-216,-252,0">
+   <Inputs UseAsState="0"/>
+  </Node>
+  <Node Id="2" Class="UI:Display:Config" pos="-216,-162,0">
+   <Inputs uiElements_Element="SpeechBubbles" instanceID="-1" cursor="0" mouseEvents="1" keyEvents="0" consoleMouse="0" consoleCursor="0" controllerInput="0" eventsExclusive="0" fixedProjDepth="0" forceNoUnload="0" alpha="0" layer="2"/>
+  </Node>
+  <Node Id="3" Class="UI:Display:Constraints" pos="198,-162,0">
+   <Inputs uiElements_Element="SpeechBubbles" instanceID="-1" type="1" left="0" top="0" width="0" height="0" scale="1" hAlign="1" vAlign="1" maximize="0"/>
+  </Node>
+  <Node Id="4" Class="UI:Display:Display" pos="540,-162,0">
+   <Inputs uiElements_Element="SpeechBubbles" instanceID="-1"/>
+  </Node>
+  <Node Id="5" Class="UI:Action:End" pos="540,-270,0">
+   <Inputs UseAsState="0" Args=""/>
+  </Node>
+ </Nodes>
+ <Edges>
+  <Edge nodeIn="2" nodeOut="1" portIn="set" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="3" nodeOut="2" portIn="set" portOut="OnSet" enabled="1"/>
+  <Edge nodeIn="4" nodeOut="3" portIn="show" portOut="OnSet" enabled="1"/>
+  <Edge nodeIn="5" nodeOut="4" portIn="EndAction" portOut="onShow" enabled="1"/>
+ </Edges>
+ <GraphTokens />
+</Graph>

@@ -1,0 +1,10 @@
+D:/Desktop/Cryengine Stuff/Engine Files/Projects/Cry_FirstPerson/solutions/win64/CMakeFiles/GameLauncher.dir
+D:/Desktop/Cryengine Stuff/Engine Files/Projects/Cry_FirstPerson/solutions/win64/CMakeFiles/Game.dir
+D:/Desktop/Cryengine Stuff/Engine Files/Projects/Cry_FirstPerson/solutions/win64/CMakeFiles/GameServer.dir
+D:/Desktop/Cryengine Stuff/Engine Files/Projects/Cry_FirstPerson/solutions/win64/CMakeFiles/Sandbox.dir
+D:/Desktop/Cryengine Stuff/Engine Files/Projects/Cry_FirstPerson/solutions/win64/CMakeFiles/INSTALL.dir
+D:/Desktop/Cryengine Stuff/Engine Files/Projects/Cry_FirstPerson/solutions/win64/CMakeFiles/ALL_BUILD.dir
+D:/Desktop/Cryengine Stuff/Engine Files/Projects/Cry_FirstPerson/solutions/win64/CMakeFiles/ZERO_CHECK.dir
+D:/Desktop/Cryengine Stuff/Engine Files/Projects/Cry_FirstPerson/solutions/win64/CRYENGINE/CMakeFiles/INSTALL.dir
+D:/Desktop/Cryengine Stuff/Engine Files/Projects/Cry_FirstPerson/solutions/win64/CRYENGINE/CMakeFiles/ALL_BUILD.dir
+D:/Desktop/Cryengine Stuff/Engine Files/Projects/Cry_FirstPerson/solutions/win64/CRYENGINE/Code/CryPlugins/CryUQS/CMakeFiles/INSTALL.dir

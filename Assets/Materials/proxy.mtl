@@ -1,0 +1,10 @@
+<Material MtlFlags="525312" Shader="Nodraw" GenMask="0" StringGenMask="" SurfaceType="" MatTemplate="" Diffuse="1,1,1" Specular="0,0,0" Opacity="1" Shininess="10" CloakAmount="0" vertModifType="0" LayerAct="1">
+ <Textures />
+ <MaterialLayers>
+  <Layer Name="Illum" NoDraw="1" FadeOut="0">
+   <PublicParams EmittanceMapGamma="1" SSSIndex="0"/>
+  </Layer>
+  <Layer />
+  <Layer />
+ </MaterialLayers>
+</Material>

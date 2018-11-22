@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code\StdAfx.cpp" />
+    <ClCompile Include="D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\solutions\win64\Code_uber.cpp">
+      <Filter>UBER FILES</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\solutions\win64\Components_uber.cpp">
+      <Filter>UBER FILES</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Dialogue\DialogueManager.cpp">
+      <Filter>Dialogue</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Game\AudioController.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Game\CameraController.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Game\EnvironmentController.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Game\RewindManager.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Game\UIController.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Gameflow\GameflowPhase.cpp">
+      <Filter>Gameflow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Gameflow\Gameflow.cpp">
+      <Filter>Gameflow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Gameflow\GameflowManager.cpp">
+      <Filter>Gameflow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Gameflow\Combat\ActionPhase.cpp">
+      <Filter>Gameflow\Combat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Gameflow\Combat\CombatGameflow.cpp">
+      <Filter>Gameflow\Combat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Optimization\AutoOptimizer.cpp">
+      <Filter>Optimization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Optimization\OptimizationManager.cpp">
+      <Filter>Optimization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Timeline\FrameCaptureManager.cpp">
+      <Filter>Timeline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Timeline\TimelineManager.cpp">
+      <Filter>Timeline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\UI\DialogueEditor.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\UI\EntityHud.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\UI\Hud.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\UI\SpeechBubbles.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Utils\ConsoleCommands.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Utils\Files\FileManager.cpp">
+      <Filter>Utils\Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Utils\Serialization\ExtensionFunctions.cpp">
+      <Filter>Utils\Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Utils\Serialization\SerializableTypes.cpp">
+      <Filter>Utils\Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Utils\Serialization\SerializationExtension.cpp">
+      <Filter>Utils\Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Components\Characters\Character.cpp">
+      <Filter>Components\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Components\Environment\Rain.cpp">
+      <Filter>Components\Environment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Components\Game\GameplayEntity.cpp">
+      <Filter>Components\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Components\Game\Stats.cpp">
+      <Filter>Components\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Components\Hive\HiveAgent.cpp">
+      <Filter>Components\Hive</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Components\Hive\Pheromone.cpp">
+      <Filter>Components\Hive</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Components\Hive\Hive.cpp">
+      <Filter>Components\Hive</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Components\Rewind\Rewind.cpp">
+      <Filter>Components\Rewind</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Components\Timeline\TimelineEntity.cpp">
+      <Filter>Components\Timeline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Components\Player\Player.cpp">
+      <Filter>Components\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Gameflow\GameflowInput.cpp">
+      <Filter>Gameflow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Utils\Debug\DebugExtension.cpp">
+      <Filter>Utils\Debug</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code\GamePlugin.cpp" />
+    <ClInclude Include="D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code\GamePlugin.h" />
+    <ClInclude Include="D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code\StdAfx.h" />
+    <ClInclude Include="D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code\Components\SpawnPoint.cpp">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code\Components\Bullet.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code\Components\SpawnPoint.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code\Components\Player\CryFirstPersonPlayer.h">
+      <Filter>Components\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code\Components\Player\CryFirstPersonPlayer.cpp">
+      <Filter>Components\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Dialogue\DialogueManager.h">
+      <Filter>Dialogue</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Game\EnvironmentController.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Game\AudioController.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Game\CameraController.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Game\Rewind.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Game\RewindManager.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Game\UIController.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Gameflow\GameflowPhase.h">
+      <Filter>Gameflow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Gameflow\Gameflow.h">
+      <Filter>Gameflow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Gameflow\GameflowManager.h">
+      <Filter>Gameflow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Gameflow\Combat\ActionPhase.h">
+      <Filter>Gameflow\Combat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Gameflow\Combat\CombatGameflow.h">
+      <Filter>Gameflow\Combat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Gameflow\Editor\GameflowInfo.h">
+      <Filter>Gameflow\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Optimization\AutoOptimizer.h">
+      <Filter>Optimization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Optimization\OptimizationManager.h">
+      <Filter>Optimization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Timeline\TimelineManager.h">
+      <Filter>Timeline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Timeline\FrameCaptureManager.h">
+      <Filter>Timeline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Types\BindableGeneric.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Types\Flags.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Types\Generic.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Types\HashKey.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Types\MinMaxVar.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Types\MovingAverage.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\UI\DialogueEditor.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\UI\EntityHud.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\UI\Hud.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\UI\SpeechBubbles.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Utils\ExposeVariables.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Utils\MathUtils.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Utils\Utils.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Utils\AutoFunctionRegister.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Utils\ConsoleCommands.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Utils\DebugUtils.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Utils\Files\FileManager.h">
+      <Filter>Utils\Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Utils\Macros\Checks.h">
+      <Filter>Utils\Macros</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Utils\Macros\Properties.h">
+      <Filter>Utils\Macros</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Utils\Macros\RepeatCode_Macros.h">
+      <Filter>Utils\Macros</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Utils\Macros\UtilityMacros.h">
+      <Filter>Utils\Macros</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Utils\Serialization\ExtensionFunctions.h">
+      <Filter>Utils\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Utils\Serialization\SerializableTypes.h">
+      <Filter>Utils\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Utils\Serialization\SerializationEnxtension.h">
+      <Filter>Utils\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Components\Behaviors\Behaviors.h">
+      <Filter>Components\Behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Components\Characters\Character.h">
+      <Filter>Components\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Components\Environment\Rain.h">
+      <Filter>Components\Environment</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Components\Game\GameplayEntity.h">
+      <Filter>Components\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Components\Game\Stats.h">
+      <Filter>Components\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Components\Hive\HiveAgent.h">
+      <Filter>Components\Hive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Components\Hive\Pheromone.h">
+      <Filter>Components\Hive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Components\Hive\Hive.h">
+      <Filter>Components\Hive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Components\Rewind\Rewind.h">
+      <Filter>Components\Rewind</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Components\Timeline\TimelineEntity.h">
+      <Filter>Components\Timeline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Components\Player\Player.h">
+      <Filter>Components\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Components\Player\PlayerEnxtension.h">
+      <Filter>Components\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Gameflow\GameflowInput.h">
+      <Filter>Gameflow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Utils\Debug\DebugExtension.h">
+      <Filter>Utils\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Utils\VectorUtils.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\solutions\win64\Game.autogen.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Components\Player">
+      <UniqueIdentifier>{8AFA2222-3086-39D1-8BEC-5B6BEA7EDCFB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components">
+      <UniqueIdentifier>{1C4BA318-9128-30FE-906F-406C11D90F69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UBER FILES">
+      <UniqueIdentifier>{3A151163-152F-35CA-A3EA-B07667DB5DB2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{A1DE723E-D462-323C-925D-53828E156157}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dialogue">
+      <UniqueIdentifier>{5f174f44-2d42-47e3-acc3-2c733d170938}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{3c518c88-fcf6-444c-9fc4-f2890dbb0541}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gameflow">
+      <UniqueIdentifier>{57cb769d-16c4-497f-bc1a-1d6ea0aa6ea5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gameflow\Editor">
+      <UniqueIdentifier>{c4c7cb84-f8f4-4f35-87f4-3f406615e53b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gameflow\Combat">
+      <UniqueIdentifier>{688511b1-d7f3-44ab-922f-bcb90911bbb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Optimization">
+      <UniqueIdentifier>{e56425c7-f4b3-4166-a40c-6ece506a7567}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Timeline">
+      <UniqueIdentifier>{f93c6274-01b3-4f5a-9b13-7ca79f4b1c59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Types">
+      <UniqueIdentifier>{ea8a60ab-7f69-4c29-9015-760cc6365fc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{5834aa65-7562-4e5b-a282-a38c0b638b8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{4644e278-0b16-42df-806a-4cfbabcd5c8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils\Files">
+      <UniqueIdentifier>{85878208-122a-4ee0-8e34-8477d7b7c479}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils\Macros">
+      <UniqueIdentifier>{72d9a843-9104-412c-af6c-9b7340c1101e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils\Serialization">
+      <UniqueIdentifier>{b136dd15-6fc6-4d9d-82d2-8e45b1efe6b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Behaviors">
+      <UniqueIdentifier>{69f2a88c-f85e-420c-ac0c-b7e9b145be7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Characters">
+      <UniqueIdentifier>{d6996297-53d8-4be0-905a-55275d1ca513}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Environment">
+      <UniqueIdentifier>{827cfc1f-0422-43eb-bf83-043c8e8f87d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Game">
+      <UniqueIdentifier>{695a467a-da61-497e-9276-8062a80e0ab0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Hive">
+      <UniqueIdentifier>{4bc33872-8b36-49f6-b09d-1c9681afa3bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Rewind">
+      <UniqueIdentifier>{75e3bc51-d71e-4e5a-b1ba-29144a815106}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Timeline">
+      <UniqueIdentifier>{59c99f0a-f643-4af5-bd5d-ec0ef3ae7aed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils\Debug">
+      <UniqueIdentifier>{ef12b1ed-ec97-46fa-93cd-036084cfb197}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\Code\Solution\TODO.txt" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,250 @@
+
+#include "Common.cfi"
+#include "IllumValidations.cfi"
+
+// Shader global descriptions
+float Script : STANDARDSGLOBAL
+<
+	string Script =        
+		"Public;"
+		
+		"SupportsDeferredShading;"
+		"SupportsFullDeferredShading;"
+		"SupportsAttrInstancing;"
+		"ShaderDrawType = Light;"
+		"ShaderType = General;"
+>;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////// Custom shading pass structure /////////////////////////////////////
+
+struct CustomForwardShadingAttribs
+{
+};
+
+Texture2D emittanceTex : register(t13)
+<
+  UIName = "Emittance";
+  UIDescription = "Emittance color/intensity map";
+> = TM_Emittance;
+
+ENVIRONMENTCUBEMAP
+DISSOLVE_NOISE_MAP
+
+#include "ShadeLib.cfi"
+
+// Tweakables /////////////////
+
+half EmittanceMapGamma
+<
+  register = REG_PM_PARAM_0.x;
+  string UIWidget = "slider";
+  string UIName = "Emittance Map Gamma";
+	string UIDescription = "Expand range of emittance texture";
+  float UIMin = 1.0;
+  float UIMax = 2.0;
+  float UIStep = 0.1;
+> = 1.0;
+
+//=========================================================================
+
+#include "VertexLib.cfi"
+
+///////////////////////////////
+// Samplers
+
+///////////////// vertex shader //////////////////
+
+vert2FragGeneral IlluminationVS(app2vertGeneral IN)
+{
+  vert2FragGeneral OUT = (vert2FragGeneral)0; 
+
+  streamPos vertPassPos = (streamPos)0;
+
+  vs_shared_output(IN, OUT, vertPassPos, true);
+
+  return OUT;
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void GatherMaterialAttribs(in half3x3 mTangentToWS, in float2 baseTC, in half4 vertexColor, out MaterialAttribsCommon attribs)
+{
+	// TODO: SilPom: Find way to compute lod without gradients as they cause pixel artifacts at fin / shell transition
+	
+	attribs = MaterialAttribsDefault();
+	
+  // Base layer
+	half3 vNormalTS = half3(0, 0, 1);
+#if %NORMAL_MAP
+	vNormalTS = GetNormalMap(normalsTex, baseTC.xy);
+#endif
+	attribs.Smoothness = MatSpecColor.w * GetSmoothnessTex(smoothnessTex, baseTC.xy);
+	
+	attribs.Albedo = MatDifColor.rgb;
+	attribs.Albedo *= GetDiffuseTex(diffuseTex, float4(baseTC.xy, 0, 0));
+	
+	attribs.Reflectance = MatSpecColor.rgb;
+#if %SPECULAR_MAP
+	attribs.Reflectance *= GetSpecularTexLod(specularTex, float4(baseTC.xy, 0, 0));
+#endif
+
+	// Compute world space normal
+	attribs.NormalWorld = normalize(mTangentToWS[2] + 1e-6);
+#if %NORMAL_MAP || %WRINKLE_BLENDING || %DETAIL_MAPPING
+	attribs.NormalWorld = normalize(mul(vNormalTS, mTangentToWS));
+#endif
+}
+
+float GatherAlpha(float4 baseTC, half vertexAlpha)
+{
+	half alpha = MatDifColor.w;
+	alpha *= GetDiffuseTex(diffuseTex, float4(baseTC.xy, 0, 0)).w;
+
+	return alpha;
+}
+
+half3 GetEmittanceMask(float2 baseTC)
+{
+	half4 emittanceMap = GetEmittanceTex(emittanceTex, baseTC.xy);
+	
+	// Increase the range of non-HDR textures:
+	//   AdjustLuminance(emittanceMap.rgb, pow(GetLuminance(emittanceMap.rgb), Gamma));
+	emittanceMap.rgb *= pow(max(GetLuminance(emittanceMap.rgb), 1e-6), EmittanceMapGamma - 1);
+	
+	// DEPRECATED: Just for backwards compatibility (up to 3.8.3)
+	emittanceMap.rgb *= emittanceMap.a;
+	
+	return emittanceMap.rgb;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void Callback_ShadingDirect(in ForwardShadingAttribs attribs, in ForwardLightParams light, out float3 diffuseAcc, out float3 specularAcc)
+{
+	float3 viewVec = normalize(-attribs.worldPos);
+	float NdotL = saturate(dot(attribs.normal, light.lightVec));
+
+	diffuseAcc.x = DiffuseBRDF(attribs.normal, viewVec, light.lightVec, attribs.smoothness, NdotL);
+	specularAcc = SpecularBRDF(attribs.normal, viewVec, light.lightVec, attribs.smoothness, attribs.reflectance) * NdotL;
+	
+	diffuseAcc = diffuseAcc.x * light.illuminance;
+	specularAcc = specularAcc * light.illuminance;
+}
+
+#include "TiledShading.cfi"
+#include "ForwardShading.cfi"
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void Callback_ShadingDirect(in ForwardShadingAttribs attribs, in ForwardLightParams light, out float3 diffuseAcc, out float3 specularAcc)
+{
+	float3 viewVec = normalize(-attribs.worldPos);
+	float NdotL = saturate(dot(attribs.normal, light.lightVec));
+
+	diffuseAcc.x = DiffuseBRDF(attribs.normal, viewVec, light.lightVec, attribs.smoothness, NdotL);
+	specularAcc = SpecularBRDF(attribs.normal, viewVec, light.lightVec, attribs.smoothness, attribs.reflectance) * NdotL;
+	
+	diffuseAcc = diffuseAcc.x * light.illuminance;
+	specularAcc = specularAcc * light.illuminance;
+}
+
+#include "TiledShading.cfi"
+#include "ForwardShading.cfi"
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+pixout IlluminationPS(vert2FragGeneral IN)
+{
+
+	pixout OUT = (pixout)0;
+
+	half3 emittance = MatEmissiveColor.xyz * MatEmissiveColor.w * (1000.0 / 10000.0);
+	const bool bEmissive = GetLuminance(emittance.xyz) > 0;
+	if (bEmissive)
+	{
+		emittance *= GetEmittanceMask(IN.baseTC);
+	}
+
+#if %_RT_ALPHATEST
+	half diffuseMapAlpha = GetAlphaTex(diffuseTex, IN.baseTC.xy);
+	clip(diffuseMapAlpha - Get_MaterialAlphaTest());
+#endif
+
+	// Gather surface material attributes
+	MaterialAttribsCommon commonAttribs;
+	half3x3 mTangentToWS = half3x3(half3(1, 0, 0), half3(0, 1, 0), half3(0, 0, 1));
+	
+	half4 vertexColor = 0;
+	
+
+	GatherMaterialAttribs(mTangentToWS, IN.baseTC.xy, vertexColor, commonAttribs);
+
+	ForwardShadingAttribs fwdAttribs;
+	fwdAttribs.screenUV = IN.screenProj.xy / IN.screenProj.w;
+	fwdAttribs.worldPos = IN.vView.xyz;
+
+	float3 diffuseAcc = 0, specularAcc = 0;
+	const bool bSunShadows = true;
+
+	Fwd_StandardOpaqueShading(commonAttribs, fwdAttribs, diffuseAcc, specularAcc, bSunShadows);
+
+	OUT.Color.rgb = diffuseAcc + specularAcc + emittance;
+	OUT.Color.a = 1;
+	
+
+	const float3 worldPos = IN.vView.xyz + GetWorldViewPos();
+	Fwd_ApplyFog(worldPos.xyz, IN.vView.xyz, IN.WPos, OUT.Color.rgb);
+
+	return OUT;
+}
+
+#include "IllumTess.cfi"
+
+//////////////////////////////// technique ////////////////
+
+technique General
+<
+  string Script =
+        "TechniqueZ=ZPass;"
+
+        "TechniqueMotionBlur=MotionBlurPass;"
+        "TechniqueCustomRender=CustomRenderPass;"
+        "TechniqueEffectLayer=EffectLayerPass;"
+        "TechniqueShadowGen=ShadowGen;"
+        "TechniqueDebug=DebugPass;"
+>
+{
+	pass p0
+	{    
+		VertexShader = IlluminationVS() GeneralVS;
+
+// NOTE: SilPOM is automatically turned off via IllumValidations when NVidia multires is enabled
+// TODO: Make SilPOM work with NVidia multires
+		GeometryShader = $AutoGS_MultiRes();
+
+		PixelShader = IlluminationPS() GeneralPS;
+
+		ZEnable = true;    
+		ZWriteEnable = true;    
+		CullMode = Back;   
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#include "CommonZPass.cfi"
+#include "CommonMotionBlurPass.cfi"
+#include "CommonViewsPass.cfi"
+#include "CommonEffectLayerPass.cfi"
+#include "ShadowCommon.cfi"
+#include "CommonShadowGenPass.cfi"
+#include "CommonDebugPass.cfi"
+#if PCDX11
+	#include "MeshBaker.cfi"
+#endif

@@ -1,0 +1,26 @@
+<ATLConfig atl_name="Music" atl_version="2">
+ <AudioTriggers>
+  <ATLTrigger atl_name="Game_03">
+   <FmodEvent fmod_name="Game_03"/>
+  </ATLTrigger>
+ </AudioTriggers>
+ <AudioPreloads>
+  <ATLPreloadRequest atl_name="Music" atl_type="AutoLoad">
+   <ATLPlatform atl_name="pc">
+    <FmodFile fmod_name="Music.bank"/>
+   </ATLPlatform>
+   <ATLPlatform atl_name="ps4">
+    <FmodFile fmod_name="Music.bank"/>
+   </ATLPlatform>
+   <ATLPlatform atl_name="xboxone">
+    <FmodFile fmod_name="Music.bank"/>
+   </ATLPlatform>
+   <ATLPlatform atl_name="linux">
+    <FmodFile fmod_name="Music.bank"/>
+   </ATLPlatform>
+  </ATLPreloadRequest>
+ </AudioPreloads>
+ <EditorData>
+  <Folders />
+ </EditorData>
+</ATLConfig>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{7b4ee7f6-06fe-4bf7-bdac-b8714d930861}">
+        <property name="assetPath">
+            <value>Game_03.ogg</value>
+        </property>
+        <property name="isStreaming">
+            <value>true</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>192.36607709750567</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{ab95025d-297c-4eed-9d89-af29e4e818eb}</destination>
+        </relationship>
+    </object>
+</objects>

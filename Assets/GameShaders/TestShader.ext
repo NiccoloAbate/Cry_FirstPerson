@@ -1,0 +1,15 @@
+///// Test Shader /////
+
+
+Version (1.00)
+
+UsesCommonGlobalFlags
+
+Property
+{
+  Name = %TestProperty
+  Mask = 0x1
+  Property    (Test Property)
+  Description (TestProperty)
+}
+

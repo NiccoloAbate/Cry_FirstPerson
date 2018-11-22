@@ -1,0 +1,80 @@
+<!-- Category name, of your own choosing -->
+<UIElements name="EntityHud">
+
+  <!-- Object name, again, of your own choosing -->
+  <UIElement name="EntityHud" render_lockless="1">
+
+    <!-- Point it to the correct files and give it some default settings -->
+    <GFx file="EntityHud.gfx" layer="2">
+      <Constraints>
+        <Align mode="dynamic" valign="center" halign="center" scale="1" max="1" />
+      </Constraints>
+    </GFx>
+
+    <!-- Map the function to change the message in the box -->
+    <functions>
+      <function name="NewStatBar" funcname="NewStatBar">
+        <param name="Name" desc="" type="string"/>
+		<param name="Type" desc="" type="string"/>
+		<param name="X" desc="" type="int"/>
+		<param name="Y" desc="" type="int"/>
+		<param name="StatName" desc="" type="string"/>
+		<param name="StatMin" desc="" type="float"/>
+		<param name="StatMax" desc="" type="float"/>
+		<param name="Stat" desc="" type="float"/>
+      </function>
+	  
+	  <function name="SetStatBarPos" funcname="SetStatBarPos">
+        <param name="Index" desc="" type="int"/>
+		<param name="X" desc="" type="int"/>
+		<param name="Y" desc="" type="int"/>
+      </function>
+	  
+	  <function name="SetStatBarScale" funcname="SetStatBarScale">
+        <param name="Index" desc="" type="int"/>
+		<param name="Scale" desc="" type="float"/>
+      </function>
+	  
+	  <function name="SetStatBarValue" funcname="SetStatBarValue">
+        <param name="Index" desc="" type="int"/>
+		<param name="Stat" desc="" type="float"/>
+      </function>
+	  
+	  <function name="SetStatBarMax" funcname="SetStatBarMax">
+        <param name="Index" desc="" type="int"/>
+		<param name="Max" desc="" type="float"/>
+      </function>
+	  
+	  <function name="SetStatBarMin" funcname="SetStatBarMin">
+        <param name="Index" desc="" type="int"/>
+		<param name="Min" desc="" type="float"/>
+      </function>
+	  
+	  <function name="SetStatBarStat" funcname="SetStatBarStat">
+        <param name="Index" desc="" type="int"/>
+		<param name="Name" desc="" type="string"/>
+		<param name="Min" desc="" type="float"/>
+		<param name="Max" desc="" type="float"/>
+		<param name="Stat" desc="" type="float"/>
+      </function>
+	  
+	  <function name="DeleteStatBar" funcname="DeleteStatBar">
+        <param name="Index" desc="" type="int"/>
+      </function>
+	  
+	  <function name="SetStatBarVisible" funcname="SetStatBarVisible">
+        <param name="Index" desc="" type="int"/>
+		<param name="Visible" desc="" type="bool"/>
+      </function>
+    </functions>
+
+    <!-- Here we will define the event that the buttonClick will generate -->
+    <events>
+    </events>
+
+  </UIElement>
+
+  <!-- NEW -->
+
+</UIElements>
+

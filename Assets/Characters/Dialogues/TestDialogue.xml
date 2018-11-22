@@ -1,0 +1,76 @@
+<TestDialogue>
+  <Info Name="TestDialogue"/>
+  
+  <!-- STARTS -->
+  
+  <Start_1>
+	<Info Next="Branch_1_1"/>
+  </Start_1>
+  
+  <!-- DIALOGUE -->
+  
+  <Branch_1_1>
+    <Text Text="Shalt this work \n who knows???"/>
+    <Response_1>
+      <Text Text="foh sho"/>
+	  <Info Next="Branch_1_2"/>
+    </Response_1>
+    <Response_2>
+      <Text Text="Nah dawg"/>
+	  <Info Next="Branch_2_1"/>
+    </Response_2>
+  </Branch_1_1>
+  
+  <Branch_1_2>
+    <Text Text="Mah man"/>
+	<Info Next="End_Null"/>
+  </Branch_1_2>
+  
+  <Branch_2_1>
+    <Text Text="who ye think ye fucken wit, LAMEdalf the green-brown-poo-color"/>
+	<Response_1>
+	  <Text Text="I assumed you were Will I Am SKANKspeare"/>
+	  <Info Next="End_Fight"/>
+	</Response_1>
+	<Response_2>
+	  <Text Text="I thought you were Bruique Obomer. \nWill you sign my tots?"/>
+	  <Info Next="Branch_2_2"/>
+	</Response_2>
+  </Branch_2_1>
+  
+  <Branch_2_2>
+    <Text Text="No I'm actually Shazbean de Leon, but I appreciate the support"/>
+	<Info Next="Branch_2_3"/>
+  </Branch_2_2>
+  
+  <Branch_2_3>
+    <Text Text="Still want me to sign your tots?"/>
+	<Response_1>
+	  <Text Text="Foh sho"/>
+	  <Info Next="Branch_2_4"/>
+	</Response_1>
+	<Response_2>
+	  <Text Text="Ew... No thanks"/>
+	  <Info Next="End_Null"/>
+	</Response_2>
+  </Branch_2_3>
+  
+  <Branch_2_4>
+    <Text Text="Yum"/>
+	<Info Next="End_Tots"/>
+  </Branch_2_4>
+  
+  <!-- ENDS -->
+  
+  <End_Null>
+    <Event Event="null"/>
+  </End_Null>
+  
+  <End_Fight>
+    <Event Event="Fight"/>
+  </End_Fight>
+  
+  <End_Tots>
+    <Event Event="SignTots"/>
+  </End_Tots>
+</TestDialogue>

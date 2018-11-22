@@ -1,0 +1,8 @@
+<AssetMetadata version="0" type="Xml" guid="ac40101b-1c70-3f99-f350-e27b9d57712d">
+ <Files>
+  <File path="entityhud.xml"/>
+ </Files>
+ <Details>
+  <Detail name="rootTag">Graph</Detail>
+ </Details>
+</AssetMetadata>

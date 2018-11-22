@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\solutions\win64\CMakeFiles\2d39dff22cc954e3fe626d22102c69f6\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{CD5D8DDA-287E-30F6-AA61-7ED2DD98E478}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

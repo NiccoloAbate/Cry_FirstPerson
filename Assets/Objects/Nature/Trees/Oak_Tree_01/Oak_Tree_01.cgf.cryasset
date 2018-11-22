@@ -1,0 +1,14 @@
+<AssetMetadata version="0" type="Mesh" guid="132b4e7c-e820-424a-5564-9fc598ecd1d7" source="Oak_Tree_01.fbx">
+ <Files>
+  <File path="Oak_Tree_01.cgf"/>
+ </Files>
+ <Details>
+  <Detail name="materialCount">3</Detail>
+  <Detail name="triangleCount">4456</Detail>
+  <Detail name="vertexCount">9059</Detail>
+  <Detail name="16BitPrecision">false</Detail>
+ </Details>
+ <Dependencies>
+  <Path>Objects/Nature/Trees/Oak_Tree_01/oak_tree_01.mtl</Path>
+ </Dependencies>
+</AssetMetadata>

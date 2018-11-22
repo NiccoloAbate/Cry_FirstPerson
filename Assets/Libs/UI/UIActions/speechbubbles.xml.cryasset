@@ -1,0 +1,8 @@
+<AssetMetadata version="0" type="Xml" guid="3b04b137-86e0-91a4-1c8e-ef6eb5027b89">
+ <Files>
+  <File path="speechbubbles.xml"/>
+ </Files>
+ <Details>
+  <Detail name="rootTag">Graph</Detail>
+ </Details>
+</AssetMetadata>

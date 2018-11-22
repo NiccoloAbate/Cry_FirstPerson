@@ -1,0 +1,49 @@
+<!-- Category name, of your own choosing -->
+<UIElements name="SpeechBubbles">
+
+  <!-- Object name, again, of your own choosing -->
+  <UIElement name="SpeechBubbles" render_lockless="1">
+
+    <!-- Point it to the correct files and give it some default settings -->
+    <GFx file="SpeechBubble.gfx" layer="2">
+      <Constraints>
+        <Align mode="dynamic" valign="center" halign="center" scale="1" max="1" />
+      </Constraints>
+    </GFx>
+
+    <!-- Map the function to change the message in the box -->
+    <functions>
+      <function name="NewBubble" funcname="NewBubble">
+        <param name="x" desc="" type="int"/>
+        <param name="y" desc="" type="int"/>
+		<param name="size" desc="" type="float"/>
+      </function>
+
+      <function name="UpdateBubble" funcname="UpdateBubble">
+        <param name="Index" desc="" type="int"/>
+		<param name="x" desc="" type="int"/>
+		<param name="y" desc="" type="int"/>
+		<param name="size" desc="" type="float"/>
+      </function>
+      
+      <function name="SetBubbleText" funcname="SetBubbleText">
+        <param name="Index" desc="" type="int"/>
+		<param name="Text" desc="" type="string"/>
+      </function>
+	  
+	  <function name="DeleteBubble" funcname="DeleteBubble">
+        <param name="Index" desc="" type="int"/>
+      </function>
+    
+    </functions>
+
+    <!-- Here we will define the event that the buttonClick will generate -->
+    <events>
+    </events>
+
+  </UIElement>
+
+  <!-- NEW -->
+
+</UIElements>
+

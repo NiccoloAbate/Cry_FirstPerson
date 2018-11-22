@@ -1,0 +1,12 @@
+<AssetMetadata version="0" type="Material" guid="770351e1-164b-4385-fca5-ea9476236e78">
+ <Files>
+  <File path="river 01.mtl"/>
+ </Files>
+ <Details>
+  <Detail name="subMaterialCount">0</Detail>
+  <Detail name="textureCount">0</Detail>
+ </Details>
+ <Dependencies>
+  <Path>GameSDK/levels/singleplayer/woodland/Woodland.dds</Path>
+ </Dependencies>
+</AssetMetadata>

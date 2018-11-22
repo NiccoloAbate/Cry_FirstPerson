@@ -1,0 +1,50 @@
+<!-- Category name, of your own choosing -->
+<UIElements name="DialogueEditor">
+
+  <!-- Object name, again, of your own choosing -->
+  <UIElement name="DialogueEditor" render_lockless="1">
+
+    <!-- Point it to the correct files and give it some default settings -->
+    <GFx file="DialogueEditor.gfx" layer="2">
+      <Constraints>
+        <Align mode="dynamic" valign="center" halign="center" scale="1" max="1" />
+      </Constraints>
+    </GFx>
+
+    <!-- Map the function to change the message in the box -->
+    <functions>
+	  <function name="OnRightClick" funcname="OnRightClick">
+      </function>
+	  
+      <function name="SetVisible" funcname="SetVisible">
+        <param name="Visible" desc="" type="bool"/>
+      </function>
+      
+      <function name="SetDialogueFileNames" funcname="SetDialogueFileNames">
+        <param name="FileNames" desc="" type="array"/>
+      </function>
+	  
+	  <function name="AddDialogueFileName" funcname="AddDialogueFileName">
+        <param name="FileName" desc="" type="string"/>
+      </function>
+    </functions>
+
+    <!-- Here we will define the event that the buttonClick will generate -->
+    <events>
+	  <event name="Save_Start" fscommand="Save_Start">
+		<param name="Arg1" desc="DialogueName"/>
+	  </event>
+	  
+	  <event name="Save_Node" fscommand="Save_Node">
+		<param name="Arg1" desc="NodeType"/>
+		<param name="Arg2" desc="Name"/>
+		<param name="Arg3" desc="Next"/>
+	  </event>
+    </events>
+
+  </UIElement>
+
+  <!-- NEW -->
+
+</UIElements>
+

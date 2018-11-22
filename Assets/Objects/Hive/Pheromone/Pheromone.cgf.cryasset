@@ -1,0 +1,14 @@
+<AssetMetadata version="0" type="Mesh" guid="9c0ac534-3899-ef49-5762-624bfe4fab61" source="Pheromone.fbx">
+ <Files>
+  <File path="Pheromone.cgf"/>
+ </Files>
+ <Details>
+  <Detail name="materialCount">2</Detail>
+  <Detail name="triangleCount">480</Detail>
+  <Detail name="vertexCount">411</Detail>
+  <Detail name="16BitPrecision">false</Detail>
+ </Details>
+ <Dependencies>
+  <Path>%ENGINE%/EngineAssets/Materials/material_default.mtl</Path>
+ </Dependencies>
+</AssetMetadata>

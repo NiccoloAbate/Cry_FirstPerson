@@ -1,0 +1,14 @@
+<AssetMetadata version="0" type="Mesh" guid="27a9eeca-57e2-0673-d648-80614dacd271" source="Rock_01.fbx">
+ <Files>
+  <File path="Rock_01_Test.cgf"/>
+ </Files>
+ <Details>
+  <Detail name="materialCount">3</Detail>
+  <Detail name="triangleCount">768</Detail>
+  <Detail name="vertexCount">1604</Detail>
+  <Detail name="16BitPrecision">false</Detail>
+ </Details>
+ <Dependencies>
+  <Path>Objects/Nature/Rocks/Rock_01/rock_01.mtl</Path>
+ </Dependencies>
+</AssetMetadata>

@@ -1,0 +1,13 @@
+<AssetMetadata version="0" type="Material" guid="4eee1ae1-25d6-e390-7a5c-d94323c6ca1e">
+ <Files>
+  <File path="oak_tree_01.mtl"/>
+ </Files>
+ <Details>
+  <Detail name="subMaterialCount">2</Detail>
+  <Detail name="textureCount">2</Detail>
+ </Details>
+ <Dependencies>
+  <Path>./Orange.dds</Path>
+  <Path>Textures/Shaders/edgescribbles_2_01.dds</Path>
+ </Dependencies>
+</AssetMetadata>

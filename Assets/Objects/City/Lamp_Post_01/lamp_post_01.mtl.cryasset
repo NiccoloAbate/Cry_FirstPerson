@@ -1,0 +1,12 @@
+<AssetMetadata version="0" type="Material" guid="14c3bc6a-2520-e5d8-679f-b71d0b33cab8">
+ <Files>
+  <File path="lamp_post_01.mtl"/>
+ </Files>
+ <Details>
+  <Detail name="subMaterialCount">2</Detail>
+  <Detail name="textureCount">1</Detail>
+ </Details>
+ <Dependencies>
+  <Path>%engine%/engineassets/textures/black.dds</Path>
+ </Dependencies>
+</AssetMetadata>

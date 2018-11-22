@@ -1,0 +1,13 @@
+<ControllerDef>
+ <Tags filename="Objects/Characters/Human_01/Mannequin/ADB/Human_01Tags.xml"/>
+ <Fragments filename="Objects/Characters/Human_01/Mannequin/ADB/Human_01FragmentIds.xml"/>
+ <FragmentDefs>
+  <Dab scopes="Human_01" flags="Persistent+AutoReinstall"/>
+ </FragmentDefs>
+ <ScopeContextDefs>
+  <Human_01Character />
+ </ScopeContextDefs>
+ <ScopeDefs>
+  <Human_01 layer="0" numLayers="3" context="Human_01Character"/>
+ </ScopeDefs>
+</ControllerDef>

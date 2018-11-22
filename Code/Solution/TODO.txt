@@ -1,0 +1,27 @@
+
+------------OVERALL---------------
+Comment more
+Stick to class naming conventions better (especially using structs)
+
+
+------------CURRENT---------------
+Make new player component
+	Make shell
+	Add way to bind to other entities/characters
+	Give character component a PlayerExtension
+
+Add to combat gameflow
+
+
+
+-------------REACH------------
+Remake node editor and dialogue editor
+Remake dialogue interpreter with serialization
+
+
+
+-------------MAYBE------------
+Fix CMakeLists
+
+Add custom keyboard handler to Gameflow manager
+

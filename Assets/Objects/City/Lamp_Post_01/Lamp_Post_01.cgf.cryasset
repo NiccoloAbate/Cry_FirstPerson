@@ -1,0 +1,14 @@
+<AssetMetadata version="0" type="Mesh" guid="491c6181-03bb-7272-9d33-14e8bc1b0037" source="Lamp_Post_01.fbx">
+ <Files>
+  <File path="Lamp_Post_01.cgf"/>
+ </Files>
+ <Details>
+  <Detail name="materialCount">3</Detail>
+  <Detail name="triangleCount">1220</Detail>
+  <Detail name="vertexCount">2452</Detail>
+  <Detail name="16BitPrecision">false</Detail>
+ </Details>
+ <Dependencies>
+  <Path>Objects/City/Lamp_Post_01/lamp_post_01.mtl</Path>
+ </Dependencies>
+</AssetMetadata>

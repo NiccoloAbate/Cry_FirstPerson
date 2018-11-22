@@ -1,0 +1,9 @@
+<AssetMetadata version="0" type="Material" guid="21d2f425-e3bc-86a1-9508-c637408e5471">
+ <Files>
+  <File path="agent.mtl"/>
+ </Files>
+ <Details>
+  <Detail name="subMaterialCount">0</Detail>
+  <Detail name="textureCount">0</Detail>
+ </Details>
+</AssetMetadata>

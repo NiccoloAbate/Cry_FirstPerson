@@ -1,0 +1,15 @@
+<Material MtlFlags="524544" vertModifType="0">
+ <SubMaterials>
+  <Material Name="Main" MtlFlags="524416" Shader="Illum" GenMask="880000000" StringGenMask="%SUBSURFACE_SCATTERING%TEMP_EYES" SurfaceType="mat_default" MatTemplate="" Diffuse="0.79910284,0.1441285,0" Specular="0.22322798,0.22322798,0.22322798" Opacity="1" Shininess="52" CloakAmount="0" vertModifType="0" LayerAct="1">
+   <Textures>
+    <Texture Map="Diffuse" File="./Orange.dds"/>
+    <Texture Map="Custom" File="Textures/Shaders/edgescribbles_2_01.dds"/>
+   </Textures>
+   <PublicParams EmittanceMapGamma="1" SSSIndex="0"/>
+  </Material>
+  <Material Name="Proxy" MtlFlags="525440" Shader="NoDraw" GenMask="0" StringGenMask="" SurfaceType="mat_default" MatTemplate="" Diffuse="1,1,1" Specular="0,0,0" Opacity="1" Shininess="10" CloakAmount="0" vertModifType="0" LayerAct="1">
+   <Textures />
+  </Material>
+ </SubMaterials>
+ <PublicParams EmittanceMapGamma="1" SSSIndex="0"/>
+</Material>

@@ -1,0 +1,9 @@
+<AssetMetadata version="0" type="Material" guid="13d647e6-1b7c-4e90-52c3-4fafc032c7dd">
+ <Files>
+  <File path="proxy.mtl"/>
+ </Files>
+ <Details>
+  <Detail name="subMaterialCount">0</Detail>
+  <Detail name="textureCount">0</Detail>
+ </Details>
+</AssetMetadata>

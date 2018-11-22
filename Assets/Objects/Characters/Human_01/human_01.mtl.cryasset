@@ -1,0 +1,13 @@
+<AssetMetadata version="0" type="Material" guid="42ed3d1b-b413-a985-c899-2d084bd5b3fa">
+ <Files>
+  <File path="human_01.mtl"/>
+ </Files>
+ <Details>
+  <Detail name="subMaterialCount">0</Detail>
+  <Detail name="textureCount">2</Detail>
+ </Details>
+ <Dependencies>
+  <Path>textures/defaults/white.dds</Path>
+  <Path>Objects/pbs_reference/gloss0_ddna.dds</Path>
+ </Dependencies>
+</AssetMetadata>

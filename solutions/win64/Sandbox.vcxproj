@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile|x64">
+      <Configuration>Profile</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGUID>{F816FE98-07E8-3171-85BF-BB646DDA896E}</ProjectGUID>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>Sandbox</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" >
+  </PropertyGroup>
+  <PropertyGroup>
+      <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\solutions\win64\Debug\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Sandbox.dir\Debug\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Sandbox</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\solutions\win64\Profile\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">Sandbox.dir\Profile\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">Sandbox</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">.lib</TargetExt>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\solutions\win64\Release\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Sandbox.dir\Release\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Sandbox</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalOptions> /utf-8 /Wv:18 /bigobj /Zo %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4653</DisableSpecificWarnings>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <OmitFramePointers>false</OmitFramePointers>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>DEBUG;_DEBUG;_WINDOWS;WIN32;_WIN32;_WIN64;CRYENGINE_DEFINE;UQS_SCHEMATYC_SUPPORT=0;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>DEBUG;_DEBUG;_WINDOWS;WIN32;_WIN32;_WIN64;CRYENGINE_DEFINE;UQS_SCHEMATYC_SUPPORT=0;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions> /machine:x64 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
+    <ClCompile>
+      <AdditionalOptions> /utf-8 /Wv:18 /bigobj /Zo %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Profile/</AssemblerListingLocation>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4653</DisableSpecificWarnings>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <OmitFramePointers>false</OmitFramePointers>
+      <Optimization>Full</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>NDEBUG;_PROFILE;_WINDOWS;WIN32;_WIN32;_WIN64;CRYENGINE_DEFINE;UQS_SCHEMATYC_SUPPORT=0;CMAKE_INTDIR="Profile";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;_PROFILE;_WINDOWS;WIN32;_WIN32;_WIN64;CRYENGINE_DEFINE;UQS_SCHEMATYC_SUPPORT=0;CMAKE_INTDIR=\"Profile\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions> /machine:x64 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalOptions> /utf-8 /Wv:18 /bigobj /Zo %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4653</DisableSpecificWarnings>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Full</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>NDEBUG;_RELEASE;PURE_CLIENT;_WINDOWS;WIN32;_WIN32;_WIN64;CRYENGINE_DEFINE;UQS_SCHEMATYC_SUPPORT=0;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;_RELEASE;PURE_CLIENT;_WINDOWS;WIN32;_WIN32;_WIN64;CRYENGINE_DEFINE;UQS_SCHEMATYC_SUPPORT=0;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions> /machine:x64 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/Desktop/Cryengine Stuff/Engine Files/Projects/Cry_FirstPerson/Code/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\bin\cmake.exe" "-HD:/Desktop/Cryengine Stuff/Engine Files/Projects/Cry_FirstPerson/Code" "-BD:/Desktop/Cryengine Stuff/Engine Files/Projects/Cry_FirstPerson/solutions/win64" --check-stamp-file "D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\solutions\win64\CMakeFiles\generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:/Desktop/Cryengine Stuff/Engine Files/Projects/Cry_FirstPerson/Code/CMakeLists.txt;D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code\CMakeLists.txt;D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\solutions\win64\CMakeFiles\3.7.2\CMakeSystem.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\toolchain\windows\WindowsPC-MSVC.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\CRYENGINE-MSVC.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeSystemSpecificInitialize.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\solutions\win64\CMakeFiles\3.7.2\CMakeCCompiler.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\solutions\win64\CMakeFiles\3.7.2\CMakeCXXCompiler.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeSystemSpecificInformation.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeGenericSystem.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\Platform\Windows.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\Platform\WindowsPaths.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeCInformation.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeLanguageInformation.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\Platform\Windows-MSVC-C.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\Platform\Windows-MSVC.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\solutions\win64\CMakeFiles\3.7.2\CMakeRCCompiler.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeRCInformation.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeCommonLanguageInclude.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeCXXInformation.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeLanguageInformation.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\Compiler\MSVC-CXX.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\Platform\Windows-MSVC-CXX.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\Platform\Windows-MSVC.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeCommonLanguageInclude.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\CommonOptions.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Configure.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\toolchain\windows\WindowsPC-MSVC.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\CRYENGINE-MSVC.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\CommonOptions.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\CopyFilesToBin.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Bootstrap.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeDependentOption.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\ConfigureChecks.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CheckFunctionExists.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\CommonMacros.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\modules\Boost.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\modules\ncurses.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\solutions\win64\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">Building Custom Rule D:/Desktop/Cryengine Stuff/Engine Files/Projects/Cry_FirstPerson/Code/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">setlocal
+"D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\bin\cmake.exe" "-HD:/Desktop/Cryengine Stuff/Engine Files/Projects/Cry_FirstPerson/Code" "-BD:/Desktop/Cryengine Stuff/Engine Files/Projects/Cry_FirstPerson/solutions/win64" --check-stamp-file "D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\solutions\win64\CMakeFiles\generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">D:/Desktop/Cryengine Stuff/Engine Files/Projects/Cry_FirstPerson/Code/CMakeLists.txt;D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code\CMakeLists.txt;D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\solutions\win64\CMakeFiles\3.7.2\CMakeSystem.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\toolchain\windows\WindowsPC-MSVC.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\CRYENGINE-MSVC.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeSystemSpecificInitialize.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\solutions\win64\CMakeFiles\3.7.2\CMakeCCompiler.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\solutions\win64\CMakeFiles\3.7.2\CMakeCXXCompiler.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeSystemSpecificInformation.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeGenericSystem.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\Platform\Windows.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\Platform\WindowsPaths.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeCInformation.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeLanguageInformation.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\Platform\Windows-MSVC-C.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\Platform\Windows-MSVC.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\solutions\win64\CMakeFiles\3.7.2\CMakeRCCompiler.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeRCInformation.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeCommonLanguageInclude.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeCXXInformation.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeLanguageInformation.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\Compiler\MSVC-CXX.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\Platform\Windows-MSVC-CXX.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\Platform\Windows-MSVC.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeCommonLanguageInclude.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\CommonOptions.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Configure.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\toolchain\windows\WindowsPC-MSVC.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\CRYENGINE-MSVC.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\CommonOptions.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\CopyFilesToBin.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Bootstrap.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeDependentOption.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\ConfigureChecks.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CheckFunctionExists.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\CommonMacros.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\modules\Boost.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\modules\ncurses.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\solutions\win64\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/Desktop/Cryengine Stuff/Engine Files/Projects/Cry_FirstPerson/Code/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\bin\cmake.exe" "-HD:/Desktop/Cryengine Stuff/Engine Files/Projects/Cry_FirstPerson/Code" "-BD:/Desktop/Cryengine Stuff/Engine Files/Projects/Cry_FirstPerson/solutions/win64" --check-stamp-file "D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\solutions\win64\CMakeFiles\generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:/Desktop/Cryengine Stuff/Engine Files/Projects/Cry_FirstPerson/Code/CMakeLists.txt;D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code\CMakeLists.txt;D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\solutions\win64\CMakeFiles\3.7.2\CMakeSystem.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\toolchain\windows\WindowsPC-MSVC.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\CRYENGINE-MSVC.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeSystemSpecificInitialize.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\solutions\win64\CMakeFiles\3.7.2\CMakeCCompiler.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\solutions\win64\CMakeFiles\3.7.2\CMakeCXXCompiler.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeSystemSpecificInformation.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeGenericSystem.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\Platform\Windows.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\Platform\WindowsPaths.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeCInformation.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeLanguageInformation.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\Platform\Windows-MSVC-C.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\Platform\Windows-MSVC.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\solutions\win64\CMakeFiles\3.7.2\CMakeRCCompiler.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeRCInformation.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeCommonLanguageInclude.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeCXXInformation.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeLanguageInformation.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\Compiler\MSVC-CXX.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\Platform\Windows-MSVC-CXX.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\Platform\Windows-MSVC.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeCommonLanguageInclude.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\CommonOptions.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Configure.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\toolchain\windows\WindowsPC-MSVC.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\CRYENGINE-MSVC.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\CommonOptions.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\CopyFilesToBin.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Bootstrap.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CMakeDependentOption.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\ConfigureChecks.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\Win32\share\cmake-3.7\Modules\CheckFunctionExists.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\CommonMacros.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\modules\Boost.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Tools\CMake\modules\ncurses.cmake;D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\solutions\win64\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\Desktop\Cryengine Stuff\Engine Files\Crytek\CRYENGINE_5.4\Code\CryEngine\CryCommon\CryCore\Platform\platform.h" />
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
