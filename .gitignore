@@ -60,7 +60,31 @@ Assets/Objects/vehicles
 
 Assets/Objects/Weapons
 
+Assets/Objects/Characters/animals
 
+Assets/Objects/Characters/human
+
+Assets/Objects/Characters/humanoid
+
+Assets/Textures/cubemaps
+
+Assets/Textures/decals
+
+Assets/Textures/detail_bumpmaps
+
+Assets/Textures/lights
+
+Assets/Textures/references
+
+Assets/Textures/roads
+
+Assets/Textures/skys
+
+Assets/Textures/sprites
+
+Assets/Textures/terrain
+
+Assets/Textures/weapons
 
 
 
