@@ -1,5 +1,5 @@
 #include "StdAfx.h"
-#include "ActionPhase.h"
+#include "PlayerPhase.h"
 
 #include "CombatGameflow.h"
 
@@ -7,15 +7,14 @@
 #include <CryGame\IGameFramework.h>
 
 
-void CCombatGameflow_ActionPhase::Initialize()
+void CCombatGameflow_PlayerPhase::Initialize()
 {
 	GAMEFLOWPHASE_STANDARD_INIT();
 }
 
-void CCombatGameflow_ActionPhase::InitializeKeyBinds(Cry::DefaultComponents::CInputComponent * pInputComponent)
+void CCombatGameflow_PlayerPhase::InitializeKeyBinds()
 {
-	if (!pInputComponent)
-		pInputComponent = GetPlayerInputComponent();
+	Cry::DefaultComponents::CInputComponent	*pInputComponent = GetPlayerInputComponent();
 
 	pInputComponent->RegisterAction(PHASENAME, "Test", [this](int activationMode, float value) { GAMEFLOWPHASE_ACTION_STARTCHECK(); Test(); });
 	pInputComponent->BindAction(PHASENAME, "Test", eAID_KeyboardMouse, EKeyId::eKI_I, false, true, false);
@@ -25,12 +24,12 @@ void CCombatGameflow_ActionPhase::InitializeKeyBinds(Cry::DefaultComponents::CIn
 	gEnv->pGameFramework->GetIActionMapManager()->EnableActionMap(PHASENAME, true);
 }
 
-void CCombatGameflow_ActionPhase::Update(float fDeltaTime)
+void CCombatGameflow_PlayerPhase::Update(float fDeltaTime)
 {
 
 }
 
-void CCombatGameflow_ActionPhase::Test()
+void CCombatGameflow_PlayerPhase::Test()
 {
 	bool worked = true;
 }

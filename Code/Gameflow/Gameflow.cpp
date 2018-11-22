@@ -3,6 +3,9 @@
 
 #include "GameflowPhase.h"
 
+#include "GamePlugin.h"
+#include "GameflowManager.h"
+
 
 CGameflowPhase * CGameflow::GetPhase(int Id)
 {
@@ -34,4 +37,49 @@ int CGameflow::AddPhase(CGameflowPhase * pPhase)
 {
 	m_Phases.push_back(pPhase);
 	return m_Phases.size() - 1;
+}
+
+void CGameflow::SetActivePhaseIndex(int Index)
+{
+	m_ActivePhase = Index;
+	SetActivePhase_Debug(m_Phases[Index]);
+}
+
+void CGameflow::SetActivePhase(int Id)
+{
+	for (int i = 0; i < m_Phases.size(); ++i)
+	{
+		if (m_Phases[i]->GetPhaseId() == Id)
+		{
+			m_ActivePhase = i;
+			SetActivePhase_Debug(m_Phases[i]);
+			return;
+		}
+	}
+}
+
+void CGameflow::SetActivePhase(CGameflowPhase * pPhase)
+{
+	for (int i = 0; i < m_Phases.size(); ++i)
+	{
+		if (m_Phases[i] == pPhase)
+		{
+			m_ActivePhase = i;
+			SetActivePhase_Debug(m_Phases[i]);
+			return;
+		}
+	}
+}
+
+void CGameflow::SetActivePhase_Debug(CGameflowPhase * pPhase)
+{
+	if (GetGameflowManager()->GetDebugMode() >= EDebugMode::CONSOLE)
+	{
+		gEnv->pLog->Log("Set to GameflowPhase: " + m_GameflowName + ": " + pPhase->GetPhaseName());
+	}
+}
+
+CGameflowManager * CGameflow::GetGameflowManager()
+{
+	return CGamePlugin::gGamePlugin->m_pGameflowManager;
 }

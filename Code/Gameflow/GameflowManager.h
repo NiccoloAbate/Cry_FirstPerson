@@ -24,17 +24,25 @@ public:
 	DEBUGEXTENSION()
 
 private:
-
-	void InitializeGameflows();
+	
 	std::vector<CGameflow*> m_Gameflows;
 	int m_ActiveGameflow;
 	// Adds an already initialized gameflow
 	int AddGameflow(CGameflow *pGameflow);
+	template<typename T>
+	CGameflow* AddNewGameflow()
+	{
+		T *pGameflow = new T;
+		pGameflow->Initialize();
+		AddGameflow(pGameflow);
+		return pGameflow;
+	}
 	// Sets by the index of m_Gameflows (*NOT THE GAMEFLOW ID*)
 	void SetActiveGameflowIndex(int Index);
 	// Sets by gameflow Id
 	void SetActiveGameflow(int Id);
 	void SetActiveGameflow(CGameflow *pGameflow);
+	// Send to debug whenever the gameflow is set
 	void SetActiveGameflow_Debug(CGameflow *pGameflow);
 
 	Cry::DefaultComponents::CInputComponent *m_pInputComponent = nullptr;

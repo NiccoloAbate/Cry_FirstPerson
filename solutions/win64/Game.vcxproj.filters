@@ -35,9 +35,6 @@
     <ClCompile Include="..\..\Code\Gameflow\GameflowManager.cpp">
       <Filter>Gameflow</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Code\Gameflow\Combat\ActionPhase.cpp">
-      <Filter>Gameflow\Combat</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Code\Gameflow\Combat\CombatGameflow.cpp">
       <Filter>Gameflow\Combat</Filter>
     </ClCompile>
@@ -116,6 +113,18 @@
     <ClCompile Include="..\..\Code\Utils\Debug\DebugExtension.cpp">
       <Filter>Utils\Debug</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Code\Gameflow\Combat\PlayerPhase.cpp">
+      <Filter>Gameflow\Combat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Gameflow\Combat\EnemyPhase.cpp">
+      <Filter>Gameflow\Combat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Gameflow\Combat\PlayerEndPhase.cpp">
+      <Filter>Gameflow\Combat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Gameflow\Combat\EnemyEndPhase.cpp">
+      <Filter>Gameflow\Combat</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code\GamePlugin.cpp" />
@@ -165,9 +174,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Code\Gameflow\GameflowManager.h">
       <Filter>Gameflow</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Code\Gameflow\Combat\ActionPhase.h">
-      <Filter>Gameflow\Combat</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Code\Gameflow\Combat\CombatGameflow.h">
       <Filter>Gameflow\Combat</Filter>
@@ -303,6 +309,18 @@
     </ClInclude>
     <ClInclude Include="..\..\Code\Utils\VectorUtils.h">
       <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Gameflow\Combat\PlayerPhase.h">
+      <Filter>Gameflow\Combat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Gameflow\Combat\EnemyPhase.h">
+      <Filter>Gameflow\Combat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Gameflow\Combat\PlayerEndPhase.h">
+      <Filter>Gameflow\Combat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Gameflow\Combat\EnemyEndPhase.h">
+      <Filter>Gameflow\Combat</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

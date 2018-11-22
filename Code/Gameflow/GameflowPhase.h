@@ -4,6 +4,18 @@
 
 #include "Types\Flags.h"
 
+/*////////////////////////////////////////////////////////////////
+When making GameflowPhase:
+
+TAGGAMEFLOWPHASE(Combat, PLAYER, 1)
+
+static constexpr int PHASEID = Gameflow::CombatGameflow::Phases::PLAYER;
+static constexpr char* PHASENAME = "Player";
+
+
+
+*/////////////////////////////////////////////////////////////////
+
 
 #define TAGGAMEFLOWPHASE(GameflowName, PHASENAME, Id)			\
 namespace Gameflow												\
@@ -48,8 +60,11 @@ public:
 	// Must include GAMEFLOWPHASE_STANDARD_INIT();
 	virtual void Initialize() = 0;
 	// pInputComponent is optional; if not set, the active player input component will be used
-	virtual void InitializeKeyBinds(Cry::DefaultComponents::CInputComponent *pInputComponent = nullptr) = 0;
+	virtual void InitializeKeyBinds() = 0;
 	virtual void Update(float fDeltaTime) = 0;
+
+	virtual void OnPhaseStart() {}
+	virtual void OnPhaseEnd() {}
 
 	const int GetPhaseId() { return m_PhaseId; }
 	const string GetPhaseName() { return m_PhaseName; }

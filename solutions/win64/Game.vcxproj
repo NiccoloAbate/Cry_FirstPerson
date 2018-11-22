@@ -292,7 +292,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="..\..\Code\Components\Rewind\Rewind.h" />
     <ClInclude Include="..\..\Code\Components\Timeline\TimelineEntity.h" />
     <ClInclude Include="..\..\Code\Dialogue\DialogueManager.h" />
-    <ClInclude Include="..\..\Code\Gameflow\Combat\ActionPhase.h" />
+    <ClInclude Include="..\..\Code\Gameflow\Combat\EnemyEndPhase.h" />
+    <ClInclude Include="..\..\Code\Gameflow\Combat\EnemyPhase.h" />
+    <ClInclude Include="..\..\Code\Gameflow\Combat\PlayerEndPhase.h" />
+    <ClInclude Include="..\..\Code\Gameflow\Combat\PlayerPhase.h" />
     <ClInclude Include="..\..\Code\Gameflow\Combat\CombatGameflow.h" />
     <ClInclude Include="..\..\Code\Gameflow\Editor\GameflowInfo.h" />
     <ClInclude Include="..\..\Code\Gameflow\Gameflow.h" />
@@ -354,7 +357,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\..\Code\Components\Rewind\Rewind.cpp" />
     <ClCompile Include="..\..\Code\Components\Timeline\TimelineEntity.cpp" />
     <ClCompile Include="..\..\Code\Dialogue\DialogueManager.cpp" />
-    <ClCompile Include="..\..\Code\Gameflow\Combat\ActionPhase.cpp" />
+    <ClCompile Include="..\..\Code\Gameflow\Combat\EnemyEndPhase.cpp" />
+    <ClCompile Include="..\..\Code\Gameflow\Combat\EnemyPhase.cpp" />
+    <ClCompile Include="..\..\Code\Gameflow\Combat\PlayerEndPhase.cpp" />
+    <ClCompile Include="..\..\Code\Gameflow\Combat\PlayerPhase.cpp" />
     <ClCompile Include="..\..\Code\Gameflow\Combat\CombatGameflow.cpp" />
     <ClCompile Include="..\..\Code\Gameflow\Gameflow.cpp" />
     <ClCompile Include="..\..\Code\Gameflow\GameflowInput.cpp" />

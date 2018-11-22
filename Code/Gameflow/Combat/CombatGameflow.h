@@ -12,6 +12,10 @@ public:
 	static constexpr char* GAMEFLOWNAME = "Combat";
 	CCombatGameflow() {}
 
+
+
+
+
 	virtual void Initialize() override;
 	virtual void Update(float fDeltaTime) override;
 

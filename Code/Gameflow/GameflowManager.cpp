@@ -13,7 +13,11 @@ void CGameflowManager::Initialize()
 	if (IEntity* pEntity = gEnv->pEntitySystem->SpawnEntity(spawnParams))
 		m_pInputComponent = pEntity->GetOrCreateComponent<Cry::DefaultComponents::CInputComponent>();
 
-	InitializeGameflows();
+	// Gameflows
+
+	AddNewGameflow<CCombatGameflow>();
+
+	SetActiveGameflowIndex(0);
 }
 
 void CGameflowManager::Update(float fDeltaTime)
@@ -40,15 +44,6 @@ CGameflow * CGameflowManager::GetGameflowFromId(int Id)
 			return m_Gameflows[i];
 	}
 	return nullptr;
-}
-
-void CGameflowManager::InitializeGameflows()
-{
-	CCombatGameflow *pCombatGameflow = new CCombatGameflow;
-	pCombatGameflow->Initialize();
-	AddGameflow(pCombatGameflow);
-
-	SetActiveGameflowIndex(0);
 }
 
 int CGameflowManager::AddGameflow(CGameflow * pGameflow)

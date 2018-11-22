@@ -1,7 +1,12 @@
 #include "StdAfx.h"
 #include "CombatGameflow.h"
 
-#include "ActionPhase.h"
+#include "Gameflow\GameflowPhase.h"
+
+#include "PlayerPhase.h"
+#include "PlayerEndPhase.h"
+#include "EnemyPhase.h"
+#include "EnemyEndPhase.h"
 
 
 
@@ -9,11 +14,12 @@ void CCombatGameflow::Initialize()
 {
 	GAMEFLOW_STANDARD_INIT();
 
-	CCombatGameflow_ActionPhase *pActionPhase = new CCombatGameflow_ActionPhase;
-	pActionPhase->Initialize();
-	AddPhase(pActionPhase);
+	AddNewPhase<CCombatGameflow_PlayerPhase>();
+	AddNewPhase<CCombatGameflow_PlayerEndPhase>();
+	AddNewPhase<CCombatGameflow_EnemyPhase>();
+	AddNewPhase<CCombatGameflow_EnemyEndPhase>();
 
-	m_ActivePhase = 0;
+	SetActivePhaseIndex(0);
 }
 
 void CCombatGameflow::Update(float fDeltaTime)
