@@ -10,19 +10,8 @@ class CPlayerExtension
 {
 	friend class CPlayerComponent;
 protected:
-	CPlayerExtension() = default;
+	CPlayerExtension();
 	virtual ~CPlayerExtension() {}
-
-	void SetEntity(IEntity *pEntity) { m_pEntity = pEntity; }
-	void Extend()
-	{
-		EnableKeybinds(true);
-	}
-	void Release()
-	{
-		EnableKeybinds(false);
-	}
-	void EnableKeybinds(bool bEnable) { gEnv->pGameFramework->GetIActionMapManager()->EnableActionMap(m_pEntity->GetName(), true); }
 
 public:
 
@@ -36,17 +25,19 @@ public:
 		return pExtension;
 	}
 
-	const IEntity* GetEntity() { return m_pEntity; }
+	const CPlayerComponent* GetPlayerComponent() { return m_pPlayerComponent; }
 
 	virtual void Initialize() = 0;
 	//virtual void Update()
-	virtual void InitializeKeybinds() = 0;
+	virtual void ProcessKeyEvent(EKeyId KeyId, int activatioMode, float value) = 0;
 	virtual void AttachPlayer(IEntity *pPlayerEnt) = 0;
 
-	virtual void OnExtended() = 0;
-	virtual void OnReleased() = 0;
+	virtual void Update(float fFramTime) = 0;
+
+	virtual void OnExtended() {}
+	virtual void OnReleased() {}
 
 protected:
-	IEntity *m_pEntity;
+	CPlayerComponent *m_pPlayerComponent;
 
 };

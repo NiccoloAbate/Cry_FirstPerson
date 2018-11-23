@@ -17,6 +17,13 @@ CGameflowPhase * CGameflow::GetPhase(int Id)
 	return nullptr;
 }
 
+void CGameflow::StartNextPhase(int PhaseId)
+{
+	m_Phases[m_ActivePhase]->OnPhaseEnd();
+	SetActivePhase(PhaseId); // Sets active phase
+	m_Phases[m_ActivePhase]->OnPhaseStart();
+}
+
 void CGameflow::UpdatePhases(float fDeltaTime)
 {
 
@@ -41,20 +48,18 @@ int CGameflow::AddPhase(CGameflowPhase * pPhase)
 
 void CGameflow::SetActivePhaseIndex(int Index)
 {
+	m_Phases[m_ActivePhase]->SetActivePhase(false); // Sets old phase to inactive
 	m_ActivePhase = Index;
+	m_Phases[Index]->SetActivePhase(true); // Sets new phase to active
 	SetActivePhase_Debug(m_Phases[Index]);
 }
 
-void CGameflow::SetActivePhase(int Id)
+void CGameflow::SetActivePhase(int PhaseId)
 {
 	for (int i = 0; i < m_Phases.size(); ++i)
 	{
-		if (m_Phases[i]->GetPhaseId() == Id)
-		{
-			m_ActivePhase = i;
-			SetActivePhase_Debug(m_Phases[i]);
-			return;
-		}
+		if (m_Phases[i]->GetPhaseId() == PhaseId)
+			SetActivePhaseIndex(i);
 	}
 }
 
@@ -63,11 +68,7 @@ void CGameflow::SetActivePhase(CGameflowPhase * pPhase)
 	for (int i = 0; i < m_Phases.size(); ++i)
 	{
 		if (m_Phases[i] == pPhase)
-		{
-			m_ActivePhase = i;
-			SetActivePhase_Debug(m_Phases[i]);
-			return;
-		}
+			SetActivePhaseIndex(i);
 	}
 }
 

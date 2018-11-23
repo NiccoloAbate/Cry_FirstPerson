@@ -125,6 +125,9 @@
     <ClCompile Include="..\..\Code\Gameflow\Combat\EnemyEndPhase.cpp">
       <Filter>Gameflow\Combat</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Code\Components\Player\PlayerExtension.cpp">
+      <Filter>Components\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code\GamePlugin.cpp" />
@@ -298,9 +301,6 @@
     <ClInclude Include="..\..\Code\Components\Player\Player.h">
       <Filter>Components\Player</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Code\Components\Player\PlayerEnxtension.h">
-      <Filter>Components\Player</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Code\Gameflow\GameflowInput.h">
       <Filter>Gameflow</Filter>
     </ClInclude>
@@ -321,6 +321,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Code\Gameflow\Combat\EnemyEndPhase.h">
       <Filter>Gameflow\Combat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Gameflow\Combat\CombatGameflowPhases.h">
+      <Filter>Gameflow\Combat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Components\Player\PlayerExtension.h">
+      <Filter>Components\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

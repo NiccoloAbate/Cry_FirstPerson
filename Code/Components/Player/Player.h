@@ -14,6 +14,10 @@
 #include "Utils\Macros\Properties.h"
 
 
+#define REGISTER_PLAYEREXTESION_KEYEVENT(KeyName, KeyId)																																														\
+m_pInputComponent->RegisterAction("Player", "ExtensionKeyEvent_" KeyName, [this](int activationMode, float value) { if (m_pPlayerExtension) m_pPlayerExtension->ProcessKeyEvent(KeyId, activationMode, value); });								\
+m_pInputComponent->BindAction("Player", "ExtensionKeyEvent_" KeyName, eAID_KeyboardMouse, KeyId, true, true, true);
+
 
 class CPlayerExtension;
 class CStatsComponent;
@@ -53,14 +57,14 @@ public:
 	// IEntityComponent
 	virtual void Initialize() override;
 
-	virtual uint64 GetEventMask() const override { return NULL; }
+	virtual uint64 GetEventMask() const override { return ENTITY_EVENT_BIT(ENTITY_EVENT_UPDATE); }
 	virtual void ProcessEvent(SEntityEvent& event) override;
 	// ~IEntityComponent
 
 	// Reflect type to set a unique identifier for this component
 	static void ReflectType(Schematyc::CTypeDesc<CPlayerComponent>& desc)
 	{
-		desc.SetGUID("{3ED0932E-603B-4BB9-A8B8-3FD8B0C76112}"_cry_guid);
+		desc.SetGUID("{C64460B8-9B99-41FB-B9D4-C9F28C206BD9}"_cry_guid);
 	}
 
 	Cry::DefaultComponents::CInputComponent* GetInputComponent() { return m_pInputComponent; }
@@ -82,7 +86,7 @@ public:
 protected:
 	//void UpdateMovementRequest(float frameTime);
 	//void UpdateKeyBindRequests(float frameTime);
-	//void UpdateLookDirectionRequest(float frameTime);
+	void UpdateLookDirectionRequest(float frameTime);
 	//void UpdateAnimation(float frameTime);
 	//void UpdateCamera(float frameTime);
 	//void Update(float frameTime);
@@ -114,6 +118,7 @@ protected:
 	TInputFlags m_inputFlags;
 	Vec2 m_mouseDeltaRotation;
 	MovingAverage<Vec2, 10> m_mouseDeltaSmoothingFilter;
+#define MOUSE_DELTA_TRESHOLD 0.0001f
 
 	const float m_rotationSpeed = 0.002f;
 

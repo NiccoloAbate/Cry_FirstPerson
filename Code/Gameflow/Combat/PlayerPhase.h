@@ -21,8 +21,10 @@ public:
 
 	FlagType GetDefaultFlagMask() const override { return NULL; }
 
-protected:
+	void EndPhase();
 
+protected:
+	
 	void Test();
 
 };

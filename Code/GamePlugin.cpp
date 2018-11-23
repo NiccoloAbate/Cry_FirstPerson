@@ -14,6 +14,7 @@
 #include "Timeline\TimelineManager.h"
 #include "Optimization\OptimizationManager.h"
 #include "Gameflow\GameflowManager.h"
+#include "Components\Player\Player.h"
 
 #include <CrySchematyc/Env/IEnvRegistry.h>
 #include <CrySchematyc/Env/EnvPackage.h>
@@ -99,6 +100,15 @@ void CGamePlugin::InitializeGameflowManager()
 {
 	m_pGameflowManager = new CGameflowManager;
 	m_pGameflowManager->Initialize();
+}
+
+void CGamePlugin::InitializePlayerComponent()
+{
+	SEntitySpawnParams spawnParams;
+	spawnParams.pClass = gEnv->pEntitySystem->GetClassRegistry()->GetDefaultClass();
+
+	if (IEntity* pEntity = gEnv->pEntitySystem->SpawnEntity(spawnParams))
+		m_pPlayerComponent = pEntity->CreateComponent<CPlayerComponent>();
 }
 
 void CGamePlugin::InitializePlayers(int channelId, bool bIsReset)
@@ -263,6 +273,7 @@ void CGamePlugin::OnLevelLoaded()
 
 void CGamePlugin::OnGameplayReady()
 {
+	InitializePlayerComponent();
 	InitializeGameflowManager();
 	m_pUIController->OnGameplayStart();
 }

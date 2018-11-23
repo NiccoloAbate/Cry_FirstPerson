@@ -16,6 +16,7 @@ class CRewindManager;
 class CTimelineManager;
 class COptimizationManager;
 class CGameflowManager;
+class CPlayerComponent;
 
 #include "Build.h"
 
@@ -56,6 +57,7 @@ public:
 	CHiveComponent *m_pHive = nullptr;
 
 	// Player Functions
+	CPlayerComponent* GetPlayerComponent() { return m_pPlayerComponent; }
 	void InitializePlayers(int channelId, bool bIsReset);
 	void SwitchPlayers();
 	IEntity* GetActivePlayer() { return m_pPlayers[m_PlayerIndex]; }
@@ -122,6 +124,9 @@ protected:
 	void InitializePheromoneManager();
 	void InitializeGameflowManager();
 	//~Managers
+
+	CPlayerComponent *m_pPlayerComponent = nullptr;
+	void InitializePlayerComponent();
 
 	// Map containing player components, key is the channel id received in OnClientConnectionReceived
 	std::unordered_map<int, EntityId> m_players;

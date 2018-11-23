@@ -46,6 +46,7 @@ class CGameflowManager;
 
 class CGameflowPhase
 {
+	friend class CGameflow;
 public:
 
 #define GAMEFLOWPHASE_BIT(x) BIT64(x)
@@ -73,6 +74,7 @@ public:
 	FlagType& GetFlags() { return m_Flags; }
 
 	CGameflowManager* GetGameflowManager();
+	CGameflow* GetParentGameflow() { return m_pParentGameflow; }
 	bool IsActivePhase();
 
 
@@ -80,10 +82,15 @@ protected:
 	int m_PhaseId;
 	string m_PhaseName;
 
+	void SetParentGameflow(CGameflow *pParent) { m_pParentGameflow = pParent; }
+	CGameflow *m_pParentGameflow = nullptr;
+
 	FlagType m_Flags;
 	
 	Cry::DefaultComponents::CInputComponent *m_pInputComponent;
 	Cry::DefaultComponents::CInputComponent* GetInputComponent() { return m_pInputComponent; }
+
+	void SetActivePhase(bool bActive);
 
 	static Cry::DefaultComponents::CInputComponent* GetPlayerInputComponent();
 

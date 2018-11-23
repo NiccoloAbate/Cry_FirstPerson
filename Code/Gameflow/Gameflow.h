@@ -54,12 +54,14 @@ public:
 	CGameflowPhase* GetActivePhase() { return m_Phases[m_ActivePhase]; }
 	CGameflowPhase* GetPhase(int Id);
 
+	void StartNextPhase(int PhaseId);
+
 protected:
 	int m_GameflowId;
 	string m_GameflowName;
 
 	std::vector<CGameflowPhase*> m_Phases;
-	int m_ActivePhase;
+	int m_ActivePhase = 0;
 	void UpdatePhases(float fDeltaTime);
 	// Adds an already initialized phase
 	int AddPhase(CGameflowPhase *pPhase);
@@ -68,13 +70,15 @@ protected:
 	{
 		T *pPhase = new T;
 		pPhase->Initialize();
+		pPhase->SetParentGameflow(this);
+		pPhase->SetActivePhase(false);
 		AddPhase(pPhase);
 		return pPhase;
 	}
 	// Sets by the index of m_Phases (*NOT THE PHASE ID*)
 	void SetActivePhaseIndex(int Index);
 	// Sets by phase Id
-	void SetActivePhase(int Id);
+	void SetActivePhase(int PhaseId);
 	void SetActivePhase(CGameflowPhase *pPhase);
 	// Send to debug whenever the phase is set
 	void SetActivePhase_Debug(CGameflowPhase *pPhase);

@@ -9,6 +9,7 @@ void CGameflowManager::Initialize()
 	//Initialize Input Component
 	SEntitySpawnParams spawnParams;
 	spawnParams.pClass = gEnv->pEntitySystem->GetClassRegistry()->GetDefaultClass();
+	spawnParams.sName = "GameflowInput";
 
 	if (IEntity* pEntity = gEnv->pEntitySystem->SpawnEntity(spawnParams))
 		m_pInputComponent = pEntity->GetOrCreateComponent<Cry::DefaultComponents::CInputComponent>();
