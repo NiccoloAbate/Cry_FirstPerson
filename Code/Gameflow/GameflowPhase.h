@@ -51,7 +51,7 @@ public:
 
 #define GAMEFLOWPHASE_BIT(x) BIT64(x)
 	using _FlagNumeric_ = int;
-	using FlagType = Flags<_FlagNumeric_>;
+	using FlagType = CFlags<_FlagNumeric_>;
 	enum EGameflowPhaseFlags
 	{
 		NONE = 0,

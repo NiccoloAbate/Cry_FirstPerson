@@ -25,3 +25,9 @@ Fix CMakeLists
 
 Add custom keyboard handler to Gameflow manager
 
+
+
+
+-------------POTENTIAL PERFORMANCE INCREASES--------------
+Package movement information differently for CharacterComponent and all controllers
+

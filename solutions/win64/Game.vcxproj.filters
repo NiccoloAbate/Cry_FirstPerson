@@ -128,6 +128,9 @@
     <ClCompile Include="..\..\Code\Components\Player\PlayerExtension.cpp">
       <Filter>Components\Player</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Code\Components\Characters\CharacterPlayerExtension.cpp">
+      <Filter>Components\Characters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code\GamePlugin.cpp" />
@@ -327,6 +330,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Code\Components\Player\PlayerExtension.h">
       <Filter>Components\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Components\Characters\CharacterPlayerExtension.h">
+      <Filter>Components\Characters</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

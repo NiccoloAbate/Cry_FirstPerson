@@ -18,6 +18,8 @@
 #include "Game\UIController.h"
 #include "Components\Game\GameplayEntity.h"
 #include "Components\Game\Stats.h"
+#include "CharacterPlayerExtension.h"
+#include "Components\Player\Player.h"
 
 static void RegisterCharacterComponent(Schematyc::IEnvRegistrar& registrar)
 {
@@ -54,16 +56,28 @@ void CCharacterComponent::Initialize()
 	// Queue the idle fragment to start playing immediately on next update
 	m_pAnimationComponent->SetDefaultFragmentName("Dab");
 
+	// Acquire fragment and tag identifiers to avoid doing so each update
+	//m_idleFragmentId = m_pAnimationComponent->GetFragmentId("Dab");
+	//m_walkFragmentId = m_pAnimationComponent->GetFragmentId("Dab");
+	//m_rotateTagId = NULL; // m_pAnimationComponent->GetTagId("Rotate");
+
 	// Disable movement coming from the animation (root joint offset), we control this entirely via physics
 	m_pAnimationComponent->SetAnimationDrivenMotion(false);
 
 	// Load the character and Mannequin data from file
 	m_pAnimationComponent->LoadFromDisk();
 
+	if (ICharacterInstance *pCharacter = m_pAnimationComponent->GetCharacter())
+	{
+		// Cache the camera joint id so that we don't need to look it up every frame in UpdateView
+		m_cameraJointId = pCharacter->GetIDefaultSkeleton().GetJointIDByName("head");
+	}
+
 	m_pGameplayEntityComponent = m_pEntity->GetOrCreateComponent<CGameplayEntityComponent>(false);
 	//m_pGameplayEntityComponent->SetHealthStat(CGameplayEntityComponent::Stat<float>(0, 100, 85));
 
 	m_pStatsComponent = m_pEntity->GetOrCreateComponent<CStatsComponent>();
+	m_pStatsComponent->GiveStamina({ 0, 100, 100 });
 
 	const Schematyc::CClassMemberDescArray &Members = GetClassDesc().GetMembers();
 	for (int i = 0; i < Members.size(); i++)
@@ -127,6 +141,13 @@ void CCharacterComponent::Ragdollize()
 	m_pCharacterController->Ragdollize();
 }
 
+CCharacter_PlayerExtension * CCharacterComponent::GivePlayerExtension()
+{
+	m_pPlayerExtension = new CCharacter_PlayerExtension(m_pEntity, this);
+	m_pPlayerExtension->Initialize();
+	return m_pPlayerExtension;
+}
+
 void CC_RagdollTest(CC_Args pArgs)
 {
 	IEntity *pEntity = gEnv->pEntitySystem->FindEntityByName("Human 01");
@@ -136,3 +157,12 @@ void CC_RagdollTest(CC_Args pArgs)
 }
 CC_Info CC_RagdollTestInfo = CC_Info("RagdollTest", 0);
 ADDCONSOLECOMMAND_WITHINFOCLASS(CC_RagdollTestInfo, CC_RagdollTest)
+
+void CC_PlayerTest(CC_Args pArgs)
+{
+	IEntity *pEntity = gEnv->pEntitySystem->FindEntityByName("Human 01");
+	if (!pEntity) { gEnv->pLog->LogError("No 'Human 01' Entity"); return; }
+	auto pCharacterComponent = pEntity->GetComponent<CCharacterComponent>();
+	CGamePlugin::gGamePlugin->GetPlayerComponent()->ExtendTo(pCharacterComponent->GetOrCreatePlayerExtension());
+}
+ADDCONSOLECOMMAND_WITHINFOCONSTRUCTOR(CC_Info("PlayerTest", 0), CC_PlayerTest)

@@ -31,7 +31,7 @@ public:
 
 #define GAMEFLOW_BIT(x) BIT64(x)
 	using _FlagNumeric_ = int;
-	using FlagType = Flags<_FlagNumeric_>;
+	using FlagType = CFlags<_FlagNumeric_>;
 	enum EGameflowFlags
 	{
 		NONE = 0,

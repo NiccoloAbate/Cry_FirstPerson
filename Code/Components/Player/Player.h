@@ -28,28 +28,6 @@ class CHud;
 ////////////////////////////////////////////////////////
 class CPlayerComponent final : public IEntityComponent
 {
-	enum class EInputFlagType
-	{
-		Hold = 0,
-		Toggle
-	};
-
-	typedef uint16 TInputFlags;
-	enum class EInputFlag
-		: TInputFlags
-	{
-		MoveLeft = 1 << 0,
-		MoveRight = 1 << 1,
-		MoveForward = 1 << 2,
-		MoveBack = 1 << 3,
-		Sprint = 1 << 4,
-		SHIFTDOWN = 1 << 4,
-		CONTROLDOWN = 1 << 5,
-		ALTDOWN = 1 << 6,
-		TimeUp = 1 << 7,
-		TimeDown = 1 << 8,
-	};
-
 public:
 	CPlayerComponent() = default;
 	virtual ~CPlayerComponent() {}
@@ -70,6 +48,11 @@ public:
 	Cry::DefaultComponents::CInputComponent* GetInputComponent() { return m_pInputComponent; }
 	CPlayerExtension* GetPlayerExtension() { return m_pPlayerExtension; }
 
+	void Release();
+	void ExtendTo(CPlayerExtension *pPlayerExtension);
+
+	IEntity* GetCameraEntity() { return m_pCamera; }
+
 	//void Revive();
 	//void SetActiveChar();
 	//void SetInactiveChar();
@@ -86,7 +69,7 @@ public:
 protected:
 	//void UpdateMovementRequest(float frameTime);
 	//void UpdateKeyBindRequests(float frameTime);
-	void UpdateLookDirectionRequest(float frameTime);
+	//void UpdateLookDirectionRequest(float frameTime);
 	//void UpdateAnimation(float frameTime);
 	//void UpdateCamera(float frameTime);
 	//void Update(float frameTime);
@@ -108,27 +91,6 @@ protected:
 	//Pointer to different entity's camera
 	IEntity *m_pCamera = nullptr;
 	Cry::DefaultComponents::CInputComponent* m_pInputComponent = nullptr;
-
-	CStatsComponent *m_pStatsComponent = nullptr;
-
-	FragmentID m_idleFragmentId;
-	FragmentID m_walkFragmentId;
-	TagID m_rotateTagId;
-
-	TInputFlags m_inputFlags;
-	Vec2 m_mouseDeltaRotation;
-	MovingAverage<Vec2, 10> m_mouseDeltaSmoothingFilter;
-#define MOUSE_DELTA_TRESHOLD 0.0001f
-
-	const float m_rotationSpeed = 0.002f;
-
-	int m_cameraJointId = -1;
-
-	FragmentID m_activeFragmentId;
-
-	Quat m_lookOrientation; //!< Should translate to head orientation in the future
-	float m_horizontalAngularVelocity;
-	MovingAverage<float, 10> m_averagedHorizontalAngularVelocity;
 
 private:
 	//CHud* GetHud();

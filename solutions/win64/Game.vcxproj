@@ -281,6 +281,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   <ItemGroup>
     <ClInclude Include="..\..\Code\Components\Behaviors\Behaviors.h" />
     <ClInclude Include="..\..\Code\Components\Characters\Character.h" />
+    <ClInclude Include="..\..\Code\Components\Characters\CharacterPlayerExtension.h" />
     <ClInclude Include="..\..\Code\Components\Environment\Rain.h" />
     <ClInclude Include="..\..\Code\Components\Game\GameplayEntity.h" />
     <ClInclude Include="..\..\Code\Components\Game\Stats.h" />
@@ -348,6 +349,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code\Components\Player\CryFirstPersonPlayer.h" />
     <ClInclude Include="D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code\Components\Player\CryFirstPersonPlayer.cpp" />
     <ClCompile Include="..\..\Code\Components\Characters\Character.cpp" />
+    <ClCompile Include="..\..\Code\Components\Characters\CharacterPlayerExtension.cpp" />
     <ClCompile Include="..\..\Code\Components\Environment\Rain.cpp" />
     <ClCompile Include="..\..\Code\Components\Game\GameplayEntity.cpp" />
     <ClCompile Include="..\..\Code\Components\Game\Stats.cpp" />
