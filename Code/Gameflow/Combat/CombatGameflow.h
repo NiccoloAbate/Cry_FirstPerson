@@ -4,6 +4,8 @@
 
 TAGGAMEFLOW(COMBAT, 1)
 
+class CCharacterComponent;
+
 class CCombatGameflow : public CGameflow
 {
 public:
@@ -14,9 +16,10 @@ public:
 
 
 
-
+	CCharacterComponent *m_pCharacter;
 
 	virtual void Initialize() override;
+	virtual void InitializeKeyBinds() override;
 	virtual void Update(float fDeltaTime) override;
 
 	virtual FlagType GetDefaultFlagMask() const override { return NULL; }

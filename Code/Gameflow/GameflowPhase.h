@@ -60,7 +60,6 @@ public:
 	
 	// Must include GAMEFLOWPHASE_STANDARD_INIT();
 	virtual void Initialize() = 0;
-	// pInputComponent is optional; if not set, the active player input component will be used
 	virtual void InitializeKeyBinds() = 0;
 	virtual void Update(float fDeltaTime) = 0;
 
@@ -87,13 +86,9 @@ protected:
 
 	FlagType m_Flags;
 	
-	Cry::DefaultComponents::CInputComponent *m_pInputComponent;
-	Cry::DefaultComponents::CInputComponent* GetInputComponent() { return m_pInputComponent; }
+	Cry::DefaultComponents::CInputComponent* GetInputComponent();
 
 	void SetActivePhase(bool bActive);
-
-	static Cry::DefaultComponents::CInputComponent* GetPlayerInputComponent();
-
 };
 
 

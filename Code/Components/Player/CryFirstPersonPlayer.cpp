@@ -138,8 +138,8 @@ void CCryFirstPersonPlayerComponent::Initialize()
 	m_pInputComponent->RegisterAction("game", "quit", [this](int activationMode, float value) { gEnv->pConsole->ExecuteString("quit"); });
 	m_pInputComponent->BindAction("game", "quit", eAID_KeyboardMouse, eKI_Escape, false, true, false);
 
-	m_pInputComponent->RegisterAction("game", "switchplayer", [this](int activationMode, float value) { ACTIVECHECK CGamePlugin::gGamePlugin->SwitchPlayers(); });
-	m_pInputComponent->BindAction("game", "switchplayer", eAID_KeyboardMouse, eKI_Tab, false, true, false);
+	//m_pInputComponent->RegisterAction("game", "switchplayer", [this](int activationMode, float value) { ACTIVECHECK CGamePlugin::gGamePlugin->SwitchPlayers(); });
+	//m_pInputComponent->BindAction("game", "switchplayer", eAID_KeyboardMouse, eKI_Tab, false, true, false);
 
 	m_pInputComponent->RegisterAction("game", "testaction", [this](int activationMode, float value)
 	{ 

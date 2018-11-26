@@ -55,7 +55,9 @@ int CGameflowManager::AddGameflow(CGameflow * pGameflow)
 
 void CGameflowManager::SetActiveGameflowIndex(int Index)
 {
+	m_Gameflows[m_ActiveGameflow]->SetActiveGameflow(false); // Sets old gameflow to inactive
 	m_ActiveGameflow = Index;
+	m_Gameflows[Index]->SetActiveGameflow(true); // Sets new gameflow to active
 	SetActiveGameflow_Debug(m_Gameflows[Index]);
 }
 
@@ -64,11 +66,7 @@ void CGameflowManager::SetActiveGameflow(int Id)
 	for (int i = 0; i < m_Gameflows.size(); i++)
 	{
 		if (m_Gameflows[i]->GetGameflowId() == Id)
-		{
-			m_ActiveGameflow = i;
-			SetActiveGameflow(m_Gameflows[i]);
-			return;
-		}
+			SetActiveGameflowIndex(i);
 	}
 }
 
@@ -77,11 +75,7 @@ void CGameflowManager::SetActiveGameflow(CGameflow * pGameflow)
 	for (int i = 0; i < m_Gameflows.size(); i++)
 	{
 		if (m_Gameflows[i] == pGameflow)
-		{
-			m_ActiveGameflow = i;
-			SetActiveGameflow(pGameflow);
-			return;
-		}
+			SetActiveGameflowIndex(i);
 	}
 }
 

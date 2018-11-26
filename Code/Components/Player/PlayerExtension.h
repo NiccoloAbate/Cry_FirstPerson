@@ -31,6 +31,8 @@ public:
 	virtual void OnExtended() {}
 	virtual void OnReleased() {}
 
+
+
 protected:
 	IEntity *m_pEntity;
 

@@ -12,7 +12,7 @@ void CCombatGameflow_PlayerPhase::Initialize()
 
 void CCombatGameflow_PlayerPhase::InitializeKeyBinds()
 {
-	Cry::DefaultComponents::CInputComponent	*pInputComponent = GetPlayerInputComponent();
+	Cry::DefaultComponents::CInputComponent	*pInputComponent = GetInputComponent();
 
 	pInputComponent->RegisterAction(PHASENAME, "Test", [this](int activationMode, float value) { Test(); });
 	pInputComponent->BindAction(PHASENAME, "Test", eAID_KeyboardMouse, EKeyId::eKI_I, false, true, false);

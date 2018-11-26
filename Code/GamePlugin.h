@@ -58,9 +58,7 @@ public:
 
 	// Player Functions
 	CPlayerComponent* GetPlayerComponent() { return m_pPlayerComponent; }
-	void InitializePlayers(int channelId, bool bIsReset);
-	void SwitchPlayers();
-	IEntity* GetActivePlayer() { return m_pPlayers[m_PlayerIndex]; }
+	//void InitializePlayer(int channelId, bool bIsReset);
 	//~Player Functions
 
 	// Camera
@@ -129,8 +127,5 @@ protected:
 	void InitializePlayerComponent();
 
 	// Map containing player components, key is the channel id received in OnClientConnectionReceived
-	std::unordered_map<int, EntityId> m_players;
-	//My players
-	std::vector<IEntity*> m_pPlayers;
-	int m_PlayerIndex = 0;
+	//std::unordered_map<int, EntityId> m_players;
 };

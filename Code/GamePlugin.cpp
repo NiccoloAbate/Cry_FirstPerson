@@ -1,7 +1,6 @@
 #include "StdAfx.h"
 #include "GamePlugin.h"
 
-#include "Components/Player/CryFirstPersonPlayer.h"
 #include "Game\CameraController.h"
 #include "Game\EnvironmentController.h"
 #include "Components\Environment\Rain.h"
@@ -15,6 +14,9 @@
 #include "Optimization\OptimizationManager.h"
 #include "Gameflow\GameflowManager.h"
 #include "Components\Player\Player.h"
+#include "Components\Player\PlayerExtension.h"
+#include "Components\SpawnPoint.h"
+#include "Components\Characters\Character.h"
 
 #include <CrySchematyc/Env/IEnvRegistry.h>
 #include <CrySchematyc/Env/EnvPackage.h>
@@ -104,74 +106,75 @@ void CGamePlugin::InitializeGameflowManager()
 
 void CGamePlugin::InitializePlayerComponent()
 {
-	SEntitySpawnParams spawnParams;
-	spawnParams.pClass = gEnv->pEntitySystem->GetClassRegistry()->GetDefaultClass();
+	SEntitySpawnParams PlayerSpawnParams;
+	PlayerSpawnParams.pClass = gEnv->pEntitySystem->GetClassRegistry()->GetDefaultClass();
+	PlayerSpawnParams.sName = "PlayerComponent";
+	PlayerSpawnParams.nFlags |= ENTITY_FLAG_NEVER_NETWORK_STATIC;
 
-	if (IEntity* pEntity = gEnv->pEntitySystem->SpawnEntity(spawnParams))
+	if (IEntity* pEntity = gEnv->pEntitySystem->SpawnEntity(PlayerSpawnParams))
+	{
+		if (!gEnv->IsEditor())
+			CSpawnPointComponent::FindFirstSpawnPoint()->SpawnEntity(pEntity);
 		m_pPlayerComponent = pEntity->CreateComponent<CPlayerComponent>();
+	}
 }
 
-void CGamePlugin::InitializePlayers(int channelId, bool bIsReset)
+/*
+// Connection received from a client, create a player entity and component
+SEntitySpawnParams spawnParams;
+spawnParams.pClass = gEnv->pEntitySystem->GetClassRegistry()->GetDefaultClass();
+spawnParams.sName = "Player";
+spawnParams.nFlags |= ENTITY_FLAG_NEVER_NETWORK_STATIC;
+
+// Set local player details
+if (m_players.size() == 0 && !gEnv->IsDedicated())
 {
-	InitializeCamera();
-	
-	// Connection received from a client, create a player entity and component
-	SEntitySpawnParams spawnParams;
-	spawnParams.pClass = gEnv->pEntitySystem->GetClassRegistry()->GetDefaultClass();
-	spawnParams.sName = "Player";
-	spawnParams.nFlags |= ENTITY_FLAG_NEVER_NETWORK_STATIC;
-
-	// Set local player details
-	if (m_players.size() == 0 && !gEnv->IsDedicated())
-	{
-		spawnParams.id = LOCAL_PLAYER_ENTITY_ID;
-		spawnParams.nFlags |= ENTITY_FLAG_LOCAL_PLAYER;
-	}
-
-	// Spawn the player entity
-	if (IEntity* pPlayerEntity = gEnv->pEntitySystem->SpawnEntity(spawnParams))
-	{
-		// Set the local player entity channel id, and bind it to the network so that it can support Multiplayer contexts
-		pPlayerEntity->GetNetEntity()->SetChannelId(channelId);
-		pPlayerEntity->GetNetEntity()->BindToNetwork();
-
-		// Create the player component instance
-		CCryFirstPersonPlayerComponent* pPlayer = pPlayerEntity->GetOrCreateComponentClass<CCryFirstPersonPlayerComponent>();
-		//Sets camera component
-		pPlayer->SetCamera(m_pCameraEntity);
-		pPlayer->SetInactiveChar();
-
-		// Push the component into our map, with the channel id as the key
-		m_players.emplace(std::make_pair(channelId, pPlayerEntity->GetId()));
-		m_pPlayers.push_back(pPlayerEntity);
-	}
-
-	SEntitySpawnParams spawnParams_2;
-	spawnParams_2.pClass = gEnv->pEntitySystem->GetClassRegistry()->GetDefaultClass();
-	spawnParams_2.sName = "Player";
-	spawnParams_2.nFlags |= ENTITY_FLAG_NEVER_NETWORK_STATIC;
-	//spawnParams_2.id = LOCAL_PLAYER_ENTITY_ID;
-	//spawnParams_2.nFlags |= ENTITY_FLAG_LOCAL_PLAYER;
-
-	if (IEntity* pPlayerEntity_2 = gEnv->pEntitySystem->SpawnEntity(spawnParams_2))
-	{
-		// Set the local player entity channel id, and bind it to the network so that it can support Multiplayer contexts
-		pPlayerEntity_2->GetNetEntity()->SetChannelId(channelId);
-		pPlayerEntity_2->GetNetEntity()->BindToNetwork();
-
-		// Create the player component instance
-		CCryFirstPersonPlayerComponent* pPlayer = pPlayerEntity_2->GetOrCreateComponentClass<CCryFirstPersonPlayerComponent>();
-		//Add the one true camera
-		pPlayer->SetCamera(m_pCameraEntity);
-		pPlayer->SetActiveChar();
-		// Push the component into our map, with the channel id as the key
-		//m_players.emplace(std::make_pair(channelId, pPlayerEntity_2->GetId()));
-		m_pPlayers.push_back(pPlayerEntity_2);
-		m_PlayerIndex = m_pPlayers.size() - 1;
-	}
-
-	//pPlayer1->GetOrCreateComponentClass<CCryFirstPersonPlayerComponent>()->SetActiveChar();
+spawnParams.id = LOCAL_PLAYER_ENTITY_ID;
+spawnParams.nFlags |= ENTITY_FLAG_LOCAL_PLAYER;
 }
+
+// Spawn the player entity
+if (IEntity* pPlayerEntity = gEnv->pEntitySystem->SpawnEntity(spawnParams))
+{
+// Set the local player entity channel id, and bind it to the network so that it can support Multiplayer contexts
+pPlayerEntity->GetNetEntity()->SetChannelId(channelId);
+pPlayerEntity->GetNetEntity()->BindToNetwork();
+
+// Create the player component instance
+CCryFirstPersonPlayerComponent* pPlayer = pPlayerEntity->GetOrCreateComponentClass<CCryFirstPersonPlayerComponent>();
+//Sets camera component
+pPlayer->SetCamera(m_pCameraEntity);
+pPlayer->SetInactiveChar();
+
+// Push the component into our map, with the channel id as the key
+m_players.emplace(std::make_pair(channelId, pPlayerEntity->GetId()));
+m_pPlayers.push_back(pPlayerEntity);
+}
+
+SEntitySpawnParams spawnParams_2;
+spawnParams_2.pClass = gEnv->pEntitySystem->GetClassRegistry()->GetDefaultClass();
+spawnParams_2.sName = "Player";
+spawnParams_2.nFlags |= ENTITY_FLAG_NEVER_NETWORK_STATIC;
+//spawnParams_2.id = LOCAL_PLAYER_ENTITY_ID;
+//spawnParams_2.nFlags |= ENTITY_FLAG_LOCAL_PLAYER;
+
+if (IEntity* pPlayerEntity_2 = gEnv->pEntitySystem->SpawnEntity(spawnParams_2))
+{
+// Set the local player entity channel id, and bind it to the network so that it can support Multiplayer contexts
+pPlayerEntity_2->GetNetEntity()->SetChannelId(channelId);
+pPlayerEntity_2->GetNetEntity()->BindToNetwork();
+
+// Create the player component instance
+CCryFirstPersonPlayerComponent* pPlayer = pPlayerEntity_2->GetOrCreateComponentClass<CCryFirstPersonPlayerComponent>();
+//Add the one true camera
+pPlayer->SetCamera(m_pCameraEntity);
+pPlayer->SetActiveChar();
+// Push the component into our map, with the channel id as the key
+//m_players.emplace(std::make_pair(channelId, pPlayerEntity_2->GetId()));
+m_pPlayers.push_back(pPlayerEntity_2);
+m_PlayerIndex = m_pPlayers.size() - 1;
+}
+*/
 
 void CGamePlugin::InitializeCamera()
 {
@@ -187,25 +190,6 @@ void CGamePlugin::InitializeCamera()
 
 	m_pCameraController = new CCameraController;
 	m_pCameraController->m_pCamera = m_pCameraEntity;
-}
-
-void CGamePlugin::SwitchPlayers()
-{
-	ONCEPERFRAMCHECK
-
-	if (m_pPlayers.size() <= 1)
-		return;
-
-	//Set current player to inactive
-	m_pPlayers[m_PlayerIndex]->GetOrCreateComponentClass<CCryFirstPersonPlayerComponent>()->SetInactiveChar();
-
-	m_PlayerIndex++;
-	if (m_PlayerIndex == m_pPlayers.size())
-		m_PlayerIndex = 0;
-
-	//set new player to active
-	m_pPlayers[m_PlayerIndex]->GetOrCreateComponentClass<CCryFirstPersonPlayerComponent>()->SetActiveChar();
-
 }
 
 void CGamePlugin::TestXml()
@@ -236,8 +220,6 @@ void CGamePlugin::TestXml()
 void CGamePlugin::InitializeSystems()
 {
 	m_pPheromoneManager = new CPheromoneManager();
-
-	
 }
 
 void CGamePlugin::PostInit()
@@ -273,7 +255,6 @@ void CGamePlugin::OnLevelLoaded()
 
 void CGamePlugin::OnGameplayReady()
 {
-	InitializePlayerComponent();
 	InitializeGameflowManager();
 	m_pUIController->OnGameplayStart();
 }
@@ -384,43 +365,49 @@ void CGamePlugin::OnSystemEvent(ESystemEvent event, UINT_PTR wparam, UINT_PTR lp
 
 bool CGamePlugin::OnClientConnectionReceived(int channelId, bool bIsReset)
 {
-	InitializePlayers(channelId, bIsReset);
-
-	TestXml();
+	InitializeCamera();
+	InitializePlayerComponent();
 
 	return true;
 }
 
+/*
+// Revive players when the network reports that the client is connected and ready for gameplay
+auto it = m_players.find(channelId);
+if (it != m_players.end())
+{
+if (IEntity* pPlayerEntity = gEnv->pEntitySystem->GetEntity(it->second))
+{
+if (CCryFirstPersonPlayerComponent* pPlayer = pPlayerEntity->GetComponent<CCryFirstPersonPlayerComponent>())
+{
+pPlayer->Revive();
+}
+}
+}
+*/
+
 bool CGamePlugin::OnClientReadyForGameplay(int channelId, bool bIsReset)
 {
-	// Revive players when the network reports that the client is connected and ready for gameplay
-	auto it = m_players.find(channelId);
-	if (it != m_players.end())
-	{
-		if (IEntity* pPlayerEntity = gEnv->pEntitySystem->GetEntity(it->second))
-		{
-			if (CCryFirstPersonPlayerComponent* pPlayer = pPlayerEntity->GetComponent<CCryFirstPersonPlayerComponent>())
-			{
-				pPlayer->Revive();
-			}
-		}
-	}
 	
 	OnGameplayReady();
 
 	return true;
 }
 
+/*
+// Client disconnected, remove the entity and from map
+auto it = m_players.find(channelId);
+if (it != m_players.end())
+{
+gEnv->pEntitySystem->RemoveEntity(it->second);
+
+m_players.erase(it);
+}
+*/
+
 void CGamePlugin::OnClientDisconnected(int channelId, EDisconnectionCause cause, const char* description, bool bKeepClient)
 {
-	// Client disconnected, remove the entity and from map
-	auto it = m_players.find(channelId);
-	if (it != m_players.end())
-	{
-		gEnv->pEntitySystem->RemoveEntity(it->second);
-
-		m_players.erase(it);
-	}
+	
 }
 
 CRYREGISTER_SINGLETON_CLASS(CGamePlugin)

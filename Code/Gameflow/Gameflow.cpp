@@ -84,3 +84,23 @@ CGameflowManager * CGameflow::GetGameflowManager()
 {
 	return CGamePlugin::gGamePlugin->m_pGameflowManager;
 }
+
+void CGameflow::SetActiveGameflow(bool bActive)
+{
+	if (bActive)
+	{
+		gEnv->pGameFramework->GetIActionMapManager()->EnableActionMap(m_GameflowName, true);
+	}
+	else
+	{
+		if (!GetFlags().HasFlag(EGameflowFlags::UPDATE_IN_BACKGROUND))
+		{
+			gEnv->pGameFramework->GetIActionMapManager()->EnableActionMap(m_GameflowName, false);
+		}
+	}
+}
+
+Cry::DefaultComponents::CInputComponent * CGameflow::GetInputComponent()
+{
+	return GetGameflowManager()->GetInputComponent();
+}

@@ -9,7 +9,7 @@
 
 class CEntityHudElement_StatBar;
 class CEntityHudManager;
-class CCryFirstPersonPlayerComponent;
+class CPlayerComponent;
 class CStatsComponent;
 
 class CHud
@@ -42,6 +42,6 @@ private:
 	EventListener *m_pEventListener;
 
 	CEntityHudManager* GetEntityHudManager();
-	CCryFirstPersonPlayerComponent* GetPlayerComponent();
+	CPlayerComponent* GetPlayerComponent();
 	CStatsComponent* GetStatsComponent();
 };

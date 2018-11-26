@@ -55,7 +55,7 @@ void CCharacterComponent::Initialize()
 	m_pAnimationComponent->SetDefaultScopeContextName("Human_01Character");
 	// Queue the idle fragment to start playing immediately on next update
 	m_pAnimationComponent->SetDefaultFragmentName("Dab");
-
+	
 	// Acquire fragment and tag identifiers to avoid doing so each update
 	//m_idleFragmentId = m_pAnimationComponent->GetFragmentId("Dab");
 	//m_walkFragmentId = m_pAnimationComponent->GetFragmentId("Dab");
@@ -69,9 +69,15 @@ void CCharacterComponent::Initialize()
 
 	if (ICharacterInstance *pCharacter = m_pAnimationComponent->GetCharacter())
 	{
+		//ICharacterInstance *pJJJJJ = m_pEntity->GetCharacter(m_pAnimationComponent->GetEntitySlotId());
+		//m_pEntity->ClearSlots();
+		//m_pEntity->SetCharacter(pCharacter, m_pAnimationComponent->GetEntitySlotId(), false);
 		// Cache the camera joint id so that we don't need to look it up every frame in UpdateView
 		m_cameraJointId = pCharacter->GetIDefaultSkeleton().GetJointIDByName("head");
 	}
+	
+	m_pAnimationComponent->ResetCharacter();
+	//m_pAnimationComponent->ActivateContext("Human_01Character");
 
 	m_pGameplayEntityComponent = m_pEntity->GetOrCreateComponent<CGameplayEntityComponent>(false);
 	//m_pGameplayEntityComponent->SetHealthStat(CGameplayEntityComponent::Stat<float>(0, 100, 85));
@@ -108,9 +114,12 @@ void CCharacterComponent::ProcessEvent(SEntityEvent & event)
 		{
 			// Collision info can be retrieved using the event pointer
 			EventPhysCollision *physCollision = reinterpret_cast<EventPhysCollision *>(event.nParam[0]);
-			if (CBulletComponent *pBulletComponent = gEnv->pEntitySystem->GetEntityFromPhysics(physCollision->pEntity[1])->GetComponent<CBulletComponent>())
+			if (IEntity *pEntity = gEnv->pEntitySystem->GetEntityFromPhysics(physCollision->pEntity[1]))
 			{
-				pBulletComponent->Test();
+				if (CBulletComponent *pBulletComponent = pEntity->GetComponent<CBulletComponent>())
+				{
+					pBulletComponent->Test();
+				}
 			}
 		} 
 		break;
@@ -166,3 +175,15 @@ void CC_PlayerTest(CC_Args pArgs)
 	CGamePlugin::gGamePlugin->GetPlayerComponent()->ExtendTo(pCharacterComponent->GetOrCreatePlayerExtension());
 }
 ADDCONSOLECOMMAND_WITHINFOCONSTRUCTOR(CC_Info("PlayerTest", 0), CC_PlayerTest)
+
+void CC_WorkPlease(CC_Args pArgs)
+{
+	CC_ARGSCOUNTCHECK(1);
+	CC_GETARG(string, Name, 1);
+	IEntity *pEntity = gEnv->pEntitySystem->FindEntityByName(Name);
+	if (Cry::DefaultComponents::CAdvancedAnimationComponent *pAnimComp = pEntity->GetComponent<Cry::DefaultComponents::CAdvancedAnimationComponent>())
+	{
+		pAnimComp->ResetCharacter();
+	}
+}
+ADDCONSOLECOMMAND_WITHINFOCONSTRUCTOR(CC_Info("WorkPlease", 1), CC_WorkPlease)

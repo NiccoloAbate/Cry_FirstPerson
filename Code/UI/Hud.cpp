@@ -4,7 +4,8 @@
 #include "Dialogue\DialogueManager.h"
 #include "GamePlugin.h"
 
-#include "Components\Player\CryFirstPersonPlayer.h"
+#include "Components\Player\Player.h"
+#include "Components\Player\PlayerExtension.h"
 #include "Components\Game\Stats.h"
 
 #include "Game\UIController.h"
@@ -75,14 +76,14 @@ CEntityHudManager * CHud::GetEntityHudManager()
 	return CGamePlugin::gGamePlugin->m_pUIController->m_pEntityHudManager;
 }
 
-CCryFirstPersonPlayerComponent * CHud::GetPlayerComponent()
+CPlayerComponent * CHud::GetPlayerComponent()
 {
-	return CGamePlugin::gGamePlugin->GetActivePlayer()->GetComponent<CCryFirstPersonPlayerComponent>();
+	return CGamePlugin::gGamePlugin->GetPlayerComponent();
 }
 
 CStatsComponent * CHud::GetStatsComponent()
 {
-	return CGamePlugin::gGamePlugin->GetActivePlayer()->GetComponent<CStatsComponent>();
+	return CGamePlugin::gGamePlugin->GetPlayerComponent()->GetStatsComponent();
 }
 
 void CHud::EventListener::OnUIEvent(IUIElement * pSender, const SUIEventDesc & event, const SUIArguments & args)

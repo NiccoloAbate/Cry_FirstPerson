@@ -1,5 +1,6 @@
 #pragma once
 
+#include <DefaultComponents\Input\InputComponent.h>
 #include "Types\Flags.h"
 
 #define TAGGAMEFLOW(NAME, Id)											\
@@ -17,13 +18,15 @@ TAGGAMEFLOW(NONE, 0)
 
 #define GAMEFLOW_STANDARD_INIT()							\
 m_GameflowId = GAMEFLOWID;									\
-m_GameflowName = GAMEFLOWNAME;
+m_GameflowName = GAMEFLOWNAME;								\
+InitializeKeyBinds();
 
 class CGameflowPhase;
 class CGameflowManager;
 
 class CGameflow
 {
+	friend class CGameflowManager;
 public:
 
 	CGameflow() {}
@@ -40,6 +43,7 @@ public:
 
 	// Must include GAMEFLOW_STANDARD_INIT()
 	virtual void Initialize() = 0;
+	virtual void InitializeKeyBinds() = 0;
 	// Must include UpdatePhases(fDeltaTime)
 	virtual void Update(float fDeltaTime) = 0;
 
@@ -55,6 +59,8 @@ public:
 	CGameflowPhase* GetPhase(int Id);
 
 	void StartNextPhase(int PhaseId);
+
+	CGameflowManager* GetGameflowManager();
 
 protected:
 	int m_GameflowId;
@@ -82,8 +88,11 @@ protected:
 	void SetActivePhase(CGameflowPhase *pPhase);
 	// Send to debug whenever the phase is set
 	void SetActivePhase_Debug(CGameflowPhase *pPhase);
+	
 
-	CGameflowManager* GetGameflowManager();
+	void SetActiveGameflow(bool bActive);
+
+	Cry::DefaultComponents::CInputComponent* GetInputComponent();
 
 	FlagType m_Flags;
 };

@@ -18,6 +18,11 @@ bool CGameflowPhase::IsActivePhase()
 	return (GetGameflowManager()->GetActiveGameflow()->GetActivePhase() == this);
 }
 
+Cry::DefaultComponents::CInputComponent * CGameflowPhase::GetInputComponent()
+{
+	return GetGameflowManager()->GetInputComponent();
+}
+
 void CGameflowPhase::SetActivePhase(bool bActive)
 {
 	if(bActive)
@@ -31,13 +36,4 @@ void CGameflowPhase::SetActivePhase(bool bActive)
 			gEnv->pGameFramework->GetIActionMapManager()->EnableActionMap(m_PhaseName, false);
 		}
 	}
-}
-
-Cry::DefaultComponents::CInputComponent * CGameflowPhase::GetPlayerInputComponent()
-{
-	if (IEntity *pPlayer = CGamePlugin::gGamePlugin->GetActivePlayer())
-	{
-		return pPlayer->GetComponent<Cry::DefaultComponents::CInputComponent>();
-	}
-	return nullptr;
 }

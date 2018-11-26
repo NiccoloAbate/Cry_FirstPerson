@@ -22,6 +22,8 @@ public:
 		desc.SetComponentFlags({ IEntityComponent::EFlags::Transform, IEntityComponent::EFlags::Socket, IEntityComponent::EFlags::Attach });
 	}
 
+	static CSpawnPointComponent* FindFirstSpawnPoint();
+
 public:
 	void SpawnEntity(IEntity* otherEntity);
 };

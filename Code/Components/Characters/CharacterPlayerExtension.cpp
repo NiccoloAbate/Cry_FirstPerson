@@ -90,7 +90,7 @@ void CCharacter_PlayerExtension::UpdateMovementRequest(float frameTime)
 	if (!m_pCharacterComponent->m_pCharacterController->IsOnGround())
 		SpeedMultiplyer = .15;
 
-	const float moveSpeed = 20.5f * SpeedMultiplyer;
+	const float moveSpeed = 30.0f * SpeedMultiplyer;
 
 	static bool bHasBeenMoving = false;
 	if (m_InputFlags.HasFlag((TInputFlags)EInputFlag::MoveLeft))
@@ -198,7 +198,7 @@ void CCharacter_PlayerExtension::UpdateAnimation(float frameTime)
 
 														 // Update tags and motion parameters used for turning
 	const bool isTurning = std::abs(averagedHorizontalAngularVelocity.Get()) > angularVelocityTurningThreshold;
-	m_pCharacterComponent->m_pAnimationComponent->SetTagWithId(rotateTagId, isTurning);
+	//m_pCharacterComponent->m_pAnimationComponent->SetTagWithId(rotateTagId, isTurning);
 	if (isTurning)
 	{
 		// TODO: This is a very rough predictive estimation of eMotionParamID_TurnAngle that could easily be replaced with accurate reactive motion 
@@ -290,7 +290,7 @@ void CCharacter_PlayerExtension::Jump()
 
 	if (IPhysicalEntity* pPhysicalEntity = m_pCharacterComponent->m_pCharacterController->GetEntity()->GetPhysicalEntity())
 	{
-		const float JumpHeight = 500;
+		const float JumpHeight = 1000;
 
 		pe_action_impulse Jump;
 		Jump.impulse = Vec3(0, 0, 1) * JumpHeight;

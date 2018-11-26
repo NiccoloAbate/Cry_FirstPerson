@@ -26,7 +26,7 @@ public:
 private:
 	
 	std::vector<CGameflow*> m_Gameflows;
-	int m_ActiveGameflow;
+	int m_ActiveGameflow = 0;
 	// Adds an already initialized gameflow
 	int AddGameflow(CGameflow *pGameflow);
 	template<typename T>

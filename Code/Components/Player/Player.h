@@ -53,14 +53,7 @@ public:
 
 	IEntity* GetCameraEntity() { return m_pCamera; }
 
-	//void Revive();
-	//void SetActiveChar();
-	//void SetInactiveChar();
-	//PROPERTY_DEFAULTVAL(bool, Active, true)
-
-	//void SetCamera(IEntity *pCamera);
-
-	//CStatsComponent* GetStatsComponent() { return m_pStatsComponent; }
+	CStatsComponent* GetStatsComponent();
 
 	// World Interaction
 	//IEntity *m_pLookEntity = nullptr;

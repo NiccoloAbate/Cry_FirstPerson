@@ -25,6 +25,22 @@ static void RegisterSpawnPointComponent(Schematyc::IEnvRegistrar& registrar)
 
 CRY_STATIC_AUTO_REGISTER_FUNCTION(&RegisterSpawnPointComponent)
 
+CSpawnPointComponent * CSpawnPointComponent::FindFirstSpawnPoint()
+{
+	auto *pEntityIterator = gEnv->pEntitySystem->GetEntityIterator();
+	pEntityIterator->MoveFirst();
+
+	while (!pEntityIterator->IsEnd())
+	{
+		IEntity *pEntity = pEntityIterator->Next();
+
+		if (CSpawnPointComponent *pSpawner = pEntity->GetComponent<CSpawnPointComponent>())
+			return pSpawner;
+	}
+
+	return nullptr;
+}
+
 void CSpawnPointComponent::SpawnEntity(IEntity* otherEntity)
 {
 	otherEntity->SetWorldTM(m_pEntity->GetWorldTM());

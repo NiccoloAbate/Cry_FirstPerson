@@ -18,6 +18,8 @@
 
 #include "PlayerExtension.h"
 
+#include "Components\Game\Stats.h"
+
 static void RegisterPlayerComponent(Schematyc::IEnvRegistrar& registrar)
 {
 	Schematyc::CEnvRegistrationScope scope = registrar.Scope(IEntity::GetEntityScopeGUID());
@@ -77,5 +79,12 @@ void CPlayerComponent::ExtendTo(CPlayerExtension * pPlayerExtension)
 {
 	m_pPlayerExtension = pPlayerExtension;
 	m_pPlayerExtension->ExtendFrom(this);
+}
+
+CStatsComponent * CPlayerComponent::GetStatsComponent()
+{
+	if (!m_pPlayerExtension)
+		return nullptr;
+	return m_pPlayerExtension->GetEntity()->GetComponent<CStatsComponent>();
 }
 
