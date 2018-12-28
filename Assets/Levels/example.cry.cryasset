@@ -3,8 +3,10 @@
   <File path="example/example.cry"/>
  </Files>
  <Dependencies>
+  <Path>%editor%/materials/shaderlist.xml</Path>
   <Path>%editor%/objects/envcube.cgf</Path>
   <Path>%editor%/objects/envcube.mtl</Path>
+  <Path>%editor%/objects/mtlplane.cgf</Path>
   <Path>%engine%/engineassets/codecoverage/hit.dds</Path>
   <Path>%engine%/engineassets/codecoverage/pbar.dds</Path>
   <Path>%engine%/engineassets/codecoverage/unexpected.dds</Path>
@@ -34,6 +36,7 @@
   <Path>engineassets/textures/skys/night/half_moon.dds</Path>
   <Path>engineassets/textures/white.dds</Path>
   <Path>libs/environmentpresets/example.xml</Path>
+  <Path>libs/materialeffects/surfacetypes.xml</Path>
   <Path>materials/environment/river 01.mtl</Path>
   <Path>materials/objects.mtl</Path>
   <Path>materials/terrain.mtl</Path>
@@ -68,7 +71,6 @@
   <Path>particleeffects/environment/rain.pfx</Path>
   <Path>particleeffects/hive/pheromone/pheromone.pfx</Path>
   <Path>particleeffects/hive/test/test.pfx</Path>
-  <Path>scripts/ai/factions.xml</Path>
   <Path>textures/cubemaps/example/environmentprobe1_cm.dds</Path>
   <Path>textures/cubemaps/example/environmentprobe1_cm_diff.dds</Path>
   <Path>textures/detail_bumpmaps/wood/wood_a_detail.dds</Path>

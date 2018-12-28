@@ -72,11 +72,17 @@ void CGameflow::SetActivePhase(CGameflowPhase * pPhase)
 	}
 }
 
+//DEBUG//
 void CGameflow::SetActivePhase_Debug(CGameflowPhase * pPhase)
 {
+	const string Message = "Set to GameflowPhase: " + m_GameflowName + ": " + pPhase->GetPhaseName();
 	if (GetGameflowManager()->GetDebugMode() >= EDebugMode::CONSOLE)
 	{
-		gEnv->pLog->Log("Set to GameflowPhase: " + m_GameflowName + ": " + pPhase->GetPhaseName());
+		gEnv->pLog->Log(Message);
+	}
+	if (GetGameflowManager()->GetDebugMode() >= EDebugMode::PERSISTANT)
+	{
+		gEnv->pGameFramework->GetIPersistantDebug()->Add2DText(Message, DEBUGTEXTSIZE, DEBUGTEXTCOLOR, DEBUGTEXTDURATION);
 	}
 }
 

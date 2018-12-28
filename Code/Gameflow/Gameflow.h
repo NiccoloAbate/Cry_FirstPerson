@@ -75,10 +75,10 @@ protected:
 	CGameflowPhase* AddNewPhase()
 	{
 		T *pPhase = new T;
-		pPhase->Initialize();
 		pPhase->SetParentGameflow(this);
-		pPhase->SetActivePhase(false);
-		AddPhase(pPhase);
+		pPhase->SetActivePhase(false); // Sets to not be the active phase
+		pPhase->Initialize();
+		AddPhase(pPhase); // Adds to m_Phases
 		return pPhase;
 	}
 	// Sets by the index of m_Phases (*NOT THE PHASE ID*)

@@ -63,6 +63,9 @@ public:
 	CCharacter_PlayerExtension* GetOrCreatePlayerExtension() { return (m_pPlayerExtension) ? (m_pPlayerExtension) : (GivePlayerExtension()); }
 	//~Player
 
+	CStatsComponent* GetStatsComponent() { return m_pStatsComponent; }
+	CGameplayEntityComponent* GetGameplayEntityComponent() { return m_pGameplayEntityComponent; }
+
 protected:
 
 	// Player

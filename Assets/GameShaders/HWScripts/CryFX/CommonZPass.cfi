@@ -34,7 +34,6 @@ vert2fragZ Common_ZPassVS(app2vertGBuffer IN_common)
 #endif
 
 	float3 vPos = vertPassPos.WorldPos.xyz;
-	//vPos.z += 1;
 
 #if ENABLE_TESSELLATION && !%_RT_NO_TESSELLATION
 	//relative position
@@ -114,7 +113,7 @@ vert2fragZ Common_ZPassVS(app2vertGBuffer IN_common)
 			#endif
 		#endif
 	#endif
-	
+
 	////////////////////////////////////////////////////////////////////////////////////////////////
 	// Output blend with terrain color params
 
@@ -127,7 +126,7 @@ vert2fragZ Common_ZPassVS(app2vertGBuffer IN_common)
 		fBlendFactor*=fBlendFactor;
 		OUT.terrainParams0.xyz = float3(blendColInfo.zz*vPos.yx+blendColInfo.xy, min(fBlendFactor, .75f));
 	#endif
-	
+
 #if %SILHOUETTE_PARALLAX_OCCLUSION_MAPPING || %PARALLAX_OCCLUSION_MAPPING || %OFFSET_BUMP_MAPPING || %_RT_ALPHABLEND || %TEMP_EYES || %LEAVES || %GRASS
   OUT.viewTS = vPos.xyz - g_VS_WorldViewPos.xyz;
 #endif
@@ -220,43 +219,37 @@ void ApplyVegetationTerrainColor(vert2fragZ IN, inout MaterialAttribsCommon attr
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//START
+//////////////////////////START//////////////////////////
 
-float EdgeShadingFunction(float x)
+/*
+// Blurs using a 3x3 filter kernel
+float4 BlurFunction3x3(half3 Col, vert2fragZ PS_IN) : COLOR0
 {
-	return (.5 * sin(10 * pow(x + .2, 2)) + .5);
+	vert2fragZ Temp_IN = PS_IN;
+
+  // TOP ROW
+  float4 s11 = tex2D(texsampler, input.texcoords + float2(-1.0f / 1024.0f, -1.0f / 768.0f));    // LEFT
+  float4 s12 = tex2D(texsampler, input.texcoords + float2(0, -1.0f / 768.0f));              // MIDDLE
+  float4 s13 = tex2D(texsampler, input.texcoords + float2(1.0f / 1024.0f, -1.0f / 768.0f)); // RIGHT
+ 
+  // MIDDLE ROW
+  float4 s21 = tex2D(texsampler, input.texcoords + float2(-1.0f / 1024.0f, 0));             // LEFT
+  float4 col = tex2D(texsampler, input.texcoords);                                          // DEAD CENTER
+  float4 s23 = tex2D(texsampler, input.texcoords + float2(-1.0f / 1024.0f, 0));                 // RIGHT
+ 
+  // LAST ROW
+  float4 s31 = tex2D(texsampler, input.texcoords + float2(-1.0f / 1024.0f, 1.0f / 768.0f)); // LEFT
+  float4 s32 = tex2D(texsampler, input.texcoords + float2(0, 1.0f / 768.0f));                   // MIDDLE
+  float4 s33 = tex2D(texsampler, input.texcoords + float2(1.0f / 1024.0f, 1.0f / 768.0f));  // RIGHT
+ 
+  // Average the color with surrounding samples
+  col = (col + s11 + s12 + s13 + s21 + s23 + s31 + s32 + s33) / 9;
+  return col;
 }
+*/
 
-int g_iFrameCount = 0;
+//////////////////////////END////////////////////////////
 
-half3 GrayScale(half3 Col)
-{
-	half Av = (Col.r + Col.g + Col.b) / 3.0;
-	Col.r = Av; Col.g = Av; Col.b = Av;
-	return Col;
-}
-
-half3 Invert(half3 Col)
-{
-	Col = saturate(Col);
-	Col.r = 1 - Col.r;
-	Col.g = 1 - Col.g;
-	Col.b = 1 - Col.b;
-	return Col;
-}
-
-half3 Pencil(half3 Col)
-{
-	Col = saturate(Col);
-	half3 I = Invert(Col);
-	Col *= 100;
-	Col /= I;
-	Col = saturate(Col);
-	Col *= .5;
-	return Col;
-}
-
-//END
 
 #if %SILHOUETTE_PARALLAX_OCCLUSION_MAPPING
 pixout_gbuffer Common_ZPassPS(geom2fragZ IN_ext)
@@ -491,48 +484,15 @@ pixout_gbuffer Common_ZPassPS(vert2fragZ IN)
 	cReflectance.xyz = GetLuminance(cReflectance.xyz);
 #endif
 	
-	//START
-#if %SCRIBBLE_EDGE
+//////////////////////////START//////////////////////////
+
+#if %PASTEL
 	
-	//float DOT = dot(attribs.NormalWorld.xyz + g_VS_HPosScale.xyz, CV_CameraFrontVector.xyz + g_VS_WorldViewPos.xyz);
-	//DOT *= .0001;
-	
-	float3 CamDir = normalize(g_VS_HPosScale.xyz - g_VS_WorldViewPos.xyz);
-	float3 UseDir = (CamDir.xyz + (1 * CV_CameraFrontVector.xyz)) / 2;
-	
-	float3 vCROSS = cross(attribs.NormalWorld.xyz, UseDir.xyz);
-	float _fCROSS = length(vCROSS);
-	float fCROSS = 1 - (_fCROSS * 1);
-	_fCROSS = pow(_fCROSS, 3);
-	
-	if(_fCROSS < .3){_fCROSS = 0;}
-	
-	//float Shade = EdgeShadingFunction(DOT);
-	
-	half2 Scribble_TC = half2(IN.baseTC.x,  IN.baseTC.y);
-	//Scribble_TC.y *= DOT;
-	half4 Scribble_Map = GetCustomTex(ScribbleMap, Scribble_TC);
-	float SAv = (Scribble_Map.r + Scribble_Map.g + Scribble_Map.b) / 3;
-	
-	if(SAv < .7)
-	{
-		cAlbedo.rgb = (cAlbedo.rgb + (Scribble_Map.rgb * _fCROSS)) / (1 + _fCROSS);
-	}
-	
-	//cAlbedo.rgb *= fCROSS;
-	
-	half3 P = Pencil(cAlbedo);
-	cAlbedo.rgb = (cAlbedo.rgb + (P * 2)) / 3;
-	cAlbedo.rgb = pow(cAlbedo.rgb, 3);
-	
-	//cAlbedo.rgb = half3(_fCROSS, _fCROSS, _fCROSS);
-	
-	//half Gray = dot(cAlbedo.rgb, half3(0.3, 0.59, 0.11));
-	//cAlbedo.rgb = half3(Gray, Gray, Gray);
-	//cAlbedo.rgb = GrayScale(cAlbedo.rgb);
+	//cAlbedo = cAlbedo;
 	
 #endif
-	//END
+
+//////////////////////////END////////////////////////////
 	
 	attribs.Albedo = cAlbedo;
 	attribs.Reflectance = cReflectance;

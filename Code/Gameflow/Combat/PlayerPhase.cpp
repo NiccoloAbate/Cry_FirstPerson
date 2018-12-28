@@ -17,7 +17,7 @@ void CCombatGameflow_PlayerPhase::InitializeKeyBinds()
 	pInputComponent->RegisterAction(PHASENAME, "Test", [this](int activationMode, float value) { Test(); });
 	pInputComponent->BindAction(PHASENAME, "Test", eAID_KeyboardMouse, EKeyId::eKI_I, false, true, false);
 
-	pInputComponent->RegisterAction(PHASENAME, "EndTurn", [this](int activationMode, float value) { EndPhase(); });
+	pInputComponent->RegisterAction(PHASENAME, "EndTurn", [this](int activationMode, float value) { if(((CCombatGameflow*)GetParentGameflow())->IsPlayerOutOfMoves()) EndPhase(); }); // Ends turn if player is out of moves
 	pInputComponent->BindAction(PHASENAME, "EndTurn", eAID_KeyboardMouse, EKeyId::eKI_Enter, false, true, false);
 }
 

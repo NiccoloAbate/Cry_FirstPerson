@@ -15,7 +15,7 @@ void CGameflowManager::Initialize()
 		m_pInputComponent = pEntity->GetOrCreateComponent<Cry::DefaultComponents::CInputComponent>();
 
 	// Gameflows
-
+	
 	AddNewGameflow<CCombatGameflow>();
 
 	SetActiveGameflowIndex(0);
@@ -79,12 +79,18 @@ void CGameflowManager::SetActiveGameflow(CGameflow * pGameflow)
 	}
 }
 
+//DEBUG//
 void CGameflowManager::SetActiveGameflow_Debug(CGameflow * pGameflow)
 {
+	const string Message = "Set to Gameflow: " + pGameflow->GetGameflowName();
 	if (GetDebugMode() >= EDebugMode::CONSOLE)
 	{
-		gEnv->pLog->Log("Set to Gameflow: " + pGameflow->GetGameflowName());
+		gEnv->pLog->Log(Message);
+	}
+	if (GetDebugMode() >= EDebugMode::PERSISTANT)
+	{
+		gEnv->pGameFramework->GetIPersistantDebug()->Add2DText(Message, DEBUGTEXTSIZE, DEBUGTEXTCOLOR, DEBUGTEXTDURATION);
 	}
 }
 
-REGISTERDEBUGEXTENSION(CGameflowManager, "Gameflow", EDebugMode::CONSOLE);
+REGISTERDEBUGEXTENSION(CGameflowManager, "Gameflow", EDebugMode::PERSISTANT);

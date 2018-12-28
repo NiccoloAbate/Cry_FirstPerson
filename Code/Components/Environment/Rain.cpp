@@ -107,7 +107,7 @@ void CRainComponent::ProcessEvent(SEntityEvent & event)
 		break;
 	case ENTITY_EVENT_UPDATE:
 	{
-		const Vec3 CamPos = CGamePlugin::gGamePlugin->m_pCameraController->m_pCamera->GetWorldPos();
+		const Vec3 CamPos = CGamePlugin::gGamePlugin->m_pCameraController->m_pCameraEntity->GetWorldPos();
 		m_pEntity->SetPos(CamPos);
 
 		DEBUG_CODE(	if(!gEnv->IsEditor() || gEnv->IsEditorGameMode())	)

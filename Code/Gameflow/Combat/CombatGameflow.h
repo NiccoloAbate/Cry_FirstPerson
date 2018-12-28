@@ -17,6 +17,7 @@ public:
 
 
 	CCharacterComponent *m_pCharacter;
+	bool IsPlayerOutOfMoves();
 
 	virtual void Initialize() override;
 	virtual void InitializeKeyBinds() override;

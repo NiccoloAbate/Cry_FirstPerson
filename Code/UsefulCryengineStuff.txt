@@ -1,0 +1,6 @@
+////////////LIGHT/////////////////////
+
+ILightSource interface has this function: 
+Code: Select all
+virtual void SetCastingException(IRenderNode* pNotCaster) = 0; 
+You pass it the render node of the object that you don't want to cast shadows from that light source and that's it.

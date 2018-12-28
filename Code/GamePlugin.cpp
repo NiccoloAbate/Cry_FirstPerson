@@ -185,11 +185,11 @@ void CGamePlugin::InitializeCamera()
 
 	if (m_pCameraEntity = gEnv->pEntitySystem->SpawnEntity(spawnParams_Cam))
 	{
-		m_pCameraEntity->GetOrCreateComponent<Cry::DefaultComponents::CCameraComponent>();
+		Cry::DefaultComponents::CCameraComponent *pCamComponent = m_pCameraEntity->GetOrCreateComponent<Cry::DefaultComponents::CCameraComponent>();
 	}
 
 	m_pCameraController = new CCameraController;
-	m_pCameraController->m_pCamera = m_pCameraEntity;
+	m_pCameraController->m_pCameraEntity = m_pCameraEntity;
 }
 
 void CGamePlugin::TestXml()

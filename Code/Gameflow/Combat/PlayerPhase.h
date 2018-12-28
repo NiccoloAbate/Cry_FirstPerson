@@ -20,7 +20,7 @@ public:
 	void Update(float fDeltaTime) override;
 
 	FlagType GetDefaultFlagMask() const override { return NULL; }
-
+	
 	void EndPhase();
 
 protected:

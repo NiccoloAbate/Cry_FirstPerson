@@ -49,7 +49,7 @@ void CPlayerComponent::Initialize()
 	REGISTER_PLAYEREXTESION_KEYEVENT("MouseX", EKeyId::eKI_MouseX);
 	REGISTER_PLAYEREXTESION_KEYEVENT("MosueY", EKeyId::eKI_MouseY);
 	
-	m_pCamera = CGamePlugin::gGamePlugin->m_pCameraController->m_pCamera;
+	m_pCamera = CGamePlugin::gGamePlugin->m_pCameraController->m_pCameraEntity;
 }
 
 void CPlayerComponent::ProcessEvent(SEntityEvent & event)

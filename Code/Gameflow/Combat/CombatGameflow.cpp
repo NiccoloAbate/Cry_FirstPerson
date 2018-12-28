@@ -12,8 +12,19 @@
 #include "GamePlugin.h"
 #include "Components\Player\Player.h"
 #include "Components\Characters\Character.h"
+#include "Components\Game\Stats.h"
 
 
+
+bool CCombatGameflow::IsPlayerOutOfMoves()
+{
+	bool bOutOfMoves = true;
+
+	if (m_pCharacter->GetStatsComponent()->GetStamina() > 0)
+		bOutOfMoves = false;
+
+	return bOutOfMoves;
+}
 
 void CCombatGameflow::Initialize()
 {

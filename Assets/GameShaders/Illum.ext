@@ -175,9 +175,9 @@ Property
 
 Property
 {
-  Name = %SCRIBBLE_EDGE
+  Name = %PASTEL
   Mask = 0x800000000
-  Property    (ScribbleEdge)
-  Description (Scribble Edge Effect)
+  Property    (Pastel)
+  Description (Pastel Effect)
   //DependencySet = $UserEnabled
 }
