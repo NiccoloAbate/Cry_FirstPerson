@@ -131,6 +131,12 @@
     <ClCompile Include="..\..\Code\Components\Characters\CharacterPlayerExtension.cpp">
       <Filter>Components\Characters</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Code\AI\HierarchicalState.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\AI\Hive\HiveAgent\HiveAgent_AI.cpp">
+      <Filter>AI\Hive\HiveAgent</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code\GamePlugin.cpp" />
@@ -334,6 +340,18 @@
     <ClInclude Include="..\..\Code\Components\Characters\CharacterPlayerExtension.h">
       <Filter>Components\Characters</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Code\Types\Static_TypeId.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\AI\AI.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\AI\HierarchicalState.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\AI\Hive\HiveAgent\HiveAgent_AI.h">
+      <Filter>AI\Hive\HiveAgent</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code\CMakeLists.txt" />
@@ -418,6 +436,15 @@
     </Filter>
     <Filter Include="Utils\Debug">
       <UniqueIdentifier>{ef12b1ed-ec97-46fa-93cd-036084cfb197}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI">
+      <UniqueIdentifier>{24f553d5-5f69-418b-9bf2-e4ca85bf1b0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Hive">
+      <UniqueIdentifier>{e3349462-7705-4893-b46b-28e188863061}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Hive\HiveAgent">
+      <UniqueIdentifier>{daf7d7d8-ddb4-4b1c-ab49-799201467d2f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -35,6 +35,8 @@ static void RegisterHiveAgentComponent(Schematyc::IEnvRegistrar& registrar)
 }
 CRY_STATIC_AUTO_REGISTER_FUNCTION(&RegisterHiveAgentComponent)
 
+
+#include "AI\Hive\HiveAgent\HiveAgent_AI.h"
 void CHiveAgentComponent::Initialize()
 {
 	m_pEntity->LoadGeometry(0, "Objects/Default/primitive_sphere.cgf");
@@ -48,6 +50,9 @@ void CHiveAgentComponent::Initialize()
 	//~Pathfinding
 
 	m_pGameplayEntityComponent = m_pEntity->GetOrCreateComponent<CGameplayEntityComponent>();
+
+	m_pAI = new CHiveAgent_AI;
+	m_pAI->Initialize();
 }
 
 #include <CryRenderer\RenderObject.h>
@@ -96,6 +101,7 @@ void CHiveAgentComponent::UpdateAI()
 
 	//Temporary time filter
 	float Time = gEnv->pTimer->GetFrameStartTime().GetMilliSeconds();
+	m_pAI->Update(Time);
 	if (!ClampRange(m_LastAIUpdate, Time, AIUPDATE_TIMEFILTER))
 		return;
 	m_LastAIUpdate = Time;

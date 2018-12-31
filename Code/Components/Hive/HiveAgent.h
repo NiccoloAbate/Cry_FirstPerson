@@ -11,6 +11,7 @@ class CHiveComponent;
 class CPheromoneComponent;
 class CGameplayEntityComponent;
 
+class CHiveAgent_AI;
 
 #define Pi 3.1415926535897
 
@@ -40,6 +41,11 @@ public:
 	virtual uint64 GetEventMask() const override { return BIT64(ENTITY_EVENT_UPDATE) | BIT64(ENTITY_EVENT_LEVEL_LOADED); }
 	virtual void ProcessEvent(SEntityEvent& event) override;
 	// ~IEntityComponent
+
+
+	CHiveAgent_AI *m_pAI;
+
+
 
 	// Hive
 	PROPERTY_PREFIX(CHiveComponent*, ParentHive, p) //the hive the agent belongs to
