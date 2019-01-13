@@ -27,3 +27,21 @@ void CAI_HierarchicalState::TransitionTo(const int StateId)
 	else
 		bool YOUSUCK = true;
 }
+
+int CAI_HierarchicalState::AddSubState(CAI_HierarchicalState * pState)
+{
+	m_SubStates.push_back(pState);
+	return m_SubStates.size() - 1;
+}
+
+void CAI_HierarchicalState::SetActiveSubState(int StateID)
+{
+	for (int i = 0; i < m_SubStates.size(); i++)
+	{
+		if (m_SubStates[i]->GetStateId() == StateID)
+		{
+			m_ActiveSubState = i;
+			return;
+		}
+	}
+}

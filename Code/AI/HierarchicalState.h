@@ -55,4 +55,16 @@ protected:
 
 	void TransitionTo(const int StateId);
 
+	int AddSubState(CAI_HierarchicalState *pState);
+	template<typename T>
+	CAI_HierarchicalState* AddNewSubState()
+	{
+		T *pState = new T(this);
+		pState->Initialize();
+		AddSubState(pState); // Adds to m_SubStates
+		return pState;
+	}
+
+	void SetActiveSubState(int StateID);
+
 };

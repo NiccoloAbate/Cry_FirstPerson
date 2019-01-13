@@ -281,6 +281,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   <ItemGroup>
     <ClInclude Include="..\..\Code\AI\AI.h" />
     <ClInclude Include="..\..\Code\AI\HierarchicalState.h" />
+    <ClInclude Include="..\..\Code\AI\Hive\Combat.h" />
+    <ClInclude Include="..\..\Code\AI\Hive\Explore.h" />
     <ClInclude Include="..\..\Code\AI\Hive\HiveAgent\HiveAgent_AI.h" />
     <ClInclude Include="..\..\Code\Components\Behaviors\Behaviors.h" />
     <ClInclude Include="..\..\Code\Components\Characters\Character.h" />
@@ -353,6 +355,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code\Components\Player\CryFirstPersonPlayer.h" />
     <ClInclude Include="D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code\Components\Player\CryFirstPersonPlayer.cpp" />
     <ClCompile Include="..\..\Code\AI\HierarchicalState.cpp" />
+    <ClCompile Include="..\..\Code\AI\Hive\Combat.cpp" />
+    <ClCompile Include="..\..\Code\AI\Hive\Explore.cpp" />
     <ClCompile Include="..\..\Code\AI\Hive\HiveAgent\HiveAgent_AI.cpp" />
     <ClCompile Include="..\..\Code\Components\Characters\Character.cpp" />
     <ClCompile Include="..\..\Code\Components\Characters\CharacterPlayerExtension.cpp" />

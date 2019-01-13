@@ -137,6 +137,12 @@
     <ClCompile Include="..\..\Code\AI\Hive\HiveAgent\HiveAgent_AI.cpp">
       <Filter>AI\Hive\HiveAgent</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Code\AI\Hive\Combat.cpp">
+      <Filter>AI\Hive\HiveAgent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\AI\Hive\Explore.cpp">
+      <Filter>AI\Hive\HiveAgent</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D:\Desktop\Cryengine Stuff\Engine Files\Projects\Cry_FirstPerson\Code\GamePlugin.cpp" />
@@ -350,6 +356,12 @@
       <Filter>AI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Code\AI\Hive\HiveAgent\HiveAgent_AI.h">
+      <Filter>AI\Hive\HiveAgent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\AI\Hive\Combat.h">
+      <Filter>AI\Hive\HiveAgent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\AI\Hive\Explore.h">
       <Filter>AI\Hive\HiveAgent</Filter>
     </ClInclude>
   </ItemGroup>
