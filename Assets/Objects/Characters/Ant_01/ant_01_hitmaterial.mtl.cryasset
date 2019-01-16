@@ -1,0 +1,9 @@
+<AssetMetadata version="0" type="Material" guid="a6170772-6eb2-16ef-3f3d-eabf8e3c3502">
+ <Files>
+  <File path="ant_01_hitmaterial.mtl"/>
+ </Files>
+ <Details>
+  <Detail name="subMaterialCount">0</Detail>
+  <Detail name="textureCount">0</Detail>
+ </Details>
+</AssetMetadata>

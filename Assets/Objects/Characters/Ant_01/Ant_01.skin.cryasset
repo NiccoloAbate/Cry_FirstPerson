@@ -1,0 +1,15 @@
+<AssetMetadata version="0" type="SkinnedMesh" guid="0b3e5bc2-d6a4-1584-4e5f-948a753913c4" source="Ant_01.fbx">
+ <Files>
+  <File path="Ant_01.skin"/>
+ </Files>
+ <Details>
+  <Detail name="materialCount">2</Detail>
+  <Detail name="triangleCount">3280</Detail>
+  <Detail name="vertexCount">6768</Detail>
+  <Detail name="16BitPrecision">false</Detail>
+  <Detail name="bonesCount">53</Detail>
+ </Details>
+ <Dependencies>
+  <Path>%ENGINE%/EngineAssets/Materials/material_default.mtl</Path>
+ </Dependencies>
+</AssetMetadata>
