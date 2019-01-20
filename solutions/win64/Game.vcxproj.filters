@@ -89,9 +89,6 @@
     <ClCompile Include="..\..\Code\Components\Game\Stats.cpp">
       <Filter>Components\Game</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Code\Components\Hive\HiveAgent.cpp">
-      <Filter>Components\Hive</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Code\Components\Hive\Pheromone.cpp">
       <Filter>Components\Hive</Filter>
     </ClCompile>
@@ -137,10 +134,16 @@
     <ClCompile Include="..\..\Code\AI\Hive\HiveAgent\HiveAgent_AI.cpp">
       <Filter>AI\Hive\HiveAgent</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Code\AI\Hive\Combat.cpp">
+    <ClCompile Include="..\..\Code\Components\Hive\HiveAgent_Deprecated.cpp">
+      <Filter>Components\Hive</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Components\Hive\HiveAgent.cpp">
+      <Filter>Components\Hive</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\AI\Hive\HiveAgent\Explore.cpp">
       <Filter>AI\Hive\HiveAgent</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Code\AI\Hive\Explore.cpp">
+    <ClCompile Include="..\..\Code\AI\Hive\HiveAgent\Combat.cpp">
       <Filter>AI\Hive\HiveAgent</Filter>
     </ClCompile>
   </ItemGroup>
@@ -298,9 +301,6 @@
     <ClInclude Include="..\..\Code\Components\Game\Stats.h">
       <Filter>Components\Game</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Code\Components\Hive\HiveAgent.h">
-      <Filter>Components\Hive</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Code\Components\Hive\Pheromone.h">
       <Filter>Components\Hive</Filter>
     </ClInclude>
@@ -358,10 +358,16 @@
     <ClInclude Include="..\..\Code\AI\Hive\HiveAgent\HiveAgent_AI.h">
       <Filter>AI\Hive\HiveAgent</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Code\AI\Hive\Combat.h">
+    <ClInclude Include="..\..\Code\Components\Hive\HiveAgent_Deprecated.h">
+      <Filter>Components\Hive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Components\Hive\HiveAgent.h">
+      <Filter>Components\Hive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\AI\Hive\HiveAgent\Combat.h">
       <Filter>AI\Hive\HiveAgent</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Code\AI\Hive\Explore.h">
+    <ClInclude Include="..\..\Code\AI\Hive\HiveAgent\Explore.h">
       <Filter>AI\Hive\HiveAgent</Filter>
     </ClInclude>
   </ItemGroup>

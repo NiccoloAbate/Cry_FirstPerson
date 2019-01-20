@@ -1,0 +1,8 @@
+<AssetMetadata version="0" type="Xml" guid="58915922-9fb3-8af6-9307-ee2c7f03f11e">
+ <Files>
+  <File path="Ant_01Tags.xml"/>
+ </Files>
+ <Details>
+  <Detail name="rootTag">TagDefinition</Detail>
+ </Details>
+</AssetMetadata>

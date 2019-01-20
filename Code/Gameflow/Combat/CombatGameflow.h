@@ -14,9 +14,7 @@ public:
 	static constexpr char* GAMEFLOWNAME = "Combat";
 	CCombatGameflow() {}
 
-
-
-	CCharacterComponent *m_pCharacter;
+	CCharacterComponent* GetCharacter() const { return m_pCharacter; }
 	bool IsPlayerOutOfMoves();
 
 	virtual void Initialize() override;
@@ -26,7 +24,9 @@ public:
 	virtual FlagType GetDefaultFlagMask() const override { return NULL; }
 
 
-	
+protected:
+
+	CCharacterComponent *m_pCharacter;
 
 };
 

@@ -15,6 +15,7 @@ public:
 	CCombatGameflow_EnemyEndPhase() {}
 
 	void Initialize() override;
+	void OnPhaseStart() override;
 	void InitializeKeyBinds() override;
 	void Update(float fDeltaTime) override;
 

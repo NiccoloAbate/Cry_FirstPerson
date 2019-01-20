@@ -1,0 +1,7 @@
+<MannequinPreview>
+ <controllerDef filename="Objects/Characters/Ant_01/Mannequin/ADB/Ant_01ControllerDefinition.xml"/>
+ <contexts>
+  <contextData name="Ant_01" enabled="1" database="Objects/Characters/Ant_01/Mannequin/ADB/Ant_01.adb" context="Ant_01Character" model="Objects/Characters/Ant_01/Ant_01.cdf"/>
+ </contexts>
+ <History StartTime="0" EndTime="0"/>
+</MannequinPreview>

@@ -1,6 +1,6 @@
 <AssetMetadata version="0" type="Animation" guid="469cb1df-938c-42b3-a670-51322d7fb3d5" source="Ant_01.fbx">
  <Files>
-  <File path="Armature Idle.caf"/>
+  <File path="Idle.caf"/>
  </Files>
  <Details />
 </AssetMetadata>

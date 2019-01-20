@@ -3,10 +3,8 @@
   <File path="example/example.cry"/>
  </Files>
  <Dependencies>
-  <Path>%editor%/materials/shaderlist.xml</Path>
   <Path>%editor%/objects/envcube.cgf</Path>
   <Path>%editor%/objects/envcube.mtl</Path>
-  <Path>%editor%/objects/mtlplane.cgf</Path>
   <Path>%engine%/engineassets/codecoverage/hit.dds</Path>
   <Path>%engine%/engineassets/codecoverage/pbar.dds</Path>
   <Path>%engine%/engineassets/codecoverage/unexpected.dds</Path>
@@ -22,8 +20,8 @@
   <Path>%engine%/engineassets/materials/fog/oceanoutoflowspec.mtl</Path>
   <Path>%engine%/engineassets/materials/fog/waterfogvolumeinto.mtl</Path>
   <Path>%engine%/engineassets/materials/fog/waterfogvolumeoutof.mtl</Path>
-  <Path>%engine%/engineassets/materials/material_default.mtl</Path>
   <Path>%engine%/engineassets/materials/water/wateroceanbottom.mtl</Path>
+  <Path>%engine%/engineassets/objects/default.cgf</Path>
   <Path>%engine%/engineassets/texturemsg/defaultsolids.mtl</Path>
   <Path>%engine%/engineassets/textures/defaults/16_12.dds</Path>
   <Path>%engine%/engineassets/textures/defaults/16_34.dds</Path>
@@ -36,7 +34,6 @@
   <Path>engineassets/textures/skys/night/half_moon.dds</Path>
   <Path>engineassets/textures/white.dds</Path>
   <Path>libs/environmentpresets/example.xml</Path>
-  <Path>libs/materialeffects/surfacetypes.xml</Path>
   <Path>materials/environment/river 01.mtl</Path>
   <Path>materials/objects.mtl</Path>
   <Path>materials/terrain.mtl</Path>
@@ -45,6 +42,13 @@
   <Path>objects/architecture/buildings/forest_cabin/forest_cabin_lod1.cgf</Path>
   <Path>objects/architecture/buildings/forest_cabin/forest_cabin_lod2.cgf</Path>
   <Path>objects/architecture/buildings/forest_cabin/textures/forest_cabin_details_a_ddna.dds</Path>
+  <Path>objects/characters/ant_01/animations/idle.caf</Path>
+  <Path>objects/characters/ant_01/ant_01.cdf</Path>
+  <Path>objects/characters/ant_01/ant_01.chr</Path>
+  <Path>objects/characters/ant_01/ant_01.skin</Path>
+  <Path>objects/characters/ant_01/mannequin/adb/ant_01controllerdefinition.xml</Path>
+  <Path>objects/characters/ant_01/mannequin/adb/ant_01fragmentids.xml</Path>
+  <Path>objects/characters/ant_01/mannequin/adb/ant_01tags.xml</Path>
   <Path>objects/characters/human_01/animations/dab.caf</Path>
   <Path>objects/characters/human_01/human_01.cdf</Path>
   <Path>objects/characters/human_01/human_01.chr</Path>

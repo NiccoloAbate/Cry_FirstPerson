@@ -1,6 +1,6 @@
 <AssetMetadata version="0" type="Animation" guid="d66f0125-2d8f-7eb1-f71c-5e4d7fb78388" source="Ant_01.fbx">
  <Files>
-  <File path="Armature Attack.caf"/>
+  <File path="Attack.caf"/>
  </Files>
  <Details />
 </AssetMetadata>

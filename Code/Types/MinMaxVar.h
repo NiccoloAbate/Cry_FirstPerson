@@ -19,6 +19,15 @@ struct MinMaxVar
 			Current = Min;
 	}
 
+	void ResetToMax()
+	{
+		Current = Max;
+	}
+	void ResetToMin()
+	{
+		Current = Min;
+	}
+
 	MinMaxVar& operator=(const T Cur)
 	{
 		Current = Cur;

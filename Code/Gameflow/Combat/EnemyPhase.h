@@ -13,6 +13,7 @@ public:
 	CCombatGameflow_EnemyPhase() {}
 
 	void Initialize() override;
+	void OnPhaseStart() override;
 	void InitializeKeyBinds() override;
 	void Update(float fDeltaTime) override;
 

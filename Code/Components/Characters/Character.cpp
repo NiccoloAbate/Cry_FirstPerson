@@ -20,6 +20,7 @@
 #include "Components\Game\Stats.h"
 #include "CharacterPlayerExtension.h"
 #include "Components\Player\Player.h"
+#include "AI\AI.h"
 
 static void RegisterCharacterComponent(Schematyc::IEnvRegistrar& registrar)
 {
@@ -76,7 +77,6 @@ void CCharacterComponent::Initialize()
 		m_cameraJointId = pCharacter->GetIDefaultSkeleton().GetJointIDByName("head");
 	}
 	
-	m_pAnimationComponent->ResetCharacter();
 	//m_pAnimationComponent->ActivateContext("Human_01Character");
 
 	m_pGameplayEntityComponent = m_pEntity->GetOrCreateComponent<CGameplayEntityComponent>(false);
@@ -109,6 +109,16 @@ void CCharacterComponent::ProcessEvent(SEntityEvent & event)
 	case ENTITY_EVENT_COMPONENT_PROPERTY_CHANGED:
 		UPDATEREFLECTEDPARAMS();
 	case ENTITY_EVENT_UPDATE:
+		{	
+			if (!m_bFirstUpdateDone)
+			{
+				m_bFirstUpdateDone = true;
+				FirstUpdate();
+			}
+
+			SEntityUpdateContext* pCtx = (SEntityUpdateContext*)event.nParam[0];
+			Update(pCtx->fFrameTime);
+		}
 		break;
 	case ENTITY_EVENT_COLLISION:
 		{
@@ -122,6 +132,9 @@ void CCharacterComponent::ProcessEvent(SEntityEvent & event)
 				}
 			}
 		} 
+		break;
+	case ENTITY_EVENT_POST_SERIALIZE:
+		m_bLoadedFromSerialization = true;
 		break;
 	}
 }
@@ -148,6 +161,24 @@ void CCharacterComponent::Speak(string Text)
 void CCharacterComponent::Ragdollize()
 {
 	m_pCharacterController->Ragdollize();
+}
+
+void CCharacterComponent::GameSerialize(TSerialize ser)
+{
+	if (ser.IsReading())
+		m_bLoadedFromSerialization = true;
+}
+
+void CCharacterComponent::Update(float fDeltaTime)
+{
+	if (m_pAI)
+		m_pAI->Update(fDeltaTime);
+}
+
+void CCharacterComponent::FirstUpdate()
+{
+	if (!m_bLoadedFromSerialization)
+		m_pAnimationComponent->ResetCharacter();
 }
 
 CCharacter_PlayerExtension * CCharacterComponent::GivePlayerExtension()

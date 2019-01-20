@@ -8,14 +8,14 @@
 
 #include "Utils\Macros\Properties.h"
 
-class CHiveAgentComponent;
+class CHiveAgentComponent_Deprecated;
 
 ////////////////////////////////////////////////////////
 // Pheromone entity
 ////////////////////////////////////////////////////////
 class CPheromoneComponent final : public IEntityComponent
 {
-	friend class CHiveAgentComponent;
+	friend class CHiveAgentComponent_Deprecated;
 public:
 	CPheromoneComponent() = default;
 	virtual ~CPheromoneComponent() {}
@@ -55,7 +55,7 @@ public:
 	PROPERTY_DEFAULTVAL(int, TypeId, DefaultTypes::NONE)
 	bool IsResource() { return (m_TypeId == FOOD); } //Add more as more resources are added
 
-	CHiveAgentComponent *m_pParentAgent = nullptr;
+	CHiveAgentComponent_Deprecated *m_pParentAgent = nullptr;
 	// ~Pheromone Traits
 
 	//Decay

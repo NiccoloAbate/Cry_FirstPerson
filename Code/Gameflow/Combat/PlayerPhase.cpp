@@ -4,10 +4,19 @@
 #include "CombatGameflow.h"
 #include "CombatGameflowPhases.h"
 
+#include "Components\Characters\Character.h"
+#include "Components\Game\Stats.h"
+
 
 void CCombatGameflow_PlayerPhase::Initialize()
 {
 	GAMEFLOWPHASE_STANDARD_INIT();
+}
+
+void CCombatGameflow_PlayerPhase::OnPhaseStart()
+{
+	CCharacterComponent *pCharacter = ((CCombatGameflow*)GetParentGameflow())->GetCharacter();
+	pCharacter->GetStatsComponent()->GetStamina().ResetToMax();
 }
 
 void CCombatGameflow_PlayerPhase::InitializeKeyBinds()

@@ -10,7 +10,7 @@ public:
 
 };
 
-class CHiveAgentComponent;
+class CHiveAgentComponent_Deprecated;
 class HiveAgentBehaviors : public Behavior
 {
 public:

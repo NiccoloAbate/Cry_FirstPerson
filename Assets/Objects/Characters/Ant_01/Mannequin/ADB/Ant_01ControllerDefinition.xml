@@ -1,0 +1,15 @@
+<ControllerDef>
+ <Tags filename="Objects/Characters/Ant_01/Mannequin/ADB/Ant_01Tags.xml"/>
+ <Fragments filename="Objects/Characters/Ant_01/Mannequin/ADB/Ant_01FragmentIds.xml"/>
+ <FragmentDefs>
+  <Idle scopes="Ant_01" flags="Persistent+AutoReinstall"/>
+  <Walk scopes="Ant_01" flags="Persistent+AutoReinstall"/>
+  <Attack scopes="Ant_01" flags="Persistent+AutoReinstall"/>
+ </FragmentDefs>
+ <ScopeContextDefs>
+  <Ant_01Character />
+ </ScopeContextDefs>
+ <ScopeDefs>
+  <Ant_01 layer="0" numLayers="3" context="Ant_01Character"/>
+ </ScopeDefs>
+</ControllerDef>

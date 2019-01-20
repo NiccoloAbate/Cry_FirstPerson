@@ -1,8 +1,8 @@
 #include "StdAfx.h"
 #include "HiveAgent_AI.h"
 
-#include "AI\Hive\Explore.h"
-#include "AI\Hive\Combat.h"
+#include "Explore.h"
+#include "Combat.h"
 
 void CHiveAgent_AI::Initialize()
 {

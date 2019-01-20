@@ -1,6 +1,6 @@
 <AssetMetadata version="0" type="Animation" guid="6a3a0774-7964-8c86-9d8f-0e860e2556b5" source="Ant_01.fbx">
  <Files>
-  <File path="Armature Walk.caf"/>
+  <File path="Walk.caf"/>
  </Files>
  <Details />
 </AssetMetadata>

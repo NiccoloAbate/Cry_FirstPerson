@@ -14,7 +14,7 @@
 #include <CrySystem\ISystem.h>
 
 #include "Components\Hive\Pheromone.h"
-#include "Components\Hive\HiveAgent.h"
+#include "Components\Hive\HiveAgent_Deprecated.h"
 #include "Components\Characters\Character.h"
 
 #include "Game\CameraController.h"
@@ -145,7 +145,7 @@ void CCryFirstPersonPlayerComponent::Initialize()
 	{ 
 		ACTIVECHECK
 		IEntity *pEntity = gEnv->pEntitySystem->FindEntityByName("Agent 1");
-		CHiveAgentComponent *pAgent1 = pEntity->GetComponent<CHiveAgentComponent>();
+		CHiveAgentComponent_Deprecated *pAgent1 = pEntity->GetComponent<CHiveAgentComponent_Deprecated>();
 		pAgent1->GoHome();
 	});
 	m_pInputComponent->BindAction("game", "testaction", eAID_KeyboardMouse, eKI_G, false, true, false);
