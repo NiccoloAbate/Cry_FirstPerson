@@ -51,7 +51,7 @@ void CHiveAgentComponent_Deprecated::Initialize()
 
 	m_pGameplayEntityComponent = m_pEntity->GetOrCreateComponent<CGameplayEntityComponent>();
 
-	m_pAI = new CHiveAgent_AI;
+	m_pAI = new CHiveAgent_AI(m_pEntity);
 	m_pAI->Initialize();
 }
 

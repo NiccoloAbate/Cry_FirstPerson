@@ -7,6 +7,8 @@
 #include "Game\UIController.h"
 #include "UI\Hud.h"
 
+#include "Utils/Utils.h"
+
 void CPlayerExtension::Release()
 {
 	m_pPlayerComponent->GetCameraEntity();
@@ -24,6 +26,18 @@ void CPlayerExtension::ExtendFrom(CPlayerComponent * pPlayerComponent)
 	OnExtended();
 }
 
+void CPlayerExtension::FaceAt(IEntity* pEntity, float fTime)
+{
+	if(fTime == 0)
+		Utils::EntityFaceAt(m_pEntity, pEntity);
+}
+
+void CPlayerExtension::SetViewDir(Vec3 ViewDir, float fTime)
+{
+	const Quat orientation = Quat::CreateRotationVDir(ViewDir);
+	if(fTime == 0)
+		m_pEntity->SetRotation(orientation);
+}
 
 void CPlayerExtension::HandleInputFlagChange(TInputFlags flags, int activationMode, EInputFlagType type)
 {

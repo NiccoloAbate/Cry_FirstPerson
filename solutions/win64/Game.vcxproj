@@ -20,25 +20,26 @@
     <Platform>x64</Platform>
     <ProjectName>Game</ProjectName>
     <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -284,12 +285,18 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="..\..\Code\AI\Hive\HiveAgent\Combat.h" />
     <ClInclude Include="..\..\Code\AI\Hive\HiveAgent\Explore.h" />
     <ClInclude Include="..\..\Code\AI\Hive\HiveAgent\HiveAgent_AI.h" />
+    <ClInclude Include="..\..\Code\Combat\Abilities.h" />
+    <ClInclude Include="..\..\Code\Combat\AbilityFactory.h" />
+    <ClInclude Include="..\..\Code\Combat\CombatSystem.h" />
+    <ClInclude Include="..\..\Code\Combat\Targeting.h" />
+    <ClInclude Include="..\..\Code\Components\AI\Pathfinder.h" />
     <ClInclude Include="..\..\Code\Components\Behaviors\Behaviors.h" />
     <ClInclude Include="..\..\Code\Components\Characters\Character.h" />
     <ClInclude Include="..\..\Code\Components\Characters\CharacterPlayerExtension.h" />
+    <ClInclude Include="..\..\Code\Components\Combat\EncounterSpawnPoint.h" />
     <ClInclude Include="..\..\Code\Components\Environment\Rain.h" />
     <ClInclude Include="..\..\Code\Components\Game\GameplayEntity.h" />
-    <ClInclude Include="..\..\Code\Components\Game\Stats.h" />
+    <ClInclude Include="..\..\Code\Components\Game\Stats_Deprecated.h" />
     <ClInclude Include="..\..\Code\Components\Hive\Hive.h" />
     <ClInclude Include="..\..\Code\Components\Hive\HiveAgent.h" />
     <ClInclude Include="..\..\Code\Components\Hive\HiveAgent_Deprecated.h" />
@@ -327,6 +334,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="..\..\Code\Types\MinMaxVar.h" />
     <ClInclude Include="..\..\Code\Types\MovingAverage.h" />
     <ClInclude Include="..\..\Code\Types\Static_TypeId.h" />
+    <ClInclude Include="..\..\Code\Types\Stats.h" />
     <ClInclude Include="..\..\Code\UI\DialogueEditor.h" />
     <ClInclude Include="..\..\Code\UI\EntityHud.h" />
     <ClInclude Include="..\..\Code\UI\Hud.h" />
@@ -337,6 +345,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="..\..\Code\Utils\Debug\DebugExtension.h" />
     <ClInclude Include="..\..\Code\Utils\ExposeVariables.h" />
     <ClInclude Include="..\..\Code\Utils\Files\FileManager.h" />
+    <ClInclude Include="..\..\Code\Utils\Initialization\DeferredInitialization.h" />
     <ClInclude Include="..\..\Code\Utils\Macros\Checks.h" />
     <ClInclude Include="..\..\Code\Utils\Macros\Properties.h" />
     <ClInclude Include="..\..\Code\Utils\Macros\RepeatCode_Macros.h" />
@@ -359,11 +368,17 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\..\Code\AI\Hive\HiveAgent\Combat.cpp" />
     <ClCompile Include="..\..\Code\AI\Hive\HiveAgent\Explore.cpp" />
     <ClCompile Include="..\..\Code\AI\Hive\HiveAgent\HiveAgent_AI.cpp" />
+    <ClCompile Include="..\..\Code\Combat\Abilities.cpp" />
+    <ClCompile Include="..\..\Code\Combat\AbilityFactory.cpp" />
+    <ClCompile Include="..\..\Code\Combat\CombatSystem.cpp" />
+    <ClCompile Include="..\..\Code\Combat\Targeting.cpp" />
+    <ClCompile Include="..\..\Code\Components\AI\Pathfinder.cpp" />
     <ClCompile Include="..\..\Code\Components\Characters\Character.cpp" />
     <ClCompile Include="..\..\Code\Components\Characters\CharacterPlayerExtension.cpp" />
+    <ClCompile Include="..\..\Code\Components\Combat\EncounterSpawnPoint.cpp" />
     <ClCompile Include="..\..\Code\Components\Environment\Rain.cpp" />
     <ClCompile Include="..\..\Code\Components\Game\GameplayEntity.cpp" />
-    <ClCompile Include="..\..\Code\Components\Game\Stats.cpp" />
+    <ClCompile Include="..\..\Code\Components\Game\Stats_Deprecated.cpp" />
     <ClCompile Include="..\..\Code\Components\Hive\Hive.cpp" />
     <ClCompile Include="..\..\Code\Components\Hive\HiveAgent.cpp" />
     <ClCompile Include="..\..\Code\Components\Hive\HiveAgent_Deprecated.cpp" />
@@ -398,6 +413,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\..\Code\Utils\ConsoleCommands.cpp" />
     <ClCompile Include="..\..\Code\Utils\Debug\DebugExtension.cpp" />
     <ClCompile Include="..\..\Code\Utils\Files\FileManager.cpp" />
+    <ClCompile Include="..\..\Code\Utils\Initialization\DeferredInitialization.cpp" />
     <ClCompile Include="..\..\Code\Utils\Serialization\ExtensionFunctions.cpp" />
     <ClCompile Include="..\..\Code\Utils\Serialization\SerializableTypes.cpp" />
     <ClCompile Include="..\..\Code\Utils\Serialization\SerializationExtension.cpp" />

@@ -12,7 +12,8 @@
 #include "GamePlugin.h"
 #include "Components\Player\Player.h"
 #include "Components\Characters\Character.h"
-#include "Components\Game\Stats.h"
+#include "Components\Game\Stats_Deprecated.h"
+#include "Components/Game/GameplayEntity.h"
 
 
 
@@ -20,7 +21,7 @@ bool CCombatGameflow::IsPlayerOutOfMoves()
 {
 	bool bOutOfMoves = true;
 
-	if (m_pCharacter->GetStatsComponent()->GetStamina() > 0)
+	if (CGamePlugin::gGamePlugin->GetPlayerExtensionEntity()->GetComponent<CGameplayEntityComponent>()->GetStamina() > 0)
 		bOutOfMoves = false;
 
 	return bOutOfMoves;
@@ -40,6 +41,7 @@ void CCombatGameflow::Initialize()
 			CSpawnPointComponent::FindFirstSpawnPoint()->SpawnEntity(pEntity);
 		if (m_pCharacter = pEntity->GetOrCreateComponent<CCharacterComponent>())
 		{
+			m_pCharacter->MakeHuman_01();
 			CGamePlugin::gGamePlugin->GetPlayerComponent()->ExtendTo((CPlayerExtension*)m_pCharacter->GetOrCreatePlayerExtension());
 		}
 	}
@@ -51,7 +53,10 @@ void CCombatGameflow::Initialize()
 	{
 		if (!gEnv->IsEditor())
 			CSpawnPointComponent::FindFirstSpawnPoint()->SpawnEntity(pEntity);
-		pEntity->GetOrCreateComponent<CCharacterComponent>();
+		if (pEntity->GetOrCreateComponent<CCharacterComponent>())
+		{
+			m_pCharacter->MakeHuman_01();
+		}
 	}
 
 	AddNewPhase<CCombatGameflow_PlayerPhase>();

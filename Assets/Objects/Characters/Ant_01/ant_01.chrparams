@@ -1,5 +1,6 @@
 <Params>
  <AnimationList>
+  <Animation name="$AnimEventDatabase" path="Objects/Characters/Ant_01/Animations/Ant_01.animevents"/>
   <Animation name="#filepath" path="Objects/Characters/Ant_01/Animations"/>
   <Animation name="*" path="*/*.caf"/>
   <Animation name="*" path="*/*.bspace"/>

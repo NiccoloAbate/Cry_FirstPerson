@@ -20,7 +20,6 @@ m_pInputComponent->BindAction("Player", "ExtensionKeyEvent_" KeyName, eAID_Keybo
 
 
 class CPlayerExtension;
-class CStatsComponent;
 class CHud;
 
 ////////////////////////////////////////////////////////
@@ -53,7 +52,9 @@ public:
 
 	IEntity* GetCameraEntity() { return m_pCamera; }
 
-	CStatsComponent* GetStatsComponent();
+	void FaceAt(IEntity* pEntity);
+	//void FaceAt(Vec3 Pos);
+	void SetViewDir(Vec3 ViewDir);
 
 	// World Interaction
 	//IEntity *m_pLookEntity = nullptr;

@@ -17,6 +17,7 @@
 #include "Components\Player\PlayerExtension.h"
 #include "Components\SpawnPoint.h"
 #include "Components\Characters\Character.h"
+#include "Utils\Initialization\DeferredInitialization.h"
 
 #include <CrySchematyc/Env/IEnvRegistry.h>
 #include <CrySchematyc/Env/EnvPackage.h>
@@ -176,6 +177,11 @@ m_PlayerIndex = m_pPlayers.size() - 1;
 }
 */
 
+IEntity* CGamePlugin::GetPlayerExtensionEntity()
+{
+	return GetPlayerComponent()->GetPlayerExtension()->GetEntity();
+}
+
 void CGamePlugin::InitializeCamera()
 {
 	SEntitySpawnParams spawnParams_Cam;
@@ -248,6 +254,8 @@ void CGamePlugin::OnLevelLoaded()
 		gEnv->pConsole->ExecuteString("r_Height 1080");
 	}
 
+	
+
 	//auto pEffectSystem = gEnv->pGameFramework->GetIEffectSystem();
 	//pEffectSystem->Activate(pEffectSystem->GetEffectId("FrostEffect"));
 
@@ -257,6 +265,8 @@ void CGamePlugin::OnGameplayReady()
 {
 	InitializeGameflowManager();
 	m_pUIController->OnGameplayStart();
+
+	TRIGGER_DEFERREDINITIALIZATION_CHECKPOINT();
 }
 
 void CC_Fullscreen(CC_Args pArgs)

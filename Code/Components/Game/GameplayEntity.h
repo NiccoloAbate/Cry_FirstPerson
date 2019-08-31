@@ -3,11 +3,11 @@
 #include <CryEntitySystem/IEntityComponent.h>
 #include <CryEntitySystem/IEntity.h>
 
-#include "Types\MinMaxVar.h"
+#include "Types/Stats.h"
 
 class CEntityHudElement_StatBar;
 class CTimelineEntityComponent;
-class CStatsComponent;
+class CStatsComponent_Deprecated;
 
 ////////////////////////////////////////////////////////
 // Basic Gameplay Entity component
@@ -28,26 +28,25 @@ public:
 		desc.SetDescription("A basic gameplay entity");
 		desc.SetComponentFlags({ IEntityComponent::EFlags::Transform, IEntityComponent::EFlags::Socket, IEntityComponent::EFlags::Attach });
 		
-		//desc.AddMember(&CGameplayEntityComponent::m_Health, 'hlth', "health", "Health", "Entity Health", Stat<float>());
 		ReflectParams(desc);
 	}
 	static void ReflectParams(Schematyc::CTypeDesc<CGameplayEntityComponent>& desc);
 
 	// Stats
-	template<typename T>
-	using Stat = MinMaxVar<T>;
-
-	Stat<float> GetHealth() { return m_Health; }
+	
+	CStat<float>& GetHealth() { return m_Health; }
 	// Sets the whole Stat. Updates flash
-	void SetHealthStat(Stat<float> Health);
+	void SetHealthStat(CStat<float> Health);
 	void SetHealthMin(float Min);
 	void SetHealthMax(float Max);
 	// Sets the current Stat value
 	void SetHealth(float Health);
+
+	CStat<float>& GetStamina() { return m_Stamina; }
 	//~Stats
 
 	CTimelineEntityComponent* GetTimelineComponent() { return m_pTimelineComponent; }
-	CStatsComponent* GetStats() { return m_pStatsComponent; }
+	//CStatsComponent_Deprecated* GetStats() { return m_pStatsComponent; }
 
 	// IEntityComponent
 	virtual void Initialize() override;
@@ -58,14 +57,13 @@ public:
 
 protected:
 	// Stats
-	Stat<float> m_Health{ 0, 100, 100 };
-	CEntityHudElement_StatBar *m_pStatBar = nullptr;
-	
-	void InitializeUI();
+	CStat<float> m_Health{ 0, 3, 3 };
+	CStat<float> m_Stamina{ 0, 100, 100 };
+	//void InitializeUI();
 	//~Stats
 
 	CTimelineEntityComponent *m_pTimelineComponent = nullptr;
-	CStatsComponent *m_pStatsComponent = nullptr;
+	//CStatsComponent_Deprecated *m_pStatsComponent = nullptr;
 
 public:
 };

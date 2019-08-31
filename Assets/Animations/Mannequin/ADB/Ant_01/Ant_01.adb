@@ -1,4 +1,4 @@
-<AnimDB FragDef="Objects/Characters/Ant_01/Mannequin/ADB/Ant_01FragmentIds.xml" TagDef="Objects/Characters/Ant_01/Mannequin/ADB/Ant_01Tags.xml">
+<AnimDB FragDef="Animations/Mannequin/ADB/Ant_01/Ant_01FragmentIds.xml" TagDef="Animations/Mannequin/ADB/Ant_01/Ant_01Tags.xml">
  <FragmentList>
   <Idle>
    <Fragment BlendOutDuration="0.2" Tags="">
@@ -20,7 +20,7 @@
    <Fragment BlendOutDuration="0.2" Tags="">
     <AnimLayer>
      <Blend ExitTime="0" StartTime="0" Duration="0.2"/>
-     <Animation name="Attack" flags=""/>
+     <Animation name="Attack"/>
     </AnimLayer>
    </Fragment>
   </Attack>

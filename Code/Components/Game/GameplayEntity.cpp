@@ -17,7 +17,7 @@
 #include "Game\UIController.h"
 #include "UI\EntityHud.h"
 #include "Components\Timeline\TimelineEntity.h"
-#include "Components\Game\Stats.h"
+#include "Components\Game\Stats_Deprecated.h"
 
 
 static void RegisterGameplayEntityComponent(Schematyc::IEnvRegistrar& registrar)
@@ -36,58 +36,61 @@ CRY_STATIC_AUTO_REGISTER_FUNCTION(&RegisterGameplayEntityComponent)
 
 void CGameplayEntityComponent::ReflectParams(Schematyc::CTypeDesc<CGameplayEntityComponent>& desc)
 {
-	REFLECTPARAM(&CGameplayEntityComponent::m_Health, Health, Stat<float>());
+	desc.AddMember(&CGameplayEntityComponent::m_Health, 'hlth', "Health", "Health", "Health", CStat<float>(0, 3, 3));
+	desc.AddMember(&CGameplayEntityComponent::m_Stamina, 'stam', "Stamina", "Stamina", "Stamina", CStat<float>(0, 100, 100));
 }
 
-void CGameplayEntityComponent::SetHealthStat(Stat<float> Health)
+void CGameplayEntityComponent::SetHealthStat(CStat<float> Health)
 {
 	m_Health = Health;
-	if(m_pStatBar)
-		m_pStatBar->SetStat(Health);
+	//if(m_pStatBar)
+		//m_pStatBar->SetStat(Health);
 }
 
 void CGameplayEntityComponent::SetHealthMin(float Min)
 {
 	m_Health.Min = Min;
-	if (m_pStatBar)
-		m_pStatBar->SetStatMin(Min);
+	//if (m_pStatBar)
+		//m_pStatBar->SetStatMin(Min);
 }
 
 void CGameplayEntityComponent::SetHealthMax(float Max)
 {
 	m_Health.Max = Max;
-	if (m_pStatBar)
-		m_pStatBar->SetStatMax(Max);
+	//if (m_pStatBar)
+		//m_pStatBar->SetStatMax(Max);
 }
 
 void CGameplayEntityComponent::SetHealth(float Health)
 {
 	m_Health = Health;
-	if (m_pStatBar)
-		m_pStatBar->SetStat(Health);
+	//if (m_pStatBar)
+		//m_pStatBar->SetStat(Health);
 }
 
 void CGameplayEntityComponent::Initialize()
 {
 	m_pTimelineComponent = m_pEntity->GetOrCreateComponent<CTimelineEntityComponent>();
-	m_pStatsComponent = m_pEntity->GetOrCreateComponent<CStatsComponent>();
+	//m_pStatsComponent = m_pEntity->GetOrCreateComponent<CStatsComponent_Deprecated>();
 
-	m_pStatsComponent->SetHealth({ 0, 100, 87 });
+	//m_pStatsComponent->SetHealth({ 0, 100, 87 });
 
+	/*
 	const Schematyc::CClassMemberDescArray &Members = GetClassDesc().GetMembers();
 	for (int i = 0; i < Members.size(); i++)
 	{
 		const Schematyc::CClassMemberDesc &Member = Members[i];
 		const string Name = Member.GetName();
 		if (Name.find("PARAM_") != 0) continue;
-		const CStatsComponent::Key Id = Member.GetId();
+		const CStatsComponent_Deprecated::Key Id = Member.GetId();
 		//if (!m_pStatsComponent->HasParam(Id)) continue;
 		const ptrdiff_t Offset = Member.GetOffset();
 		UINT_PTR Ptr = ((UINT_PTR)this + Offset);
 		m_pStatsComponent->BindParamPTR(Id, Ptr);
 	}
+	*/
 
-	InitializeUI();
+	//InitializeUI();
 }
 
 void CGameplayEntityComponent::ProcessEvent(SEntityEvent & event)
@@ -95,13 +98,14 @@ void CGameplayEntityComponent::ProcessEvent(SEntityEvent & event)
 	switch (event.event)
 	{
 	case ENTITY_EVENT_COMPONENT_PROPERTY_CHANGED:
-		UPDATEREFLECTEDPARAMS();
+		//UPDATEREFLECTEDPARAMS();
 	break;
 	default:
 		break;
 	}
 }
 
+/*
 void CGameplayEntityComponent::InitializeUI()
 {
 	std::function<Vec3()> PosFunc;
@@ -133,3 +137,4 @@ void CGameplayEntityComponent::InitializeUI()
 	m_pStatBar->m_bPosFunc = true;
 	m_pStatBar->m_PosFunc = PosFunc;
 }
+*/

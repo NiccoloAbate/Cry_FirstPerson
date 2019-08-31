@@ -19,7 +19,7 @@
 
 #include "Game\CameraController.h"
 #include "Dialogue\DialogueManager.h"
-#include "Components\Game\Stats.h"
+#include "Components\Game\Stats_Deprecated.h"
 
 #include "GamePlugin.h"
 #include "Timeline\TimelineManager.h"
@@ -181,7 +181,7 @@ void CCryFirstPersonPlayerComponent::Initialize()
 
 
 
-	m_pStatsComponent = m_pEntity->GetOrCreateComponent<CStatsComponent>();
+	m_pStatsComponent = m_pEntity->GetOrCreateComponent<CStatsComponent_Deprecated>();
 	m_pStatsComponent->GiveStamina({ 0, 100, 100 });
 	m_pStatsComponent->GiveHealth({ 0, 100, 100 });
 

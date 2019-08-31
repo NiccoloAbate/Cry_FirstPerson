@@ -1,5 +1,6 @@
 #pragma once
 
+#include <CrySchematyc/Reflection/TypeDesc.h>
 
 template<typename T>
 struct MinMaxVar

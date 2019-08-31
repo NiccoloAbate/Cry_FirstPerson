@@ -10,7 +10,7 @@
 class CEntityHudElement_StatBar;
 class CEntityHudManager;
 class CPlayerComponent;
-class CStatsComponent;
+class CStatsComponent_Deprecated;
 
 class CHud
 {
@@ -43,5 +43,5 @@ private:
 
 	CEntityHudManager* GetEntityHudManager();
 	CPlayerComponent* GetPlayerComponent();
-	CStatsComponent* GetStatsComponent();
+	CStatsComponent_Deprecated* GetStatsComponent();
 };

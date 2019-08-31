@@ -13,8 +13,11 @@
 #include <CrySchematyc/Utils/SharedString.h>
 
 #include "Components\Characters\Character.h"
-#include "Components\Game\Stats.h"
+#include "Components\Game\Stats_Deprecated.h"
 #include "AI\Hive\HiveAgent\HiveAgent_AI.h"
+#include "Components\AI\Pathfinder.h"
+
+#include "Utils\Initialization\DeferredInitialization.h"
 
 static void RegisterHiveAgentComponent(Schematyc::IEnvRegistrar& registrar)
 {
@@ -31,21 +34,21 @@ CRY_STATIC_AUTO_REGISTER_FUNCTION(&RegisterHiveAgentComponent)
 void CHiveAgentComponent::Initialize()
 {
 	m_pCharacterComponent = m_pEntity->GetOrCreateComponent<CCharacterComponent>();
-	Cry::DefaultComponents::CAdvancedAnimationComponent* const pAnimationComponent = m_pCharacterComponent->GetAnimationComponent();
+	
+	if (gEnv->pGameFramework->IsInLevelLoad()) // just don't have to re-initialize the animation and physics information
+		return;
+
+	Cry::DefaultComponents::CAdvancedAnimationComponent* pAnimationComponent = m_pEntity->GetOrCreateComponent<Cry::DefaultComponents::CAdvancedAnimationComponent>();
+	Cry::DefaultComponents::CCharacterControllerComponent *pCharacterController = m_pEntity->GetOrCreateComponent<Cry::DefaultComponents::CCharacterControllerComponent>();
 
 	// Set the player geometry, this also triggers physics proxy creation
-	pAnimationComponent->SetMannequinAnimationDatabaseFile("Objects/Characters/Ant_01/Mannequin/ADB/Ant_01.adb");
+	pAnimationComponent->SetMannequinAnimationDatabaseFile("Animations/Mannequin/ADB/Ant_01/Ant_01.adb");
 	pAnimationComponent->SetCharacterFile("Objects/Characters/Ant_01/Ant_01.cdf");
 
-	pAnimationComponent->SetControllerDefinitionFile("Objects/Characters/Ant_01/Mannequin/ADB/Ant_01ControllerDefinition.xml");
+	pAnimationComponent->SetControllerDefinitionFile("Animations/Mannequin/ADB/Ant_01/Ant_01ControllerDefinition.xml");
 	pAnimationComponent->SetDefaultScopeContextName("Ant_01Character");
 	// Queue the idle fragment to start playing immediately on next update
 	pAnimationComponent->SetDefaultFragmentName("Idle");
-
-	// Acquire fragment and tag identifiers to avoid doing so each update
-	m_pCharacterComponent->SetIdleFragmentID(pAnimationComponent->GetFragmentId("Idle"));
-	m_pCharacterComponent->SetWalkFragmentID(pAnimationComponent->GetFragmentId("Walk"));
-	//m_rotateTagId = NULL; // m_pAnimationComponent->GetTagId("Rotate");
 
 	// Disable movement coming from the animation (root joint offset), we control this entirely via physics
 	pAnimationComponent->SetAnimationDrivenMotion(false);
@@ -53,11 +56,25 @@ void CHiveAgentComponent::Initialize()
 	// Load the character and Mannequin data from file
 	pAnimationComponent->LoadFromDisk();
 
+	// Acquire fragment and tag identifiers to avoid doing so each update
+	m_pCharacterComponent->SetIdleFragmentID(pAnimationComponent->GetFragmentId("Idle"));
+	m_pCharacterComponent->SetWalkFragmentID(pAnimationComponent->GetFragmentId("Walk"));
+	m_pCharacterComponent->SetRotateTagID(pAnimationComponent->GetTagId("Rotate"));
+
 	if (ICharacterInstance *pCharacter = pAnimationComponent->GetCharacter())
 		m_pCharacterComponent->SetCameraJointID(pCharacter->GetIDefaultSkeleton().GetJointIDByName("Head"));
 
-	m_pHiveAgentAI = new CHiveAgent_AI;
-	m_pCharacterComponent->SetAI(m_pHiveAgentAI);
+	pCharacterController->SetTransformMatrix(ZERO);
+	
+	//m_pCharacterComponent->GetAnimationComponent()->GetCharacter()->GetIAttachmentManager()->GetInterfaceByName("Light_Attachment");
+	m_pProjectorLightComponent = m_pEntity->GetOrCreateComponent<Cry::DefaultComponents::CProjectorLightComponent>();
+	m_pProjectorLightComponent->GetColorParameters().m_diffuseMultiplier = 100;
+	m_pProjectorLightComponent->GetColorParameters().m_specularMultiplier = 100;
+	m_pProjectorLightComponent->GetColorParameters().m_color = ColorF({ .8, 0, 1 });
+
+	SEntityEvent Event;
+	Event.event = ENTITY_EVENT_EDITOR_PROPERTY_CHANGED;
+	m_pProjectorLightComponent->SendEvent(Event);
 }
 
 void CHiveAgentComponent::ProcessEvent(SEntityEvent & event)
@@ -66,7 +83,21 @@ void CHiveAgentComponent::ProcessEvent(SEntityEvent & event)
 	{
 	default:
 		break;
+	case ENTITY_EVENT_LEVEL_LOADED:
+		OnLevelLoaded();
 	case ENTITY_EVENT_UPDATE:
 		break;
 	}
+}
+
+void CHiveAgentComponent::PostInit()
+{
+	m_pHiveAgentAI = new CHiveAgent_AI(m_pEntity);
+	m_pHiveAgentAI->Initialize();
+	m_pCharacterComponent->SetAI(m_pHiveAgentAI);
+}
+
+void CHiveAgentComponent::OnLevelLoaded()
+{
+	PostInit();
 }

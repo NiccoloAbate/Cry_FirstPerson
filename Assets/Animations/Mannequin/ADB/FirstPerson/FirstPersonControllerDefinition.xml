@@ -1,6 +1,6 @@
 <ControllerDef>
- <Tags filename="Animations/Mannequin/ADB/PlayerTags.xml"/>
- <Fragments filename="Animations/Mannequin/ADB/PlayerFragmentIds.xml"/>
+ <Tags filename="Animations/Mannequin/ADB/FirstPerson/PlayerTags.xml"/>
+ <Fragments filename="Animations/Mannequin/ADB/FirstPerson/PlayerFragmentIds.xml"/>
  <FragmentDefs>
   <Idle scopes="FirstPerson+ThirdPerson" flags="Persistent+AutoReinstall"/>
   <Walk scopes="FirstPerson+ThirdPerson"/>

@@ -20,6 +20,7 @@
   <Path>%engine%/engineassets/materials/fog/oceanoutoflowspec.mtl</Path>
   <Path>%engine%/engineassets/materials/fog/waterfogvolumeinto.mtl</Path>
   <Path>%engine%/engineassets/materials/fog/waterfogvolumeoutof.mtl</Path>
+  <Path>%engine%/engineassets/materials/material_default.mtl</Path>
   <Path>%engine%/engineassets/materials/water/wateroceanbottom.mtl</Path>
   <Path>%engine%/engineassets/objects/default.cgf</Path>
   <Path>%engine%/engineassets/texturemsg/defaultsolids.mtl</Path>
@@ -27,6 +28,10 @@
   <Path>%engine%/engineassets/textures/defaults/16_34.dds</Path>
   <Path>%engine%/engineassets/textures/defaults/16_5.dds</Path>
   <Path>%engine%/engineassets/textures/defaults/16_grey.dds</Path>
+  <Path>%engine%/engineassets/textures/lights/softedge.dds</Path>
+  <Path>animations/mannequin/adb/ant_01/ant_01controllerdefinition.xml</Path>
+  <Path>animations/mannequin/adb/ant_01/ant_01fragmentids.xml</Path>
+  <Path>animations/mannequin/adb/ant_01/ant_01tags.xml</Path>
   <Path>engineassets/materials/sky/sky.mtl</Path>
   <Path>engineassets/materials/water/ocean_default.mtl</Path>
   <Path>engineassets/texturemsg/defaultnouvs.dds</Path>
@@ -35,20 +40,21 @@
   <Path>engineassets/textures/white.dds</Path>
   <Path>libs/environmentpresets/example.xml</Path>
   <Path>materials/environment/river 01.mtl</Path>
+  <Path>materials/environment/snow.dds</Path>
   <Path>materials/objects.mtl</Path>
   <Path>materials/terrain.mtl</Path>
   <Path>objects/architecture/buildings/forest_cabin/forest_cabin.cgf</Path>
   <Path>objects/architecture/buildings/forest_cabin/forest_cabin.mtl</Path>
   <Path>objects/architecture/buildings/forest_cabin/forest_cabin_lod1.cgf</Path>
   <Path>objects/architecture/buildings/forest_cabin/forest_cabin_lod2.cgf</Path>
-  <Path>objects/architecture/buildings/forest_cabin/textures/forest_cabin_details_a_ddna.dds</Path>
+  <Path>objects/characters/ant_01/animations/attack.caf</Path>
   <Path>objects/characters/ant_01/animations/idle.caf</Path>
+  <Path>objects/characters/ant_01/animations/test walk 01.caf</Path>
+  <Path>objects/characters/ant_01/animations/walk.caf</Path>
   <Path>objects/characters/ant_01/ant_01.cdf</Path>
   <Path>objects/characters/ant_01/ant_01.chr</Path>
+  <Path>objects/characters/ant_01/ant_01.mtl</Path>
   <Path>objects/characters/ant_01/ant_01.skin</Path>
-  <Path>objects/characters/ant_01/mannequin/adb/ant_01controllerdefinition.xml</Path>
-  <Path>objects/characters/ant_01/mannequin/adb/ant_01fragmentids.xml</Path>
-  <Path>objects/characters/ant_01/mannequin/adb/ant_01tags.xml</Path>
   <Path>objects/characters/human_01/animations/dab.caf</Path>
   <Path>objects/characters/human_01/human_01.cdf</Path>
   <Path>objects/characters/human_01/human_01.chr</Path>
@@ -60,10 +66,13 @@
   <Path>objects/characters/human_01/mannequin/adb/human_01tags.xml</Path>
   <Path>objects/city/lamp_post_01/lamp_post_01.cgf</Path>
   <Path>objects/city/lamp_post_01/lamp_post_01.mtl</Path>
+  <Path>objects/city/rowhouse_01/rowhouse_01.cgf</Path>
+  <Path>objects/city/rowhouse_01/rowhouse_01.mtl</Path>
   <Path>objects/default/editorprimitive.mtl</Path>
   <Path>objects/default/primitive_cube.cgf</Path>
   <Path>objects/default/primitive_cube_small.cgf</Path>
   <Path>objects/default/primitive_sphere.cgf</Path>
+  <Path>objects/editor/spawnpoint_generic/spawnpoint_generic.cgf</Path>
   <Path>objects/hive/pheromone/pheromone.cgf</Path>
   <Path>objects/nature/rocks/rock_01/purple.dds</Path>
   <Path>objects/nature/rocks/rock_01/rock_01.cgf</Path>
@@ -77,9 +86,9 @@
   <Path>particleeffects/hive/test/test.pfx</Path>
   <Path>textures/cubemaps/example/environmentprobe1_cm.dds</Path>
   <Path>textures/cubemaps/example/environmentprobe1_cm_diff.dds</Path>
+  <Path>textures/defaults/white.dds</Path>
   <Path>textures/detail_bumpmaps/wood/wood_a_detail.dds</Path>
   <Path>textures/generic/metal/metal_tile_old_green_ddna.dds</Path>
-  <Path>textures/generic/metal/metal_tile_rusty_a_ddna.dds</Path>
   <Path>textures/generic/wood/wood_sheets_ddna.dds</Path>
   <Path>textures/shaders/edgescribbles_2_01.dds</Path>
   <Path>user/meshimporter/tmp_meshimporter_clhzzs/mi_caf_material.mtl</Path>

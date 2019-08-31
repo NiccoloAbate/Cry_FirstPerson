@@ -1,0 +1,7 @@
+<MannequinPreview>
+ <controllerDef filename="Animations/Mannequin/ADB/FirstPerson/FirstPersonControllerDefinition.xml"/>
+ <contexts>
+  <contextData name="FirstPerson" enabled="1" database="Animations/Mannequin/ADB/FirstPerson/FirstPerson.adb" context="FirstPersonCharacter" model="Objects/Characters/SampleCharacter/firstperson.cdf"/>
+ </contexts>
+ <History StartTime="0" EndTime="0"/>
+</MannequinPreview>

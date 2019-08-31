@@ -20,7 +20,7 @@
 #define INPUTFLAGCHECK_NOT(Flag) if(m_inputFlags & (TInputFlags)EInputFlag::##Flag) return;
 
 
-class CStatsComponent;
+class CStatsComponent_Deprecated;
 class CHud;
 
 ////////////////////////////////////////////////////////
@@ -74,7 +74,7 @@ public:
 
 	void SetCamera(IEntity *pCamera);
 
-	CStatsComponent* GetStatsComponent() { return m_pStatsComponent; }
+	CStatsComponent_Deprecated* GetStatsComponent() { return m_pStatsComponent; }
 
 	// World Interaction
 	IEntity *m_pLookEntity = nullptr;
@@ -106,7 +106,7 @@ protected:
 	Cry::DefaultComponents::CAdvancedAnimationComponent* m_pAnimationComponent = nullptr;
 	Cry::DefaultComponents::CInputComponent* m_pInputComponent = nullptr;
 
-	CStatsComponent *m_pStatsComponent = nullptr;
+	CStatsComponent_Deprecated *m_pStatsComponent = nullptr;
 
 	FragmentID m_idleFragmentId;
 	FragmentID m_walkFragmentId;

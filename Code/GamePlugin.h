@@ -58,6 +58,7 @@ public:
 
 	// Player Functions
 	CPlayerComponent* GetPlayerComponent() { return m_pPlayerComponent; }
+	IEntity* GetPlayerExtensionEntity();
 	//void InitializePlayer(int channelId, bool bIsReset);
 	//~Player Functions
 

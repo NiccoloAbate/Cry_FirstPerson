@@ -36,6 +36,9 @@ public:
 	virtual void Update(float fFrameTime) override;
 	virtual void ProcessKeyEvent(EKeyId KeyId, int activationMode, float value) override;
 
+	virtual void FaceAt(IEntity* pEntity, float fTime = 0) override;
+	virtual void SetViewDir(Vec3 ViewDir, float fTime = 0) override;
+
 protected:
 	CCharacterComponent *m_pCharacterComponent;
 

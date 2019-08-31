@@ -6,10 +6,12 @@
 
 #include "Components\Player\Player.h"
 #include "Components\Player\PlayerExtension.h"
-#include "Components\Game\Stats.h"
+#include "Components/Game/GameplayEntity.h"
 
 #include "Game\UIController.h"
 #include "UI\EntityHud.h"
+
+#include "Types/Stats.h"
 
 void CHud::Initialize()
 {
@@ -32,15 +34,15 @@ void CHud::OnGameplayStart()
 
 void CHud::UpdateStaminaBar()
 {
-	CStatsComponent *pStatsComponent = GetStatsComponent();
-	MinMaxVar<float> &Stamina = pStatsComponent->GetStamina();
+	//CStatsComponent_Deprecated *pStatsComponent = GetStatsComponent();
+	CStat<float>& Stamina = CGamePlugin::gGamePlugin->GetPlayerExtensionEntity()->GetComponent<CGameplayEntityComponent>()->GetStamina();
 	m_pStaminaBar->InitializeStat("Stamina", Stamina);
 }
 
 void CHud::InitializeStatBars()
 {
-	CStatsComponent *pStatsComponent = GetStatsComponent();
-	MinMaxVar<float> &Stamina = pStatsComponent->GetStamina();
+	//CStatsComponent_Deprecated *pStatsComponent = GetStatsComponent();
+	CStat<float> &Stamina = CGamePlugin::gGamePlugin->GetPlayerExtensionEntity()->GetComponent<CGameplayEntityComponent>()->GetStamina();
 	m_pStaminaBar = GetEntityHudManager()->NewStatBar("Hud_StaminaBar", "Stamina", (int)((1920) / 2), 980, "Stamina", Stamina);
 	m_pStaminaBar->m_bUpdatePos = false;
 	//m_pStaminaBar->SetScale(1.5);
@@ -81,9 +83,10 @@ CPlayerComponent * CHud::GetPlayerComponent()
 	return CGamePlugin::gGamePlugin->GetPlayerComponent();
 }
 
-CStatsComponent * CHud::GetStatsComponent()
+CStatsComponent_Deprecated * CHud::GetStatsComponent()
 {
-	return CGamePlugin::gGamePlugin->GetPlayerComponent()->GetStatsComponent();
+	return nullptr;
+	//return CGamePlugin::gGamePlugin->GetPlayerComponent()->GetStatsComponent();
 }
 
 void CHud::EventListener::OnUIEvent(IUIElement * pSender, const SUIEventDesc & event, const SUIArguments & args)

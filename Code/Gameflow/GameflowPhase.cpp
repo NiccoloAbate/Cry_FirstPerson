@@ -27,13 +27,13 @@ void CGameflowPhase::SetActivePhase(bool bActive)
 {
 	if(bActive)
 	{
-		gEnv->pGameFramework->GetIActionMapManager()->EnableActionMap(m_PhaseName, true);
+		gEnv->pGameFramework->GetIActionMapManager()->EnableActionMap(m_PhaseName, true); // Enables actions for the phase
 	}
 	else
 	{
 		if (!GetFlags().HasFlag(EGameflowPhaseFlags::UPDATE_IN_BACKGROUND))
 		{
-			gEnv->pGameFramework->GetIActionMapManager()->EnableActionMap(m_PhaseName, false);
+			gEnv->pGameFramework->GetIActionMapManager()->EnableActionMap(m_PhaseName, false); // Disables actions for the phase unless the phase is set to update in the background
 		}
 	}
 }

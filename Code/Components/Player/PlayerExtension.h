@@ -31,6 +31,8 @@ public:
 	virtual void OnExtended() {}
 	virtual void OnReleased() {}
 
+	virtual void FaceAt(IEntity* pEntity, float fTime = 0); // Optional to overload
+	virtual void SetViewDir(Vec3 ViewDir, float fTime = 0); // Optional to overload
 
 
 protected:

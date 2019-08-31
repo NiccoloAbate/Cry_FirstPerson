@@ -7,8 +7,10 @@
 #include "Timeline\TimelineManager.h"
 
 #include "Character.h"
-#include "Components\Game\Stats.h"
+#include "Components\Game\Stats_Deprecated.h"
+#include "Components/Game/GameplayEntity.h"
 #include "UI\Hud.h"
+#include "Utils/Utils.h"
 
 
 void CCharacter_PlayerExtension::Initialize()
@@ -70,13 +72,30 @@ void CCharacter_PlayerExtension::ProcessKeyEvent(EKeyId KeyId, int activationMod
 	}
 }
 
+void CCharacter_PlayerExtension::FaceAt(IEntity* pEntity, float fTime)
+{
+	const Vec3 vDirection = pEntity->GetPos() - m_pEntity->GetPos();
+	const Quat orientation = Quat::CreateRotationVDir(vDirection);
+	m_pCharacterComponent->m_lookOrientation = orientation;
+	Utils::EntityFaceAt(m_pPlayerComponent->GetCameraEntity(), pEntity);
+}
+
+void CCharacter_PlayerExtension::SetViewDir(Vec3 ViewDir, float fTime)
+{
+	const Quat orientation = Quat::CreateRotationVDir(ViewDir);
+	m_pCharacterComponent->m_lookOrientation = orientation;
+	m_pEntity->SetRotation(orientation);
+}
+
+
+
 void CCharacter_PlayerExtension::UpdateMovementRequest(float frameTime)
 {
 	// Don't handle input if we are in air
 	//if (!m_pCharacterController->IsOnGround())
 	//return;
 
-	Stat<float> &Stamina = m_pCharacterComponent->m_pStatsComponent->GetStamina();
+	CStat<float>& Stamina = CGamePlugin::gGamePlugin->GetPlayerExtensionEntity()->GetComponent<CGameplayEntityComponent>()->GetStamina();//m_pCharacterComponent->m_pStatsComponent->GetStamina();
 	// Don't calculate movement if stamina is out
 	if (Stamina <= 0)
 		return;
@@ -284,7 +303,7 @@ void CCharacter_PlayerExtension::Jump()
 {
 	if (!m_pCharacterComponent->m_pCharacterController->IsOnGround())
 		return;
-	Stat<float> &Stamina = m_pCharacterComponent->m_pStatsComponent->GetStamina();
+	CStat<float>& Stamina = CGamePlugin::gGamePlugin->GetPlayerExtensionEntity()->GetComponent<CGameplayEntityComponent>()->GetStamina();//m_pCharacterComponent->m_pStatsComponent->GetStamina();
 	if (Stamina <= 0)
 		return;
 

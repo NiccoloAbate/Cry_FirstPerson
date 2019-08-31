@@ -30,7 +30,7 @@ public:
 	{
 		desc.SetGUID("{AE97ABA8-17AA-42AF-8449-ED1DB4C2C39B}"_cry_guid);
 		desc.SetEditorCategory("Hive");
-		desc.SetLabel("HiveAgent");
+		desc.SetLabel("HiveAgent_Deprecated");
 		desc.SetDescription("The Agents of the hive");
 		desc.SetComponentFlags({ IEntityComponent::EFlags::Transform, IEntityComponent::EFlags::Socket, IEntityComponent::EFlags::Attach });
 	}

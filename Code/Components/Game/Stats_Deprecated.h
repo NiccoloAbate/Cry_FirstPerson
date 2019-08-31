@@ -50,15 +50,15 @@ class CEntityHudElement_StatBar;
 ////////////////////////////////////////////////////////
 // Basic Gameplay Entity component
 ////////////////////////////////////////////////////////
-class CStatsComponent final : public IEntityComponent
+class CStatsComponent_Deprecated final : public IEntityComponent
 {
 public:
-	CStatsComponent() = default;
-	virtual ~CStatsComponent() {}
+	CStatsComponent_Deprecated() = default;
+	virtual ~CStatsComponent_Deprecated() {}
 
 	// Reflect type to set a unique identifier for this component
 	// and provide additional information to expose it in the sandbox
-	static void ReflectType(Schematyc::CTypeDesc<CStatsComponent>& desc)
+	static void ReflectType(Schematyc::CTypeDesc<CStatsComponent_Deprecated>& desc)
 	{
 		desc.SetGUID("{A48A4E3E-0084-4CF8-8335-0B77FE2A2259}"_cry_guid);
 		desc.SetEditorCategory("Game");
@@ -90,14 +90,14 @@ void Give##Name(Type Name) { m_Params[DefaultParams::##Name] = ParamData::New(Na
 	DEFAULTPARAM(Health, Stat<float>)
 	DEFAULTPARAM(Stamina, Stat<float>)
 
-#define REFLECTPARAM(ClassMember, Name, DefaultValue) desc.AddMember(ClassMember, CStatsComponent::DefaultParams::##Name, "PARAM_"#Name, #Name, #Name, DefaultValue);
+#define REFLECTPARAM(ClassMember, Name, DefaultValue) desc.AddMember(ClassMember, CStatsComponent_Deprecated::DefaultParams::##Name, "PARAM_"#Name, #Name, #Name, DefaultValue);
 #define UPDATEREFLECTEDPARAMS()																										\
 	{																																\
 		IEntityComponent *pComponent = ((IEntityComponent*)event.nParam[0]) ? ((IEntityComponent*)event.nParam[0]) : (this);		\
 		const Schematyc::CClassMemberDesc *pMemberDesc = pComponent->GetClassDesc().FindMemberById((uint32)event.nParam[1]);		\
 		const string Name = pMemberDesc->GetName();																					\
 		if (Name.find("PARAM_") != 0) return;																						\
-		const CStatsComponent::Key Id = pMemberDesc->GetId();																		\
+		const CStatsComponent_Deprecated::Key Id = pMemberDesc->GetId();																		\
 		if (!m_pStatsComponent->HasParam(Id)) return;																				\
 		const ptrdiff_t Offset = pMemberDesc->GetOffset();																			\
 		UINT_PTR Ptr = ((UINT_PTR)pComponent + Offset);																				\
@@ -188,8 +188,8 @@ protected:
 	std::unordered_map<Key2, Key, Key2Hasher> m_Key2Map;
 	Key GetKey(Key2 K2) { if (!Map_HasElement(m_Key2Map, K2)) return NULLKEY; return m_Key2Map[K2]; }
 
-	Stat<float> m_Health{ 0, 100, 100 };
-	CEntityHudElement_StatBar *m_pStatBar = nullptr;
+	//Stat<float> m_Health{ 0, 100, 100 };
+	//CEntityHudElement_StatBar *m_pStatBar = nullptr;
 
 	void InitializeUI();
 

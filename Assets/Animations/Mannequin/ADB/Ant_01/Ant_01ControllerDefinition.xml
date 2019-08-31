@@ -1,6 +1,6 @@
 <ControllerDef>
- <Tags filename="Objects/Characters/Ant_01/Mannequin/ADB/Ant_01Tags.xml"/>
- <Fragments filename="Objects/Characters/Ant_01/Mannequin/ADB/Ant_01FragmentIds.xml"/>
+ <Tags filename="Animations/Mannequin/ADB/Ant_01/Ant_01Tags.xml"/>
+ <Fragments filename="Animations/Mannequin/ADB/Ant_01/Ant_01FragmentIds.xml"/>
  <FragmentDefs>
   <Idle scopes="Ant_01" flags="Persistent+AutoReinstall"/>
   <Walk scopes="Ant_01" flags="Persistent+AutoReinstall"/>

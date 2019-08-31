@@ -17,10 +17,12 @@
 #include "GamePlugin.h"
 #include "Game\UIController.h"
 #include "Components\Game\GameplayEntity.h"
-#include "Components\Game\Stats.h"
+#include "Components\Game\Stats_Deprecated.h"
 #include "CharacterPlayerExtension.h"
 #include "Components\Player\Player.h"
 #include "AI\AI.h"
+#include "Utils\Initialization\DeferredInitialization.h"
+#include "Components\AI\Pathfinder.h"
 
 static void RegisterCharacterComponent(Schematyc::IEnvRegistrar& registrar)
 {
@@ -34,6 +36,7 @@ static void RegisterCharacterComponent(Schematyc::IEnvRegistrar& registrar)
 }
 CRY_STATIC_AUTO_REGISTER_FUNCTION(&RegisterCharacterComponent)
 
+#include "CryAction.h"
 void CCharacterComponent::Initialize()
 {
 	// Create the camera component, will automatically update the viewport every frame
@@ -48,55 +51,32 @@ void CCharacterComponent::Initialize()
 	// Create the advanced animation component, responsible for updating Mannequin and animating the player
 	m_pAnimationComponent = m_pEntity->GetOrCreateComponent<Cry::DefaultComponents::CAdvancedAnimationComponent>();
 
-	// Set the player geometry, this also triggers physics proxy creation
-	m_pAnimationComponent->SetMannequinAnimationDatabaseFile("Objects/Characters/Human_01/Mannequin/ADB/Human_01.adb");
-	m_pAnimationComponent->SetCharacterFile("Objects/Characters/Human_01/Human_01.cdf");
-
-	m_pAnimationComponent->SetControllerDefinitionFile("Objects/Characters/Human_01/Mannequin/ADB/Human_01ControllerDefinition.xml");
-	m_pAnimationComponent->SetDefaultScopeContextName("Human_01Character");
-	// Queue the idle fragment to start playing immediately on next update
-	m_pAnimationComponent->SetDefaultFragmentName("Dab");
-	
-	// Acquire fragment and tag identifiers to avoid doing so each update
-	//m_idleFragmentId = m_pAnimationComponent->GetFragmentId("Dab");
-	//m_walkFragmentId = m_pAnimationComponent->GetFragmentId("Dab");
-	//m_rotateTagId = NULL; // m_pAnimationComponent->GetTagId("Rotate");
-
-	// Disable movement coming from the animation (root joint offset), we control this entirely via physics
-	m_pAnimationComponent->SetAnimationDrivenMotion(false);
-
-	// Load the character and Mannequin data from file
-	m_pAnimationComponent->LoadFromDisk();
-
-	if (ICharacterInstance *pCharacter = m_pAnimationComponent->GetCharacter())
+	m_pPathfinderComponent = m_pEntity->GetOrCreateComponent<CPathfinderComponent>();
+	m_pPathfinderComponent->SetMovementCallback([this](const Vec3& recommendedVelocity)
 	{
-		//ICharacterInstance *pJJJJJ = m_pEntity->GetCharacter(m_pAnimationComponent->GetEntitySlotId());
-		//m_pEntity->ClearSlots();
-		//m_pEntity->SetCharacter(pCharacter, m_pAnimationComponent->GetEntitySlotId(), false);
-		// Cache the camera joint id so that we don't need to look it up every frame in UpdateView
-		m_cameraJointId = pCharacter->GetIDefaultSkeleton().GetJointIDByName("head");
-	}
-	
-	//m_pAnimationComponent->ActivateContext("Human_01Character");
+		m_pCharacterController->SetVelocity(recommendedVelocity);
+	});
 
 	m_pGameplayEntityComponent = m_pEntity->GetOrCreateComponent<CGameplayEntityComponent>(false);
 	//m_pGameplayEntityComponent->SetHealthStat(CGameplayEntityComponent::Stat<float>(0, 100, 85));
 
-	m_pStatsComponent = m_pEntity->GetOrCreateComponent<CStatsComponent>();
-	m_pStatsComponent->GiveStamina({ 0, 100, 100 });
+	//m_pStatsComponent = m_pEntity->GetOrCreateComponent<CStatsComponent_Deprecated>();
+	//m_pStatsComponent->GiveStamina({ 0, 100, 100 });
 
+	/*
 	const Schematyc::CClassMemberDescArray &Members = GetClassDesc().GetMembers();
 	for (int i = 0; i < Members.size(); i++)
 	{
 		const Schematyc::CClassMemberDesc &Member = Members[i];
 		const string Name = Member.GetName();
 		if (Name.find("PARAM_") != 0) continue;
-		const CStatsComponent::Key Id = Member.GetId();
+		const CStatsComponent_Deprecated::Key Id = Member.GetId();
 		//if (!m_pStatsComponent->HasParam(Id)) continue;
 		const ptrdiff_t Offset = Member.GetOffset();
 		UINT_PTR Ptr = ((UINT_PTR)this + Offset);
 		m_pStatsComponent->BindParamPTR(Id, Ptr);
 	}
+	*/
 
 }
 #include "Components\Bullet.h"
@@ -107,7 +87,7 @@ void CCharacterComponent::ProcessEvent(SEntityEvent & event)
 	default:
 		break;
 	case ENTITY_EVENT_COMPONENT_PROPERTY_CHANGED:
-		UPDATEREFLECTEDPARAMS();
+		//UPDATEREFLECTEDPARAMS();
 	case ENTITY_EVENT_UPDATE:
 		{	
 			if (!m_bFirstUpdateDone)
@@ -141,6 +121,7 @@ void CCharacterComponent::ProcessEvent(SEntityEvent & event)
 
 void CCharacterComponent::ReflectParams(Schematyc::CTypeDesc<CCharacterComponent>& desc)
 {
+	desc.AddMember<int>(&CCharacterComponent::m_cameraJointId, 'Cam', "CameraJointId", "CameraJointId", "", -1);
 	REFLECTPARAM(&CCharacterComponent::m_Health, Health, MinMaxVar<float>());
 }
 
@@ -158,6 +139,40 @@ void CCharacterComponent::Speak(string Text)
 	}
 }
 
+void CCharacterComponent::MakeHuman_01()
+{
+
+	// Set the player geometry, this also triggers physics proxy creation
+	m_pAnimationComponent->SetMannequinAnimationDatabaseFile("Objects/Characters/Human_01/Mannequin/ADB/Human_01.adb");
+	m_pAnimationComponent->SetCharacterFile("Objects/Characters/Human_01/Human_01.cdf");
+
+	m_pAnimationComponent->SetControllerDefinitionFile("Objects/Characters/Human_01/Mannequin/ADB/Human_01ControllerDefinition.xml");
+	m_pAnimationComponent->SetDefaultScopeContextName("Human_01Character");
+	// Queue the idle fragment to start playing immediately on next update
+	m_pAnimationComponent->SetDefaultFragmentName("Dab");
+
+	// Acquire fragment and tag identifiers to avoid doing so each update
+	//m_idleFragmentId = m_pAnimationComponent->GetFragmentId("Dab");
+	//m_walkFragmentId = m_pAnimationComponent->GetFragmentId("Dab");
+	//m_rotateTagId = NULL; // m_pAnimationComponent->GetTagId("Rotate");
+
+	// Disable movement coming from the animation (root joint offset), we control this entirely via physics
+	m_pAnimationComponent->SetAnimationDrivenMotion(false);
+
+	// Load the character and Mannequin data from file
+	m_pAnimationComponent->LoadFromDisk();
+
+	if (ICharacterInstance *pCharacter = m_pAnimationComponent->GetCharacter())
+	{
+		//ICharacterInstance *pJJJJJ = m_pEntity->GetCharacter(m_pAnimationComponent->GetEntitySlotId());
+		//m_pEntity->ClearSlots();
+		//m_pEntity->SetCharacter(pCharacter, m_pAnimationComponent->GetEntitySlotId(), false);
+		// Cache the camera joint id so that we don't need to look it up every frame in UpdateView
+		m_cameraJointId = pCharacter->GetIDefaultSkeleton().GetJointIDByName("head");
+	}
+	//m_pAnimationComponent->ActivateContext("Human_01Character");
+}
+
 void CCharacterComponent::Ragdollize()
 {
 	m_pCharacterController->Ragdollize();
@@ -173,12 +188,24 @@ void CCharacterComponent::Update(float fDeltaTime)
 {
 	if (m_pAI)
 		m_pAI->Update(fDeltaTime);
+	UpdateAnimation(fDeltaTime);
 }
 
 void CCharacterComponent::FirstUpdate()
 {
+	if (m_pAnimationComponent->GetCharacter())
+	{
+		// Acquire fragment and tag identifiers to avoid doing so each update
+		if (m_idleFragmentId == -1)
+			m_idleFragmentId = m_pAnimationComponent->GetFragmentId("Idle");
+		if (m_walkFragmentId == -1)
+			m_walkFragmentId = m_pAnimationComponent->GetFragmentId("Walk");
+		if (m_rotateTagId == -1)
+			m_rotateTagId = m_pAnimationComponent->GetTagId("Rotate");
+	}
+
 	if (!m_bLoadedFromSerialization)
-		m_pAnimationComponent->ResetCharacter();
+		ResetAnimation();
 }
 
 CCharacter_PlayerExtension * CCharacterComponent::GivePlayerExtension()
@@ -186,6 +213,45 @@ CCharacter_PlayerExtension * CCharacterComponent::GivePlayerExtension()
 	m_pPlayerExtension = new CCharacter_PlayerExtension(m_pEntity, this);
 	m_pPlayerExtension->Initialize();
 	return m_pPlayerExtension;
+}
+
+void CCharacterComponent::UpdateAnimation(float frameTime)
+{
+	ICharacterInstance *pCharacter = m_pAnimationComponent->GetCharacter();
+
+	if (m_pCharacterController->IsWalking())
+	{
+		if (m_activeFragmentId == m_idleFragmentId)
+		{
+			m_pAnimationComponent->QueueFragmentWithId(m_walkFragmentId);
+			m_activeFragmentId = m_walkFragmentId;
+		}
+
+		if (m_pPlayerExtension)
+			return;
+
+		Quat newRotation = Quat::CreateRotationVDir(m_pCharacterController->GetMoveDirection());
+
+		Ang3 ypr = CCamera::CreateAnglesYPR(Matrix33(newRotation));
+
+		// We only want to affect Z-axis rotation, zero pitch and roll
+		ypr.y = 0;
+		ypr.z = 0;
+
+		// Re-calculate the quaternion based on the corrected yaw
+		newRotation = Quat(CCamera::CreateOrientationYPR(ypr));
+
+		// Send updated transform to the entity, only orientation changes
+		m_pEntity->SetRotation(newRotation);
+	}
+	else
+	{
+		if (m_activeFragmentId == m_walkFragmentId)
+		{
+			m_pAnimationComponent->QueueFragmentWithId(m_idleFragmentId);
+			m_activeFragmentId = m_idleFragmentId;
+		}
+	}
 }
 
 void CC_RagdollTest(CC_Args pArgs)

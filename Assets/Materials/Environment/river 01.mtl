@@ -1,4 +1,6 @@
 <Material MtlFlags="526336" Shader="Watervolume" GenMask="0" StringGenMask="" SurfaceType="mat_water" MatTemplate="" Diffuse="1,1,1" Specular="0,0,0" Opacity="1" Shininess="10" CloakAmount="0" vertModifType="0" LayerAct="1">
- <Textures />
+ <Textures>
+  <Texture Map="Diffuse" File="./snow.dds"/>
+ </Textures>
  <PublicParams NormalsScale="0.25" SoftIntersectionFactor="1" Tilling="0.1" DetailNormalsScale="0.5" EnvCubeReflMul="1" VertexWaveScale="0.125" DetailTilling="2.5" EnvCubeScale="20" RealtimeReflMul="1" RainTilling="1"/>
 </Material>

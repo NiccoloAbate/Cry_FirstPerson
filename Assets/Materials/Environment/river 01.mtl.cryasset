@@ -4,9 +4,9 @@
  </Files>
  <Details>
   <Detail name="subMaterialCount">0</Detail>
-  <Detail name="textureCount">0</Detail>
+  <Detail name="textureCount">1</Detail>
  </Details>
  <Dependencies>
-  <Path>GameSDK/levels/singleplayer/woodland/Woodland.dds</Path>
+  <Path>./snow.dds</Path>
  </Dependencies>
 </AssetMetadata>

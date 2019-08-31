@@ -1,5 +1,5 @@
 #include "StdAfx.h"
-#include "Stats.h"
+#include "Stats_Deprecated.h"
 
 #include <CrySchematyc/Reflection/TypeDesc.h>
 #include <CrySchematyc/Utils/EnumFlags.h>
@@ -22,7 +22,7 @@ static void RegisterStatsComponent(Schematyc::IEnvRegistrar& registrar)
 {
 	Schematyc::CEnvRegistrationScope scope = registrar.Scope(IEntity::GetEntityScopeGUID());
 	{
-		Schematyc::CEnvRegistrationScope componentScope = scope.Register(SCHEMATYC_MAKE_ENV_COMPONENT(CStatsComponent));
+		Schematyc::CEnvRegistrationScope componentScope = scope.Register(SCHEMATYC_MAKE_ENV_COMPONENT(CStatsComponent_Deprecated));
 		// Functions
 		{
 		}
@@ -33,12 +33,12 @@ CRY_STATIC_AUTO_REGISTER_FUNCTION(&RegisterStatsComponent)
 
 
 
-void CStatsComponent::Initialize()
+void CStatsComponent_Deprecated::Initialize()
 {
 	//InitializeUI();
 }
 
-void CStatsComponent::ProcessEvent(SEntityEvent & event)
+void CStatsComponent_Deprecated::ProcessEvent(SEntityEvent & event)
 {
 	switch (event.event)
 	{
@@ -67,7 +67,7 @@ void CStatsComponent::ProcessEvent(SEntityEvent & event)
 	}
 }
 
-void CStatsComponent::InitializeUI()
+void CStatsComponent_Deprecated::InitializeUI()
 {
 	std::function<Vec3()> PosFunc;
 	bool bHasEntityHudAttachment = false;
@@ -93,8 +93,8 @@ void CStatsComponent::InitializeUI()
 		};
 	}
 
-	CEntityHudManager *pEntityHudManager = CGamePlugin::gGamePlugin->m_pUIController->m_pEntityHudManager;
-	m_pStatBar = pEntityHudManager->NewStatBar(string(m_pEntity->GetName()) + "_HealthBar", "Health", 0, 0, "Health", m_Health);
-	m_pStatBar->m_bPosFunc = true;
-	m_pStatBar->m_PosFunc = PosFunc;
+	//CEntityHudManager *pEntityHudManager = CGamePlugin::gGamePlugin->m_pUIController->m_pEntityHudManager;
+	//m_pStatBar = pEntityHudManager->NewStatBar(string(m_pEntity->GetName()) + "_HealthBar", "Health", 0, 0, "Health", m_Health);
+	//m_pStatBar->m_bPosFunc = true;
+	//m_pStatBar->m_PosFunc = PosFunc;
 }

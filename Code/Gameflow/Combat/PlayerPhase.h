@@ -7,6 +7,8 @@
 
 TAGGAMEFLOWPHASE(Combat, PLAYER, 1)
 
+class CAbility;
+
 class CCombatGameflow_PlayerPhase : public CGameflowPhase
 {
 public:
@@ -26,7 +28,15 @@ public:
 
 protected:
 	
-	void Test();
+	CAbility* m_pTestAbility;
+	IEntity* m_pTargetEntity = nullptr;
+
+	// Keybinds
+	void MovementTest();
+	void ViewTrace();
+	void TestAbility();
+	void ShiftTarget(bool bNext);
+	// ~Keybinds
 
 };
 

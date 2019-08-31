@@ -11,6 +11,7 @@
 #include <DefaultComponents/Cameras/CameraComponent.h>
 #include <DefaultComponents/Physics/CharacterControllerComponent.h>
 #include <DefaultComponents/Geometry/AdvancedAnimationComponent.h>
+#include <DefaultComponents\AI\PathfindingComponent.h>
 
 #include "Types\MovingAverage.h"
 #include "Types\MinMaxVar.h"
@@ -19,13 +20,14 @@
 class CAI;
 class CSpeechBubble;
 class CGameplayEntityComponent;
-class CStatsComponent;
+//class CStatsComponent_Deprecated;
 class CCharacter_PlayerExtension;
+class CPathfinderComponent;
 
 ////////////////////////////////////////////////////////
 // Represents a player participating in gameplay
 ////////////////////////////////////////////////////////
-class CCharacterComponent final : public IEntityComponent
+class CCharacterComponent : public IEntityComponent
 {
 	friend class CCharacter_PlayerExtension;
 
@@ -62,7 +64,7 @@ public:
 	//~Player
 
 	// Game
-	CStatsComponent* GetStatsComponent() { return m_pStatsComponent; }
+	//CStatsComponent_Deprecated* GetStatsComponent() { return m_pStatsComponent; }
 	CGameplayEntityComponent* GetGameplayEntityComponent() { return m_pGameplayEntityComponent; }
 	//~Game
 
@@ -75,12 +77,15 @@ public:
 	// Animation & Physics
 	Cry::DefaultComponents::CAdvancedAnimationComponent* GetAnimationComponent() const { return m_pAnimationComponent; }
 	Cry::DefaultComponents::CCharacterControllerComponent* GetCharacterControllerComponent() const { return m_pCharacterController; }
+	CPathfinderComponent* GetPathfinderComponent() const { return m_pPathfinderComponent; }
 
 	void SetIdleFragmentID(FragmentID ID) { m_idleFragmentId = ID; }
 	void SetWalkFragmentID(FragmentID ID) { m_walkFragmentId = ID; }
 	void SetRotateTagID(FragmentID ID) { m_rotateTagId = ID; }
 	void SetCameraJointID(int ID) { m_cameraJointId = ID; }
 
+	void MakeHuman_01();
+	void ResetAnimation() { m_pAnimationComponent->ResetCharacter(); }
 	void Ragdollize();
 	//~Animation & Physics
 
@@ -104,7 +109,7 @@ protected:
 	//~Character
 
 	// Game
-	CStatsComponent *m_pStatsComponent = nullptr;
+	//CStatsComponent_Deprecated *m_pStatsComponent = nullptr;
 	MinMaxVar<float> m_Health{ 0, 100, 100 };
 	//~Game
 
@@ -114,11 +119,12 @@ protected:
 
 	//void UpdateMovementRequest(float frameTime);
 	//void UpdateLookDirectionRequest(float frameTime);
-	//void UpdateAnimation(float frameTime);
+	void UpdateAnimation(float frameTime);
 
 	// Animation & Physics
 	Cry::DefaultComponents::CCharacterControllerComponent* m_pCharacterController = nullptr;
 	Cry::DefaultComponents::CAdvancedAnimationComponent* m_pAnimationComponent = nullptr;
+	CPathfinderComponent* m_pPathfinderComponent = nullptr;
 	//~Animation & Physics
 
 	Vec2 m_mouseDeltaRotation;
@@ -129,9 +135,9 @@ protected:
 	float m_horizontalAngularVelocity;
 	MovingAverage<float, 10> m_averagedHorizontalAngularVelocity;
 
-	FragmentID m_idleFragmentId;
-	FragmentID m_walkFragmentId;
-	TagID m_rotateTagId;
+	FragmentID m_idleFragmentId = -1;
+	FragmentID m_walkFragmentId = -1;
+	TagID m_rotateTagId = -1;
 
 	const float m_rotationSpeed = 0.002f;
 	int m_cameraJointId = -1;

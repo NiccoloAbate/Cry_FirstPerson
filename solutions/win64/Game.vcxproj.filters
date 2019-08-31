@@ -86,9 +86,6 @@
     <ClCompile Include="..\..\Code\Components\Game\GameplayEntity.cpp">
       <Filter>Components\Game</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Code\Components\Game\Stats.cpp">
-      <Filter>Components\Game</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Code\Components\Hive\Pheromone.cpp">
       <Filter>Components\Hive</Filter>
     </ClCompile>
@@ -145,6 +142,30 @@
     </ClCompile>
     <ClCompile Include="..\..\Code\AI\Hive\HiveAgent\Combat.cpp">
       <Filter>AI\Hive\HiveAgent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Utils\Initialization\DeferredInitialization.cpp">
+      <Filter>Utils\Initialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Components\AI\Pathfinder.cpp">
+      <Filter>Components\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Components\Combat\EncounterSpawnPoint.cpp">
+      <Filter>Components\Combat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Combat\CombatSystem.cpp">
+      <Filter>Combat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Combat\Targeting.cpp">
+      <Filter>Combat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Combat\Abilities.cpp">
+      <Filter>Combat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Combat\AbilityFactory.cpp">
+      <Filter>Combat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Code\Components\Game\Stats_Deprecated.cpp">
+      <Filter>Components\Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -298,9 +319,6 @@
     <ClInclude Include="..\..\Code\Components\Game\GameplayEntity.h">
       <Filter>Components\Game</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Code\Components\Game\Stats.h">
-      <Filter>Components\Game</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Code\Components\Hive\Pheromone.h">
       <Filter>Components\Hive</Filter>
     </ClInclude>
@@ -369,6 +387,33 @@
     </ClInclude>
     <ClInclude Include="..\..\Code\AI\Hive\HiveAgent\Explore.h">
       <Filter>AI\Hive\HiveAgent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Utils\Initialization\DeferredInitialization.h">
+      <Filter>Utils\Initialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Components\AI\Pathfinder.h">
+      <Filter>Components\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Components\Combat\EncounterSpawnPoint.h">
+      <Filter>Components\Combat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Combat\CombatSystem.h">
+      <Filter>Combat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Combat\Abilities.h">
+      <Filter>Combat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Combat\Targeting.h">
+      <Filter>Combat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Combat\AbilityFactory.h">
+      <Filter>Combat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Components\Game\Stats_Deprecated.h">
+      <Filter>Components\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\Types\Stats.h">
+      <Filter>Types</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -463,6 +508,18 @@
     </Filter>
     <Filter Include="AI\Hive\HiveAgent">
       <UniqueIdentifier>{daf7d7d8-ddb4-4b1c-ab49-799201467d2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils\Initialization">
+      <UniqueIdentifier>{aa0e102c-526d-48e6-a0f1-aa59badfdb29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\AI">
+      <UniqueIdentifier>{729958ea-2dc8-415a-ac11-cf3691a153b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Combat">
+      <UniqueIdentifier>{cca1a5e5-2f4f-494c-abc5-7f48baf25a14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Combat">
+      <UniqueIdentifier>{96045fe0-52cf-489c-be63-0f333c0ebf04}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

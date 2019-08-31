@@ -1,0 +1,13 @@
+<AssetMetadata version="0" type="Material" guid="624d35e2-6f73-3e06-c878-07a4bf452dce">
+ <Files>
+  <File path="ant_01.mtl"/>
+ </Files>
+ <Details>
+  <Detail name="subMaterialCount">0</Detail>
+  <Detail name="textureCount">2</Detail>
+ </Details>
+ <Dependencies>
+  <Path>textures/defaults/white.dds</Path>
+  <Path>Objects/pbs_reference/gloss0_ddna.dds</Path>
+ </Dependencies>
+</AssetMetadata>

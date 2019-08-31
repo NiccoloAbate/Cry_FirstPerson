@@ -1,11 +1,11 @@
-<AssetMetadata version="0" type="Character" guid="9af61d7d-2c2b-7313-bec5-9cb4260ead8c">
+<AssetMetadata version="0" type="Character" guid="b919adca-d2cb-83bf-0449-0c725f7dd7a5">
  <Files>
-  <File path="ant_01.cdf"/>
+  <File path="Ant_01.cdf"/>
  </Files>
  <Details />
  <Dependencies>
   <Path>Objects/Characters/Ant_01/Ant_01.chr</Path>
-  <Path>Objects/Characters/Ant_01/ant_01_hitmaterial.mtl</Path>
   <Path>Objects/Characters/Ant_01/Ant_01.skin</Path>
+  <Path>Objects/Characters/Ant_01/Ant_01.mtl</Path>
  </Dependencies>
 </AssetMetadata>

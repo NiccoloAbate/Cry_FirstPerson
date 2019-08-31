@@ -18,7 +18,8 @@
 
 #include "PlayerExtension.h"
 
-#include "Components\Game\Stats.h"
+#include "Components\Game\Stats_Deprecated.h"
+#include "Utils/Utils.h"
 
 static void RegisterPlayerComponent(Schematyc::IEnvRegistrar& registrar)
 {
@@ -81,10 +82,13 @@ void CPlayerComponent::ExtendTo(CPlayerExtension * pPlayerExtension)
 	m_pPlayerExtension->ExtendFrom(this);
 }
 
-CStatsComponent * CPlayerComponent::GetStatsComponent()
+void CPlayerComponent::FaceAt(IEntity* pEntity)
 {
-	if (!m_pPlayerExtension)
-		return nullptr;
-	return m_pPlayerExtension->GetEntity()->GetComponent<CStatsComponent>();
+	m_pPlayerExtension->FaceAt(pEntity);
+}
+
+void CPlayerComponent::SetViewDir(Vec3 ViewDir)
+{
+	m_pPlayerExtension->SetViewDir(ViewDir);
 }
 

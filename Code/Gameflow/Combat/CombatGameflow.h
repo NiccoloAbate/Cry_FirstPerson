@@ -2,6 +2,8 @@
 
 #include "Gameflow\Gameflow.h"
 
+#include <vector>
+
 TAGGAMEFLOW(COMBAT, 1)
 
 class CCharacterComponent;
@@ -23,10 +25,14 @@ public:
 
 	virtual FlagType GetDefaultFlagMask() const override { return NULL; }
 
+	std::vector<IEntity*>& GetEnemies() { return m_pEnemies; }
+	void RegisterEnemy(IEntity* pEntity) { m_pEnemies.push_back(pEntity); }
 
 protected:
 
 	CCharacterComponent *m_pCharacter;
+
+	std::vector<IEntity*> m_pEnemies;
 
 };
 
